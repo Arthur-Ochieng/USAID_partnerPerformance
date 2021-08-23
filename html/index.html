@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <!-- Favicon icon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/prd.png" />
+        <title>
+           Home | Partner Reporting Dashboard
+        </title>
+        <!-- Custom CSS -->
+        <link href="../assets/libs/select2/select2.min.css" rel="stylesheet" />
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highcharts/8.1.1/css/highcharts.min.css">
+        <link href="../dist/css/style.min.css" rel="stylesheet" />
+        <link href="../dist/css/custom.css" rel="stylesheet" />
+        <link href="../dist/css/main.css" rel="stylesheet" />
+        
+    </head>
+
+    <body onload="renderAll(); window.fetchData();">
+        <div class="preloader">
+            <div class="lds-ripple">
+                <div class="lds-pos"></div>
+                <div class="lds-pos"></div>
+            </div>
+        </div>
+        <div id="main-wrapper">
+            <header class="topbar" data-navbarbg="skin5" id="header_target"></header>
+            <aside class="left-sidebar" data-sidebarbg="skin5">
+                <div class="scroll-sidebar">
+                    <nav class="sidebar-nav" id="nav_target"></nav>
+                </div>
+            </aside>
+            <div class="page-wrapper">
+                <div class="page-breadcrumb">
+                    <div class="row">
+                        <div class="col-12 d-flex no-block align-items-center" id="filter_target">
+                            <!-- <small class="text-bold">Filter:</small> -->
+                                <!-- <div class="col-md-12 col-sm-12 col-xs-12">
+                                </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 p-0" id="status_target"> </div>
+                        <div class="col-md-12 p-0" id="loading_target"> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" >
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">ANC Cascade</h4>
+                                    <div class="graph" id="anc">
+                                        <p class="card-text"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Maternal HIV Cascade</h4>
+                                    <div class="graph" id="Maternal">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Infant HIV Cascade</h4>
+                                    <div class="graph" id="Infant">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">% Congruence between sources of immunization data between : Immunisation register vs. DHIS2</h4>
+                                    <div class="graph" id="immunizationmr">
+                                        <p class="card-text">tables Comparing counties , subcounties and quaters. In this case lets have one table that will have all discrepancy between sources of immunization data</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                                            
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer_target" class="p-0 m-0 w-100"></div>
+        
+        <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+        <script src="../assets/libs/select2/select2.min.js"></script>
+        <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+        <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+        <script src="../dist/js/sidebarmenu.js"></script>
+        <script src="../dist/js/custom.js"></script>
+
+        <!-- *********** <WeekPicker ************** -->
+        <script src="https://cdn.jsdelivr.net/npm/moment@2.26.0/moment.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+        <script src="../dist/js/weekpicker.js"></script>
+        <!-- *********** WeekPicker/> ************** -->
+        
+        <!-- *********** <Highcharts ************** -->
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/8.1.1/es-modules/highcharts.src.min.js"></script>-->
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>		
+		<script src="https://code.highcharts.com/modules/export-data.js"></script>
+		<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <!-- *********** Highcharts/> ************** -->
+
+
+
+
+        <!-- TEMPLATING -->
+        <script src="../dist/js/templates/mustache.js"></script>
+
+            <!-- templates -->
+            <!-- <script id="header_template" type="x-tmpl-mustache">
+                //html here
+            </script> -->
+            <script src="../dist/js/templates/components/footer.js"></script>
+            <script src="../dist/js/templates/components/header.js"></script>
+            <script src="../dist/js/templates/components/nav.js"></script>
+            <script src="../dist/js/templates/components/filter.js"></script>
+            <script src="../dist/js/templates/components/loading.js"></script>
+            <script src="../dist/js/templates/components/status.js"></script>
+            <!-- templates -->
+
+            <!-- renders -->
+            <script src="../dist/js/templates/renders.js"></script>
+            <!-- renders -->
+
+            <!-- render Fn -->
+            <script>
+                function renderAll() {
+                    let page_title = {title: 'Clinical OVC Dashboard'}
+                    let page_filters = {
+                        is_county:true, 
+                        is_subcounty:true, 
+                        is_ward:true, 
+                        is_facility:true, 
+                        is_period:true, 
+                        is_mechanism: true,
+                        is_period_range:true}
+                    let is_loading = {is_loading: false}
+                    let footer_yr = { yr: new Date().getFullYear()}
+                    let page_status = {title: '', message: '', type: 'info', hidden: true} //type: info, success, danger
+
+                    renderNav()
+                    renderHeader(page_title)
+                    renderFooter(footer_yr)
+                    renderLoader(is_loading)
+                    renderFilter(page_filters)
+                    renderStatus(page_status)
+                }
+            </script>
+            <!-- render Fn -->
+        <!-- TEMPLATING -->
+
+
+        <script src="../dist/js/_utils.js"></script>
+
+
+        
+        
+        <!-- ++++++++++++++++++++++++ PAGE DATA LOGIC ++++++++++++++++++++++++ -->
+        <script>
+            window.fetchData = (prop) => {
+               
+                // let org_unit = window.sessionStorage.getItem('ess_ou') || "HfVjCurKxh2"
+                let org_unit = "HfVjCurKxh2"
+                let mechanism = "MZQY1ZPAYCY"
+                if(prop && prop.ou){
+                    org_unit = prop.ou
+                }
+                let prd = `LAST_MONTH`
+                if(prop && prop.pe){
+                    prd = prop.pe
+                }
+                if(prop && prop.pe && prop.pe_to){
+                    prd = dateRange(prop.pe, prop.pe_to)
+                }
+                console.log('prd = = = '+prd);
+
+                let ouFilterType = window.sessionStorage.getItem("ouFilterType") || "national"
+                var finalpe =prd.replace(/,/g, ';');
+                if (finalpe == `LAST_YEAR`){
+                    var yr = `LAST_YEAR`
+                }else{
+                    var yr = finalpe.substring(0,4)
+                }
+                
+                if(prop && prop.me){
+                    mechanism = prop.me
+                }
+                
+                
+
+                
+                let ancascade = `https://hiskenya.org/api/analytics.json?dimension=ou:${org_unit}&dimension=dx:Fz0LzxMT1vV;uSxBUWnagGg;i5jVVTm1vI8;pct05jgGcLt;xNTM673ne69;KsxPBOVAyjJ;ivtLMB7qdKg;xvUt174iyYS;kU5ew70I7kj;vlme3PThHl1;AlWRnztxhOU;KMy83Jn1QgO;VsRrzNMda22;cmeMfuPL3VL;qp8WQXmWtnr;MHmKiukySbZ;ArG6zbCMBr2;RsYvCg0aeuZ&filter=pe:${finalpe}&displayProperty=NAME`
+
+                let art_review = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=lRp2LBbTuM5:${mechanism}&dimension=dx:C0gt9AAN7JY;coV33AERzhA;NW1vrnCyzXd;AeFO4noHEDJ;SHBwx5cuUkx;bjJPCcuY65I&filter=ou:${org_unit}&filter=pe:${finalpe}&displayProperty=NAME&outputIdScheme=UID`
+                let estimated_pmtct= `https://hiskenya.org/api/analytics.json?dimension=ou:${org_unit}&dimension=dx:ZH8BGmU9SHJ&filter=pe:${yr}&displayProperty=NAME`
+                // let data = fetchdata(ancascade)
+                getart_review(art_review)
+                getMaternal(ancascade,estimated_pmtct)
+                // getInfant()
+
+            
+        }
+
+            function getart_review(url){
+                //dictionaries used to maintain order of the values
+                //indicators for reached anc
+                let reached = {
+                    'pct05jgGcLt': 'Estimated Number of Pregnant Women',
+                    'uSxBUWnagGg': 'MOH 731 1st ANC Visits HV02-01',
+                    'vlme3PThHl1': 'Number tested for HIV at ANC',
+                    'i5jVVTm1vI8': 'MOH 731 Syphilis Screened_1st ANC HV02-24',
+                    'Fz0LzxMT1vV': 'Pregnant women completing 4 ANC visits',
+                    'KsxPBOVAyjJ': 'Delivery to HIV+ Mothers'
+                };
+
+                //indicators for missed opportunities
+                let missed = {
+                    'placeholder2': 0,
+                    'placeholder1': 0,
+                    'AlWRnztxhOU': 'Number tested for HIV at ANC Missed Opportunity',
+                    'xNTM673ne69': 'ANC Testing for Syphilis Missed Opportunity',
+                    'qp8WQXmWtnr': 'Pregnant women completing 4 ANC visits missed opportunities',
+                    'ivtLMB7qdKg': 'Delivery to HIV+ Mothers Missed Opportunity'
+   
+                }
+                //unlabelled values to plot
+                let reached_values = [];
+                let missed_values = [];
+                let unreached_values = [];
+            justFetch(url, {})
+                .then(response=>{
+                    response.rows.map( row => {
+                            if(row[0] in reached) {
+                                reached[row[0]] = parseInt(row[2]);
+                            } else if(row[0] in missed){
+                                missed[row[0]] = parseInt(row[2]);
+                            }
+                        }
+                    );
+                    console.log ('response ', response)
+
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var periodname = []
+                    response.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(response.metaData.items[pe].name)
+                        
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    } 
+
+                    //convert dictionary to array by extracting values only
+                    reached_values = Object.keys(reached).map(function (key) {
+                        return reached[key];
+                    });
+                    missed_values = Object.keys(missed).map(function (key) {
+                        return missed[key];
+                    });
+
+                    const unreached = reached_values[0] - reached_values[1];
+                    unreached_values = [0, unreached, unreached, unreached, unreached,unreached];
+
+                    //plot the charts
+                    Highcharts.chart('anc', {
+                            chart: {
+                                type: 'bar'
+                            },
+                            title: {
+                                text: fperiodname[0] +' - '+fperiodname[1]+' '+curorg
+                            },
+                            xAxis: {
+                                categories: ['Expected Pregnancies', 'First ANC Visit','Known HIV status at ANC','Testing for Syphilis', 'Pregnant women completing 4 ANC visit', 'Skilled Deliveries'  ]
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                    text: 'Maternal Population'
+                                }
+                            },
+                            legend: {
+                                reversed: true
+                            },
+                            plotOptions: {
+                                    series: {
+                                        dataLabels: {
+                                            enabled: true,
+                                            align: 'center',
+                                            color: '#FFFFFF'
+                                        },
+                                        stacking: 'normal'
+
+                                    }
+                                },
+                            series: [{
+                                name: 'Unreached Mothers',
+                                data: unreached_values,
+                                color:'#615e5d'
+                            }, {
+                                name: 'Missed Opportunities',
+                                data: missed_values,
+                                color:'#f28f43'
+                            }, {
+                                name: 'Reached Mothers',
+                                data: reached_values,
+                                color:'#2f7ed8'
+                            }]
+                        });
+
+                });
+            }
+
+            function getMaternal(url,e_url){ 
+                let reached = {
+                    'ZH8BGmU9SHJ': 'Need for PMTCT',
+                    'VsRrzNMda22': 'PMTCT Total Positive',
+                    'ArG6zbCMBr2': 'Total Maternal HAART',
+                    'KMy83Jn1QgO': 'PMTCT Infant Prophylaxis',
+                    'KsxPBOVAyjJ': 'Delivery to HIV+ Mothers'
+                };
+
+                //indicators for missed opportunities
+                let missed = {
+                    'placeholder2': 0,
+                    'placeholder1': 0,
+                    'kU5ew70I7kj': 'Maternal HAART Missed Opportunities',
+                    'xvUt174iyYS': 'Infant Prophylaxis Missed Opportunity',
+                    'ivtLMB7qdKg': 'Delivery to HIV+ Mothers Missed Opportunity'
+   
+                }
+                //unlabelled values to plot
+                let reached_values = [];
+                let missed_values = [];
+                let unreached_values = [];
+                var res = []
+
+                console.log('url',url)
+
+                console.log('eurl',e_url)
+            justFetch(url, {})
+                .then(response1=>{                    
+                    justFetch(e_url,{})
+                    .then(response2=>{                    
+                    res.push(response1)
+                    res = [...res,response2]
+                    res[0].rows.map( row => {
+                            if(row[0] in reached) {
+                                reached[row[0]] = parseInt(row[2]);
+                            } else if(row[0] in missed){
+                                missed[row[0]] = parseInt(row[2]);
+                            }
+                        }
+                    );
+                    res[1].rows.map( row => {
+                            if(row[0] in reached) {
+                                reached[row[0]] = parseInt(row[2]);
+                            } else if(row[0] in missed){
+                                missed[row[0]] = parseInt(row[2]);
+                            }
+                        }
+                    );
+                
+                    
+                    var theorgunit = res[0].metaData.dimensions.ou[0];
+                    var curorg = res[0].metaData.items[theorgunit].name;
+
+                    var periodname = []
+                    response1.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(response1.metaData.items[pe].name)
+                        
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    } 
+
+                    
+                   
+                    
+                    //convert dictionary to array by extracting values only
+                    reached_values = Object.keys(reached).map(function (key) {
+                        return reached[key];
+                    });
+                    missed_values = Object.keys(missed).map(function (key) {
+                        return missed[key];
+                    });
+
+                    const unreached = reached_values[0] - reached_values[1];
+                    unreached_values = [0, reached_values[0] - reached_values[1], unreached, unreached, unreached];
+                Highcharts.chart('Maternal', {
+                            chart: {
+                                type: 'bar'
+                            },
+                            title: {
+                                text: fperiodname[0] +' - '+fperiodname[1]+' '+curorg
+                            },
+                            xAxis: {
+                                categories: ['Need for PMTCT', 'PMTCT Positives', 'Maternal HAART', 'Infant Prophylaxis','Delivery to HIV+ Mothers' ]
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                    text: 'Maternal Population'
+                                }
+                            },
+                            legend: {
+                                reversed: true
+                            },
+                            plotOptions: {
+                                    series: {
+                                        dataLabels: {
+                                            enabled: true,
+                                            align: 'center',
+                                            color: '#FFFFFF'
+                                        },
+                                        stacking: 'normal'
+                                    
+                                    }
+                                },
+                            series: [{
+                                name: 'Unreached Mothers',
+                                data: unreached_values,
+                                color:'#615e5d'
+                            }, {
+                                name: 'Missed Opportunities',
+                                data: missed_values,
+                                color:'#f28f43'
+                            }, {
+                                
+                                name: 'Reached Mothers',
+                                data: reached_values,
+                                color:'#2f7ed8'
+                            }]
+                        });
+                    })
+                
+            });
+                                        
+            }
+            function getInfant(url){
+                let reached = {
+                    'pct05jgGcLt': 'Estimated Number of Pregnant Women',
+                    'uSxBUWnagGg': 'MOH 731 1st ANC Visits HV02-01',
+                    'vlme3PThHl1': 'Number tested for HIV at ANC',
+                    'i5jVVTm1vI8': 'MOH 731 Syphilis Screened_1st ANC HV02-24',
+                    'Fz0LzxMT1vV': 'Pregnant women completing 4 ANC visits'
+                };
+
+                //indicators for missed opportunities
+                let missed = {
+                    'placeholder2': 0,
+                    'placeholder1': 0,
+                    'AlWRnztxhOU': 'Number tested for HIV at ANC Missed Opportunity',
+                    'xNTM673ne69': 'ANC Testing for Syphilis Missed Opportunity',
+                    'qp8WQXmWtnr': 'Pregnant women completing 4 ANC visits missed opportunities'
+   
+                }
+                //unlabelled values to plot
+                let reached_values = [];
+                let missed_values = [];
+                let unreached_values = [];
+            justFetch(url, {})
+                .then(response=>{
+                    console.log(url)
+                    response.rows.map( row => {
+                            if(row[0] in reached) {
+                                reached[row[0]] = parseInt(row[2]);
+                            } else if(row[0] in missed){
+                                missed[row[0]] = parseInt(row[2]);
+                            }
+                        }
+                    );
+                    
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+
+                    
+                    console.log(response.metaData.items[response.metaData.dimensions.pe[0]].name)
+                    
+                    //convert dictionary to array by extracting values only
+                    reached_values = Object.keys(reached).map(function (key) {
+                        return reached[key];
+                    });
+                    missed_values = Object.keys(missed).map(function (key) {
+                        return missed[key];
+                    });
+
+                    const unreached = reached_values[0] - reached_values[1];
+                    unreached_values = [0, unreached, unreached, unreached, unreached];
+                Highcharts.chart('Infant', {
+                            chart: {
+                                type: 'bar'
+                            },
+                            title: {
+                                text: 'Infant HIV Cascade'
+                            },
+                            xAxis: {
+                                categories: ['Neonatal PMTCT','Positive Pg & Br', '1st PCR', 'PCR Within Two Months', 'PCR Positived', 'Under 1 Starting ART']
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                    text: 'Maternal Population'
+                                }
+                            },
+                            legend: {
+                                reversed: true
+                            },
+                            plotOptions: {
+                                    series: {
+                                        dataLabels: {
+                                            enabled: true,
+                                            align: 'center',
+                                            color: '#FFFFFF'
+                                        },
+                                        stacking: 'normal'
+                                    
+                                    }
+                                },
+                            series: [{
+                                name: 'Unreached Infants',
+                                data: [0, 0,0,-110, -110, -110]
+                                
+                            }, {
+                                name: 'Missed Opportunity',
+                                data: [0,0,1956,6426,0,167]
+                            }, {
+                                name: 'Reached Infants',
+                                data: [17374,17484,15528,11058,458,291]
+                            }]
+                        });
+                
+            });
+                                        
+            }
+        </script>
+           
+        <!-- ------------------------ PAGE DATA LOGIC ------------------------ -->
+    </body>
+</html>

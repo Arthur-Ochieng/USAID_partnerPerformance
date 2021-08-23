@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <!-- Favicon icon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/prd.png" />
+        <title>
+           Home | Partner Reporting Dashboard
+        </title>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" type="text/css" href="../assets/extra-libs/multicheck/multicheck.css" />
+        <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
+        <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" />
+        <link href="../assets/extra-libs/DataTables/DataTables-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+        <link href="../dist/css/datatables/buttons.dataTables.min.css" rel="stylesheet" />
+        <link href="../dist/css/datatables/jquery.dataTables.min.css" rel="stylesheet" />
+        <link href="../assets/extra-libs/monthpicker/MonthPicker.css" rel="stylesheet" />
+        <link href="../assets/extra-libs/monthpicker/jquery-ui.css" rel="stylesheet" />
+        <link href="../assets/libs/select2/select2.min.css" rel="stylesheet" />
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highcharts/8.1.1/css/highcharts.min.css">
+        <link href="../dist/css/style.min.css" rel="stylesheet" />
+        <link href="../dist/css/custom.css" rel="stylesheet" />
+        <link href="../dist/css/main.css" rel="stylesheet" />
+        
+    </head>
+
+    <body onload="renderAll(); window.fetchData();">
+        <div class="preloader">
+            <div class="lds-ripple">
+                <div class="lds-pos"></div>
+                <div class="lds-pos"></div>
+            </div>
+        </div>
+        <div id="main-wrapper">
+            <header class="topbar" data-navbarbg="skin5" id="header_target"></header>
+            <aside class="left-sidebar" data-sidebarbg="skin5">
+                <div class="scroll-sidebar">
+                    <nav class="sidebar-nav" id="nav_target"></nav>
+                </div>
+            </aside>
+            <div class="page-wrapper">
+                <div class="page-breadcrumb">
+                    <div class="row">
+                        <div class="col-12 d-flex no-block align-items-center" id="filter_target">
+                            <!-- <small class="text-bold">Filter:</small> -->
+                                <!-- <div class="col-md-12 col-sm-12 col-xs-12">
+                                </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 p-0" id="status_target"> </div>
+                        <div class="col-md-12 p-0" id="loading_target"> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" >
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Kenya Adults Coverage Cascade</h4>
+                                    <figure class="highcharts-figure">                                        
+                                        <div id="adult"></div>
+                                        <p class="highcharts-description">
+                                        </p>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Kenya Children Coverage Cascade</h4>
+                                    <figure class="highcharts-figure">                                        
+                                        <div id="child"></div>
+                                        <p class="highcharts-description">
+                                        </p>
+                                    </figure>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Kenya Adolesents Coverage Cascade</h4>
+                                    <figure class="highcharts-figure">                                        
+                                        <div id="adolesent"></div>
+                                        <p class="highcharts-description">
+                                        </p>
+                                    </figure>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Kenya Young Adult Coverage Cascade</h4>
+                                        <figure class="highcharts-figure">                                        
+                                            <div id="yadult"></div>
+                                            <p class="highcharts-description">
+                                            </p>
+                                        </figure>                                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Kenya Overall Coverage Cascade</h4>
+                                    <figure class="highcharts-figure">                                        
+                                        <div id="overall"></div>
+                                        <p class="highcharts-description">
+                                        </p>
+                                    </figure>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Kenya male Coverage Cascade</h4>
+                                    <figure class="highcharts-figure">                                        
+                                        <div id="male"></div>
+                                        <p class="highcharts-description">
+                                        </p>
+                                    </figure>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Kenya female Coverage Cascade</h4>
+                                    <figure class="highcharts-figure">                                        
+                                        <div id="female"></div>
+                                        <p class="highcharts-description">
+                                        </p>
+                                    </figure>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    
+
+                                            
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer_target" class="p-0 m-0 w-100"></div>
+        
+        <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+        <script src="../assets/libs/select2/select2.min.js"></script>
+        <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+        <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+        <script src="../dist/js/sidebarmenu.js"></script>
+        <script src="../dist/js/custom.js"></script>
+        <script src="../assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+        <script src="../assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+        <script src="../assets/extra-libs/DataTables/datatables.min.js"></script>
+        <script src="../assets/extra-libs/DataTables/dataTables.buttons.min.js"></script>
+        <script src="../assets/extra-libs/DataTables/buttons.flash.min.js"></script>
+        <script src="../assets/extra-libs/jszip/jszip.min.js"></script>
+        <script src="../assets/extra-libs/pdfmake/pdfmake.min.js"></script>
+        <script src="../assets/extra-libs/pdfmake/vfs_fonts.js"></script>
+        <script src="../assets/extra-libs/DataTables/buttons.html5.min.js"></script>
+        <script src="../assets/extra-libs/DataTables/buttons.print.min.js"></script>
+
+        <!-- *********** <MonthPicker ************** -->
+        <script src="../assets/extra-libs/monthpicker/jquery-migrate-3.0.1.min.js"></script>
+        <script src="../assets/extra-libs/monthpicker/jquery.maskedinput.min.js"></script>
+        <script src="../assets/extra-libs/monthpicker/jquery-ui.min.js"></script>
+        <script src="../assets/extra-libs/monthpicker/MonthPicker.js"></script>
+        <!-- *********** MonthPicker/> ************** -->
+
+        <!-- *********** <WeekPicker ************** -->
+        <script src="https://cdn.jsdelivr.net/npm/moment@2.26.0/moment.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+        <script src="../dist/js/weekpicker.js"></script>
+        <!-- *********** WeekPicker/> ************** -->
+        
+        <!-- *********** <Highcharts ************** -->
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/8.1.1/es-modules/highcharts.src.min.js"></script>-->
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>		
+		<script src="https://code.highcharts.com/modules/export-data.js"></script>
+		<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <!-- *********** Highcharts/> ************** -->
+
+
+
+
+        <!-- TEMPLATING -->
+        <script src="../dist/js/templates/mustache.js"></script>
+
+            <!-- templates -->
+            <!-- <script id="header_template" type="x-tmpl-mustache">
+                //html here
+            </script> -->
+            <script src="../dist/js/templates/components/footer.js"></script>
+            <script src="../dist/js/templates/components/header.js"></script>
+            <script src="../dist/js/templates/components/nav.js"></script>
+            <script src="../dist/js/templates/components/filter.js"></script>
+            <script src="../dist/js/templates/components/loading.js"></script>
+            <script src="../dist/js/templates/components/status.js"></script>
+            <!-- templates -->
+
+            <!-- renders -->
+            <script src="../dist/js/templates/renders.js"></script>
+            <!-- renders -->
+
+            <!-- render Fn -->
+            <script>
+                function renderAll() {
+                    let page_title = {title: 'NASCOP 90 90 90 Cascades'}
+                    let page_filters = {
+                        is_county:true, 
+                        is_subcounty:false, 
+                        is_ward:false, 
+                        is_facility:false, 
+                        is_period:true, 
+                        // is_period_month:true,
+                        is_period_range:false}
+                    let is_loading = {is_loading: false}
+                    let footer_yr = { yr: new Date().getFullYear()}
+                    let page_status = {title: '', message: '', type: 'info', hidden: true} //type: info, success, danger
+
+                    renderNav()
+                    renderHeader(page_title)
+                    renderFooter(footer_yr)
+                    renderLoader(is_loading)
+                    renderFilter(page_filters)
+                    renderStatus(page_status)
+                }
+            </script>
+            <!-- render Fn -->
+        <!-- TEMPLATING -->
+
+
+        <script src="../dist/js/_utils.js"></script>
+
+
+        
+        
+        <!-- ++++++++++++++++++++++++ PAGE DATA LOGIC ++++++++++++++++++++++++ -->
+        <script>
+            window.fetchData = (prop) => {
+                // let org_unit = window.sessionStorage.getItem('ess_ou') || "HfVjCurKxh2"
+                let org_unit = "HfVjCurKxh2"
+
+                if(prop && prop.ou){
+                    org_unit = prop.ou
+                }
+                let prd = `LAST_MONTH`
+                if(prop && prop.pe){
+                    prd = prop.pe
+                }
+
+                let ouFilterType = window.sessionStorage.getItem("ouFilterType") || "national"
+                var finalpe =prd.replace(/,/g, ';');
+                if (finalpe == `LAST_MONTH`){
+                    var yr = `LAST_YEAR`
+                }else{
+                    var yr = finalpe.substring(0,4)
+                }
+                
+                
+
+                let Adult = `https://hiskenya.org/api/analytics.json?dimension=dx:taOwegTT6B1;iXiUj2pCJon;Z655hAUelBN&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+                let Adult_estimate = `https://hiskenya.org/api/analytics.json?dimension=dx:jRO2cj8LlNZ&dimension=pe:${yr}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+                let child =`https://hiskenya.org/api/analytics.json?dimension=dx:MOJxAdu6Cmb;jVTiH06lamG;yanhryQN8u2&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+                let child_estimate = `https://hiskenya.org/api/analytics.json?dimension=dx:EpZYkbBwJLF&dimension=pe:${yr}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+                let yAdult = `https://hiskenya.org/api/analytics.json?dimension=dx:ncOm8ACs7Yu;iQ7XNIj9bFr;EEYGxhBKDu6&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+                let yAdult_estimates = `https://hiskenya.org/api/analytics.json?dimension=dx:rast2THwKSh&dimension=pe:${yr}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+                let overall = `https://hiskenya.org/api/analytics.json?dimension=dx:xzxXd3Ia6C7;Tk1yaa1L16g;wolRW9OOtxf&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+                let overall_estimate = `https://hiskenya.org/api/analytics.json?dimension=dx:ZYXTdVBPmVw&dimension=pe:${yr}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+                let Adolesent = `https://hiskenya.org/api/analytics.json?dimension=dx:pHMm7OaoCdF;ZvW3UZpOAJw;CkihSEjFODg&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+                let Adolesent_estimates = `https://hiskenya.org/api/analytics.json?dimension=dx:aEgq9k5jJOP&dimension=pe:${yr}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+                let female = `https://hiskenya.org/api/analytics.json?dimension=dx:vt5fShXJZ9n;UUiHHIgoYKt;vpckcvOXWwH&dimension=pe:${finalpe}:&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+                let male = `https://hiskenya.org/api/analytics.json?dimension=dx:PmUnWXUQxHi;pso1gdHKhiB;sRcIF9NRZvr&dimension=pe:${finalpe}:&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+
+           getAdult(Adult,Adult_estimate)
+           getChild(child,child_estimate)
+           getAdolesent(Adolesent,Adolesent_estimates)
+           getYadult(yAdult,yAdult_estimates)
+           getOverall(overall,overall_estimate)
+        //    getMale(male)
+        //    getFemale(female)
+           
+
+            
+        }
+        function getAdult(url,e_url){     
+            let final_data = [{name: 'Gaps', data: [], color:'#f28f43'}, {name: 'Achieved', data: [],color:'#2f7ed8'}]  
+            let prev_val = 0
+            console.log('url',url)
+            console.log('eurl',e_url)
+                justFetch(e_url).then(data=>{
+                    data.metaData.dimensions.dx.map((dx,dinx)=>{
+                            
+                            // let series = {}
+                            // series.name = data.metaData.items[dx].name
+                            // series.data = []
+                            let rows_by_dx = data.rows.filter(r=>r[0]===dx)
+                            if(dinx ==0 ){ prev_val = sumArr( Array.from( data.rows.filter(r=>r[0]===data.metaData.dimensions.dx[0]), d=>d[2]) ) } 
+                            let val = sumArr(Array.from(rows_by_dx, s=>s[2]))
+                            if (prev_val == 0){final_data[0].data.push(0)}else {final_data[0].data.push(prev_val-val)}                        
+                            final_data[1].data.push(val)
+                    })
+                })
+         
+                justFetch(url).then(data=>{
+                    data.metaData.dimensions.dx.map((dx,dinx)=>{
+                        // let series = {}
+                        // series.name = data.metaData.items[dx].name
+                        // series.data = []
+                        let rows_by_dx = data.rows.filter(r=>r[0]===dx)
+                        // if(dinx == 1){ prev_val = sumArr( Array.from( data.rows.filter(r=>r[0]===data.metaData.dimensions.dx[0]), d=>d[2]) ) } else if (dinx == 2)
+                        // {  prev_val = sumArr( Array.from( data.rows.filter(r=>r[0] === 'taOwegTT6B1'), d=>d[2]))}
+                        let val = sumArr(Array.from(rows_by_dx, s=>s[2]))
+                        if (prev_val == 0){final_data[0].data.push(0)}else {final_data[0].data.push(prev_val-val)}                        
+                        final_data[1].data.push(val)
+
+                        // series.data.push(val)
+                        // final_data.push(series)
+                        
+                    })
+                    var periodname = []
+                    data.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(data.metaData.items[pe].name)
+                        
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    } 
+                    Highcharts.chart('adult', {
+                                chart: {
+                                    type: 'column'
+                                },
+                                title: {
+                                    text: fperiodname[1]
+                                },
+                                xAxis: {
+                                    categories: ['ALHIV', 'Adults Currently on Care ', 'Adults Currently on ART', 'Adults showing viral load suppression']//Array.from(final_data, f=>f.name)
+                                },
+                                yAxis: {
+                                    min: 0,
+                                    title: {
+                                        text: 'Population Number'
+                                    },  stackLabels: {
+                                        enabled: true,
+                                        style: {
+                                            fontWeight: 'bold',
+                                            color: ( // theme
+                                                Highcharts.defaultOptions.title.style &&
+                                                Highcharts.defaultOptions.title.style.color
+                                            ) || 'black'
+                                        }
+                                        ,
+                                        formatter: function () {
+                                            let val = this.points[0]
+                                            if (val !== undefined){
+                                            var diff = val[1]-val[0]
+                                                return Math.round(100 - (100 * diff / this.total)) + '%';
+                                            }
+                                                                                        
+                                            }
+                                    }
+                                },
+                                legend: {
+                                    align: 'center',
+                                    verticalAlign: 'bottom',
+                                    y: 20,
+                                    floating: true,
+                                    backgroundColor:
+                                        Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                                    borderColor: '#CCC',
+                                    borderWidth: 1,
+                                    shadow: false
+                                },
+                                tooltip: {
+                                    headerFormat: '<b>{point.x}</b><br/>',
+                                    pointFormat: '{series.name}: {point.y}<br/>{point.percentage:.1f}%<br/>'
+                                },
+                                plotOptions: {
+                                    series: {
+                                        stacking: 'normal',
+                                        dataLabels: {
+                                            enabled: true
+                                        }
+                                    }
+                                },
+                                series: final_data
+                            });    
+                })                 
+            } 
+        function getChild(url,e_url){
+            let final_data = [{name: 'Gaps', data: [], color:'#f28f43'}, {name: 'Achieved', data: [],color:'#2f7ed8'}]
+            let prev_val = 0
+                justFetch(e_url).then(data=>{
+                    data.metaData.dimensions.dx.map((dx,dinx)=>{
+                            
+                            // let series = {}
+                            // series.name = data.metaData.items[dx].name
+                            // series.data = []
+                            let rows_by_dx = data.rows.filter(r=>r[0]===dx)
+                            if(dinx ==0 ){ prev_val = sumArr( Array.from( data.rows.filter(r=>r[0]===data.metaData.dimensions.dx[0]), d=>d[2]) ) } 
+                            let val = sumArr(Array.from(rows_by_dx, s=>s[2]))
+                            if (prev_val == 0){final_data[0].data.push(0)}else {final_data[0].data.push(prev_val-val)}                        
+                            final_data[1].data.push(val)
+                    })
+                    
+                })
+                
+         
+                justFetch(url).then(data=>{
+                    data.metaData.dimensions.dx.map((dx,dinx)=>{
+                        // let series = {}
+                        // series.name = data.metaData.items[dx].name
+                        // series.data = []
+                        let rows_by_dx = data.rows.filter(r=>r[0]===dx)
+                        // if(dinx == 1){ prev_val = sumArr( Array.from( data.rows.filter(r=>r[0]===data.metaData.dimensions.dx[0]), d=>d[2]) ) } else if (dinx == 2)
+                        // {  prev_val = sumArr( Array.from( data.rows.filter(r=>r[0] === 'taOwegTT6B1'), d=>d[2]))}
+                        let val = sumArr(Array.from(rows_by_dx, s=>s[2]))
+                        if (prev_val == 0){final_data[0].data.push(0)}else {final_data[0].data.push(prev_val-val)}                        
+                        final_data[1].data.push(val)
+
+                        // series.data.push(val)
+                        // final_data.push(series)
+                    })
+
+                    var periodname = []
+                    data.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(data.metaData.items[pe].name)
+                        
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    }
+                    Highcharts.chart('child', {
+                                chart: {
+                                    type: 'column'
+                                },
+                                title: {
+                                    text: fperiodname[1]
+                                },
+                                xAxis: {
+                                    categories: ['CLHIV', 'Children Currently on Care', 'Children Currently on ART','Children showing viral load suppression']//Array.from(final_data, f=>f.name)
+                                },
+                                yAxis: {
+                                    min: 0,
+                                    title: {
+                                        text: 'Population Number'
+                                    },  stackLabels: {
+                                        enabled: true,
+                                        style: {
+                                            fontWeight: 'bold',
+                                            color: ( // theme
+                                                Highcharts.defaultOptions.title.style &&
+                                                Highcharts.defaultOptions.title.style.color
+                                            ) || 'black'
+                                        }
+                                        ,
+                                        formatter: function () {
+                                            let val = this.points[0]
+                                            if (val !== undefined){
+                                            var diff = val[1]-val[0]
+                                                return Math.round(100 - (100 * diff / this.total)) + '%';
+                                            }
+                                                                                        
+                                            }
+                                    }
+                                },
+                                legend: {
+                                    align: 'center',
+                                    verticalAlign: 'bottom',
+                                    y: 20,
+                                    floating: true,
+                                    backgroundColor:
+                                        Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                                    borderColor: '#CCC',
+                                    borderWidth: 1,
+                                    shadow: false
+                                },
+                                tooltip: {
+                                    headerFormat: '<b>{point.x}</b><br/>',
+                                    pointFormat: '{series.name}: {point.y}<br/>{point.percentage:.1f}%<br/>'
+                                },
+                                plotOptions: {
+                                    series: {
+                                        stacking: 'normal',
+                                        dataLabels: {
+                                            enabled: true
+                                        }
+                                    }
+                                },
+                                series: final_data
+                            });    
+                })                 
+            } 
+        function getAdolesent(url,e_url){
+            let final_data = [{name: 'Gaps', data: [], color:'#f28f43'}, {name: 'Achieved', data: [],color:'#2f7ed8'}]
+            let prev_val = 0
+                justFetch(e_url).then(data=>{
+                    data.metaData.dimensions.dx.map((dx,dinx)=>{
+                            
+                            // let series = {}
+                            // series.name = data.metaData.items[dx].name
+                            // series.data = []
+                            let rows_by_dx = data.rows.filter(r=>r[0]===dx)
+                            if(dinx ==0 ){ prev_val = sumArr( Array.from( data.rows.filter(r=>r[0]===data.metaData.dimensions.dx[0]), d=>d[2]) ) } 
+                            let val = sumArr(Array.from(rows_by_dx, s=>s[2]))
+                            if (prev_val == 0){final_data[0].data.push(0)}else {final_data[0].data.push(prev_val-val)}                        
+                            final_data[1].data.push(val)
+                    })
+                    
+                })
+         
+                justFetch(url).then(data=>{
+                    data.metaData.dimensions.dx.map((dx,dinx)=>{
+                        // let series = {}
+                        // series.name = data.metaData.items[dx].name
+                        // series.data = []
+                        let rows_by_dx = data.rows.filter(r=>r[0]===dx)
+                        // if(dinx == 1){ prev_val = sumArr( Array.from( data.rows.filter(r=>r[0]===data.metaData.dimensions.dx[0]), d=>d[2]) ) } else if (dinx == 2)
+                        // {  prev_val = sumArr( Array.from( data.rows.filter(r=>r[0] === 'taOwegTT6B1'), d=>d[2]))}
+                        let val = sumArr(Array.from(rows_by_dx, s=>s[2]))
+                        if (prev_val == 0){final_data[0].data.push(0)}else {final_data[0].data.push(prev_val-val)}                        
+                        final_data[1].data.push(val)
+
+                        // series.data.push(val)
+                        // final_data.push(series)
+                    })
+                    var periodname = []
+                    data.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(data.metaData.items[pe].name)
+                        
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    }
+                    Highcharts.chart('adolesent', {
+                                chart: {
+                                    type: 'column'
+                                },
+                                title: {
+                                    text: fperiodname[1]
+                                },
+                                xAxis: {
+                                    categories: ['aLHIV', 'Adolosents Currently on Care','Adolesents Currently on ART', 'Adolosents Showing Viral Load Suppression']//Array.from(final_data, f=>f.name)
+                                },
+                                yAxis: {
+                                    min: 0,
+                                    title: {
+                                        text: 'Population Number'
+                                    },  stackLabels: {
+                                        enabled: true,
+                                        style: {
+                                            fontWeight: 'bold',
+                                            color: ( // theme
+                                                Highcharts.defaultOptions.title.style &&
+                                                Highcharts.defaultOptions.title.style.color
+                                            ) || 'black'
+                                        }
+                                        ,
+                                        formatter: function () {
+                                            let val = this.points[0]
+                                            if (val !== undefined){
+                                            var diff = val[1]-val[0]
+                                                return Math.round(100 - (100 * diff / this.total)) + '%';
+                                            }
+                                                                                        
+                                            }
+                                    }
+                                },
+                                legend: {
+                                    align: 'center',
+                                    verticalAlign: 'bottom',
+                                    y: 20,
+                                    floating: true,
+                                    backgroundColor:
+                                        Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                                    borderColor: '#CCC',
+                                    borderWidth: 1,
+                                    shadow: false
+                                },
+                                tooltip: {
+                                    headerFormat: '<b>{point.x}</b><br/>',
+                                    pointFormat: '{series.name}: {point.y}<br/>{point.percentage:.1f}%<br/>'
+                                },
+                                plotOptions: {
+                                    series: {
+                                        stacking: 'normal',
+                                        dataLabels: {
+                                            enabled: true
+                                        }
+                                    }
+                                },
+                                series: final_data
+                            });    
+                })                 
+            } 
+        function getOverall(url, e_url){
+
+            let final_data = [{name: 'Gaps', data: [], color:'#f28f43'}, {name: 'Achieved', data: [],color:'#2f7ed8'}]
+            let prev_val = 0
+                justFetch(e_url).then(data=>{
+                    data.metaData.dimensions.dx.map((dx,dinx)=>{
+                            
+                            // let series = {}
+                            // series.name = data.metaData.items[dx].name
+                            // series.data = []
+                            let rows_by_dx = data.rows.filter(r=>r[0]===dx)
+                            if(dinx ==0 ){ prev_val = sumArr( Array.from( data.rows.filter(r=>r[0]===data.metaData.dimensions.dx[0]), d=>d[2]) ) } 
+                            let val = sumArr(Array.from(rows_by_dx, s=>s[2]))
+                            if (prev_val == 0){final_data[0].data.push(0)}else {final_data[0].data.push(prev_val-val)}                        
+                            final_data[1].data.push(val)
+                    })
+                    
+                })
+         
+                justFetch(url).then(data=>{
+                    data.metaData.dimensions.dx.map((dx,dinx)=>{
+                        // let series = {}
+                        // series.name = data.metaData.items[dx].name
+                        // series.data = []
+                        let rows_by_dx = data.rows.filter(r=>r[0]===dx)
+                        // if(dinx == 1){ prev_val = sumArr( Array.from( data.rows.filter(r=>r[0]===data.metaData.dimensions.dx[0]), d=>d[2]) ) } else if (dinx == 2)
+                        // {  prev_val = sumArr( Array.from( data.rows.filter(r=>r[0] === 'taOwegTT6B1'), d=>d[2]))}
+                        let val = sumArr(Array.from(rows_by_dx, s=>s[2]))
+                        if (prev_val == 0){final_data[0].data.push(0)}else {final_data[0].data.push(prev_val-val)}                        
+                        final_data[1].data.push(val)
+
+                        // series.data.push(val)
+                        // final_data.push(series)
+                    })
+                    var periodname = []
+                    data.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(data.metaData.items[pe].name)
+                        
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    }
+                    Highcharts.chart('overall', {
+                                chart: {
+                                    type: 'column'
+                                },
+                                title: {
+                                    text: fperiodname[1]
+                                },
+                                xAxis: {
+                                    categories: ['PLHIV', 'Overall Currently on Care ', 'Overall Currently on ART', 'Overall showing viral load suppression']//Array.from(final_data, f=>f.name)
+                                },
+                                yAxis: {
+                                    min: 0,
+                                    title: {
+                                        text: 'Population Number'
+                                    },  stackLabels: {
+                                        enabled: true,
+                                        style: {
+                                            fontWeight: 'bold',
+                                            color: ( // theme
+                                                Highcharts.defaultOptions.title.style &&
+                                                Highcharts.defaultOptions.title.style.color
+                                            ) || 'black'
+                                        }
+                                        ,
+                                        formatter: function () {
+                                            let val = this.points[0]
+                                            if (val !== undefined){
+                                            var diff = val[1]-val[0]
+                                                return Math.round(100 - (100 * diff / this.total)) + '%';
+                                            }
+                                                                                        
+                                            }
+                                    }
+                                },
+                                legend: {
+                                    align: 'center',
+                                    verticalAlign: 'bottom',
+                                    y: 20,
+                                    floating: true,
+                                    backgroundColor:
+                                        Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                                    borderColor: '#CCC',
+                                    borderWidth: 1,
+                                    shadow: false
+                                },
+                                tooltip: {
+                                    headerFormat: '<b>{point.x}</b><br/>',
+                                    pointFormat: '{series.name}: {point.y}<br/>{point.percentage:.1f}%<br/>'
+                                },
+                                plotOptions: {
+                                    series: {
+                                        stacking: 'normal',
+                                        dataLabels: {
+                                            enabled: true
+                                        }
+                                    }
+                                },
+                                series: final_data
+                            });    
+                })                 
+            } 
+        function getMale(url){
+                justFetch(url).then(data=>{
+                let final_data = [{name: 'Gaps', data: [], color:'#f28f43'}, {name: 'Achieved', data: [],color:'#2f7ed8'}]
+                data.metaData.dimensions.dx.map((dx,dinx)=>{
+                    let prev_val = 0
+                    // let series = {}
+                    // series.name = data.metaData.items[dx].name
+                    // series.data = []
+                    let rows_by_dx = data.rows.filter(r=>r[0]===dx)
+                    if(dinx == 1){ prev_val = sumArr( Array.from( data.rows.filter(r=>r[0]===data.metaData.dimensions.dx[0]), d=>d[2]) ) } else if (dinx == 2)
+                    {  prev_val = sumArr( Array.from( data.rows.filter(r=>r[0] === 'pso1gdHKhiB'), d=>d[2]))}
+                    let val = sumArr(Array.from(rows_by_dx, s=>s[2]))
+                    if (prev_val == 0){final_data[0].data.push(0)}else {final_data[0].data.push(prev_val-val)}                        
+                    final_data[1].data.push(val)
+
+                    // series.data.push(val)
+                    // final_data.push(series)
+                })
+                var periodname = []
+                    data.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(data.metaData.items[pe].name)
+                        
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    }
+                Highcharts.chart('', {
+                            chart: {
+                                type: 'column'
+                            },
+                            title: {
+                                text: fperiodname[1]
+                            },
+                            xAxis: {
+                                categories: ['MLHIV', 'Males Currently on Care ', 'Males Currently on ART','Male showing viral load suppression']//Array.from(final_data, f=>f.name)
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                    text: 'Population Number'
+                                },  stackLabels: {
+                                    enabled: true,
+                                    style: {
+                                        fontWeight: 'bold',
+                                        color: ( // theme
+                                            Highcharts.defaultOptions.title.style &&
+                                            Highcharts.defaultOptions.title.style.color
+                                        ) || 'black'
+                                    }
+                                    ,
+                                    formatter: function () {
+                                        let val = this.points[0]
+                                        if (val !== undefined){
+                                        var diff = val[1]-val[0]
+                                            return Math.round(100 - (100 * diff / this.total)) + '%';
+                                        }
+                                                                                    
+                                        }
+                                }
+                            },
+                            legend: {
+                                align: 'center',
+                                verticalAlign: 'bottom',
+                                y: 20,
+                                floating: true,
+                                backgroundColor:
+                                    Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                                borderColor: '#CCC',
+                                borderWidth: 1,
+                                shadow: false
+                            },
+                            tooltip: {
+                                headerFormat: '<b>{point.x}</b><br/>',
+                                pointFormat: '{series.name}: {point.y}<br/>{point.percentage:.1f}%<br/>'
+                            },
+                            plotOptions: {
+                                series: {
+                                    stacking: 'normal',
+                                    dataLabels: {
+                                        enabled: true
+                                    }
+                                }
+                            },
+                            series: final_data
+                        });    
+            })                 
+        } 
+        function getFemale(url){
+
+                    justFetch(url).then(data=>{
+                    let final_data = [{name: 'Gaps', data: [], color:'#f28f43'}, {name: 'Achieved', data: [],color:'#2f7ed8'}]
+                    data.metaData.dimensions.dx.map((dx,dinx)=>{
+                        let prev_val = 0
+                        // let series = {}
+                        // series.name = data.metaData.items[dx].name
+                        // series.data = []
+                        let rows_by_dx = data.rows.filter(r=>r[0]===dx)
+                        if(dinx == 1){ prev_val = sumArr( Array.from( data.rows.filter(r=>r[0]===data.metaData.dimensions.dx[0]), d=>d[2]) ) } else if (dinx == 2)
+                        {  prev_val = sumArr( Array.from( data.rows.filter(r=>r[0] === 'UUiHHIgoYKt'), d=>d[2]))}
+                        let val = sumArr(Array.from(rows_by_dx, s=>s[2]))
+                        if (prev_val == 0){final_data[0].data.push(0)}else {final_data[0].data.push(prev_val-val)}                        
+                        final_data[1].data.push(val)
+
+                        // series.data.push(val)
+                        // final_data.push(series)
+                    })
+
+                    var periodname = []
+                    data.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(data.metaData.items[pe].name)
+                        
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    }
+                    Highcharts.chart('', {
+                                chart: {
+                                    type: 'column'
+                                },
+                                title: {
+                                    text: fperiodname[1]
+                                },
+                                xAxis: {
+                                    categories: ['FLHIV', 'Females Currently on Care ', 'Females Currently on ART','Females showing viral load suppression']//Array.from(final_data, f=>f.name)
+                                },
+                                yAxis: {
+                                    min: 0,
+                                    title: {
+                                        text: 'Population Number'
+                                    },  stackLabels: {
+                                        enabled: true,
+                                        style: {
+                                            fontWeight: 'bold',
+                                            color: ( // theme
+                                                Highcharts.defaultOptions.title.style &&
+                                                Highcharts.defaultOptions.title.style.color
+                                            ) || 'black'
+                                        }
+                                        ,
+                                        formatter: function () {
+                                            let val = this.points[0]
+                                            if (val !== undefined){
+                                            var diff = val[1]-val[0]
+                                                return Math.round(100 - (100 * diff / this.total)) + '%';
+                                            }
+                                                                                        
+                                            }
+                                    }
+                                },
+                                legend: {
+                                    align: 'center',
+                                    verticalAlign: 'bottom',
+                                    y: 20,
+                                    floating: true,
+                                    backgroundColor:
+                                        Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                                    borderColor: '#CCC',
+                                    borderWidth: 1,
+                                    shadow: false
+                                },
+                                tooltip: {
+                                    headerFormat: '<b>{point.x}</b><br/>',
+                                    pointFormat: '{series.name}: {point.y}<br/>{point.percentage:.1f}%<br/>'
+                                },
+                                plotOptions: {
+                                    series: {
+                                        stacking: 'normal',
+                                        dataLabels: {
+                                            enabled: true
+                                        }
+                                    }
+                                },
+                                series: final_data
+                            });    
+                })                 
+            } 
+        function getYadult(url, e_url){
+            let final_data = [{name: 'Gaps', data: [], color:'#f28f43'}, {name: 'Achieved', data: [],color:'#2f7ed8'}]
+            let prev_val = 0
+                justFetch(e_url).then(data=>{
+                    data.metaData.dimensions.dx.map((dx,dinx)=>{
+                            
+                            // let series = {}
+                            // series.name = data.metaData.items[dx].name
+                            // series.data = []
+                            let rows_by_dx = data.rows.filter(r=>r[0]===dx)
+                            if(dinx ==0 ){ prev_val = sumArr( Array.from( data.rows.filter(r=>r[0]===data.metaData.dimensions.dx[0]), d=>d[2]) ) } 
+                            let val = sumArr(Array.from(rows_by_dx, s=>s[2]))
+                            if (prev_val == 0){final_data[0].data.push(0)}else {final_data[0].data.push(prev_val-val)}                        
+                            final_data[1].data.push(val)
+                    })
+                    
+                })
+         
+                justFetch(url).then(data=>{
+                    data.metaData.dimensions.dx.map((dx,dinx)=>{
+                        // let series = {}
+                        // series.name = data.metaData.items[dx].name
+                        // series.data = []
+                        let rows_by_dx = data.rows.filter(r=>r[0]===dx)
+                        // if(dinx == 1){ prev_val = sumArr( Array.from( data.rows.filter(r=>r[0]===data.metaData.dimensions.dx[0]), d=>d[2]) ) } else if (dinx == 2)
+                        // {  prev_val = sumArr( Array.from( data.rows.filter(r=>r[0] === 'taOwegTT6B1'), d=>d[2]))}
+                        let val = sumArr(Array.from(rows_by_dx, s=>s[2]))
+                        if (prev_val == 0){final_data[0].data.push(0)}else {final_data[0].data.push(prev_val-val)}                        
+                        final_data[1].data.push(val)
+
+                        // series.data.push(val)
+                        // final_data.push(series)
+                    })
+
+                    var periodname = []
+                    data.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(data.metaData.items[pe].name)
+                        
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    }
+                    Highcharts.chart('yadult', {
+                                chart: {
+                                    type: 'column'
+                                },
+                                title: {
+                                    text: fperiodname[1]
+                                },
+                                xAxis: {
+                                    categories: ['YALHIV', 'Young Adults Currently on Care', 'Young Adults Currently on ART', 'Young Adults showing viral load suppression']//Array.from(final_data, f=>f.name)
+                                },
+                                yAxis: {
+                                    min: 0,
+                                    title: {
+                                        text: 'Population Number'
+                                    },  stackLabels: {
+                                        enabled: true,
+                                        style: {
+                                            fontWeight: 'bold',
+                                            color: ( // theme
+                                                Highcharts.defaultOptions.title.style &&
+                                                Highcharts.defaultOptions.title.style.color
+                                            ) || 'black'
+                                        }
+                                        ,
+                                        formatter: function () {
+                                            let val = this.points[0]
+                                            if (val !== undefined){
+                                            var diff = val[1]-val[0]
+                                                return Math.round(100 - (100 * diff / this.total)) + '%';
+                                            }
+                                                                                        
+                                            }
+                                    }
+                                },
+                                legend: {
+                                    align: 'center',
+                                    verticalAlign: 'bottom',
+                                    y: 20,
+                                    floating: true,
+                                    backgroundColor:
+                                        Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                                    borderColor: '#CCC',
+                                    borderWidth: 1,
+                                    shadow: false
+                                },
+                                tooltip: {
+                                    headerFormat: '<b>{point.x}</b><br/>',
+                                    pointFormat: '{series.name}: {point.y}<br/>{point.percentage:.1f}%<br/>'
+                                },
+                                plotOptions: {
+                                    series: {
+                                        stacking: 'normal',
+                                        dataLabels: {
+                                            enabled: true
+                                        }
+                                    }
+                                },
+                                series: final_data
+                            });    
+                        })                 
+                    } 
+
+
+
+            
+        </script>
+           
+        <!-- ------------------------ PAGE DATA LOGIC ------------------------ -->
+    </body>
+</html>

@@ -202,6 +202,78 @@ const sumArr = (array) => {
     });
     return sum_total;
 };
+function drawbargraphs(cName,periodname,fperiodname,mechanismName,cTitle,dataToPlot){
+
+        Highcharts.chart(cName, {
+                chart: {
+                type: 'column'
+            },
+            title: {
+                text: cTitle
+            },
+            subtitle: {
+                text: fperiodname[0] +' - '+fperiodname[1]+' '+mechanismName
+            },
+            xAxis: {
+                categories: 
+                periodname
+                ,
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                text: 'Rainfall (mm)'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+                }
+            },
+            series: dataToPlot
+            });
+}
+
+
+function drawSpines(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot){
+    console.log(dataToPlot)
+    Highcharts.chart(cName, {
+    title: {
+        text: cTitle
+    },
+    subtitle: {
+        text: fperiodname[0] +' - '+fperiodname[1]+' '+mechanismName
+    },
+    xAxis: {
+        categories: periodname
+    },
+    // labels: {
+    //     items: [{
+    //         html: 'Total fruit consumption',
+    //         style: {
+    //             left: '50px',
+    //             top: '18px',
+    //             color: ( // theme
+    //                 Highcharts.defaultOptions.title.style &&
+    //                 Highcharts.defaultOptions.title.style.color
+    //             ) || 'black'
+    //         }
+    //     }]
+    // },
+    series: dataToPlot
+});
+}
+
 
 $(document).ready(function () {
     setTimeout(() => {

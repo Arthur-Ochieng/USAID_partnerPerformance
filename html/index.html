@@ -56,8 +56,8 @@
                         <div class="col-md-12" >
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">ANC Cascade</h4>
-                                    <div class="graph" id="anc">
+                                    <h4 class="card-title"> Patients on ART Review and Contact Listing</h4>
+                                    <div class="graph" id="onArtReview">
                                         <p class="card-text"></p>
                                     </div>
                                 </div>
@@ -65,11 +65,43 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Maternal HIV Cascade</h4>
-                                    <div class="graph" id="Maternal">
+                                    <h4 class="card-title">TX_Curr reviewed</h4>
+                                    <div class="graph" id="tx_curr_reviewed">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">TX_Curr reviewed by sub-population</h4>
+                                    <div class="graph" id="tx_curr_reviewed_subpop">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">TX_Curr Indexed</h4>
+                                    <div class="graph" id="tx_curr_indexed">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Elicitation Ration</h4>
+                                    <div class="graph" id="ElicitationRation">
                                         
                                     </div>
                                 </div>
@@ -80,26 +112,60 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Infant HIV Cascade</h4>
-                                    <div class="graph" id="Infant">
+                                    <h4 class="card-title">Testing Coverage</h4>
+                                    <div class="graph" id="testing_coverage">
                                         
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="row">
-                        <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">% Congruence between sources of immunization data between : Immunisation register vs. DHIS2</h4>
-                                    <div class="graph" id="immunizationmr">
-                                        <p class="card-text">tables Comparing counties , subcounties and quaters. In this case lets have one table that will have all discrepancy between sources of immunization data</p>
+                                    <h4 class="card-title">Testing Cascade (Cumulative-last month of reporting)</h4>
+                                    <div class="graph" id="testing_cascade">
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Testing and Yield (Cumulative)</h4>
+                                    <div class="graph" id="testing_yield">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">On ART (Cumulative)</h4>
+                                    <div class="graph" id="on_art">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">OVC enrollment (Cumulative)</h4>
+                                    <div class="graph" id="ovc_enrollment">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
                                             
                        
                     </div>
@@ -195,7 +261,7 @@
                 if(prop && prop.ou){
                     org_unit = prop.ou
                 }
-                let prd = `LAST_MONTH`
+                let prd = `202106`
                 if(prop && prop.pe){
                     prd = prop.pe
                 }
@@ -214,67 +280,76 @@
                 
                 if(prop && prop.me){
                     mechanism = prop.me
+                }else{
+                    mechanism = "SuIPMBE1tdx"
                 }
                 
                 
+                let onArtReview=`https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&dimension=dx:UW4B21MEvlk;coV33AERzhA;NW1vrnCyzXd;AeFO4noHEDJ;SHBwx5cuUkx;bjJPCcuY65I&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+
+                let tx_curr_reviewed = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:C0gt9AAN7JY;coV33AERzhA;B1vk3KZikA8&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+
 
                 
-                let ancascade = `https://hiskenya.org/api/analytics.json?dimension=ou:${org_unit}&dimension=dx:Fz0LzxMT1vV;uSxBUWnagGg;i5jVVTm1vI8;pct05jgGcLt;xNTM673ne69;KsxPBOVAyjJ;ivtLMB7qdKg;xvUt174iyYS;kU5ew70I7kj;vlme3PThHl1;AlWRnztxhOU;KMy83Jn1QgO;VsRrzNMda22;cmeMfuPL3VL;qp8WQXmWtnr;MHmKiukySbZ;ArG6zbCMBr2;RsYvCg0aeuZ&filter=pe:${finalpe}&displayProperty=NAME`
-
-                let art_review = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=lRp2LBbTuM5:${mechanism}&dimension=dx:C0gt9AAN7JY;coV33AERzhA;NW1vrnCyzXd;AeFO4noHEDJ;SHBwx5cuUkx;bjJPCcuY65I&filter=ou:${org_unit}&filter=pe:${finalpe}&displayProperty=NAME&outputIdScheme=UID`
-                let estimated_pmtct= `https://hiskenya.org/api/analytics.json?dimension=ou:${org_unit}&dimension=dx:ZH8BGmU9SHJ&filter=pe:${yr}&displayProperty=NAME`
-                // let data = fetchdata(ancascade)
-                getart_review(art_review)
-                getMaternal(ancascade,estimated_pmtct)
-                // getInfant()
+                let ancascade = ``
+                
+                let estimated_pmtct= ``
+                getart_review(onArtReview)
+                getCurrentReviewed(tx_curr_reviewed)
+            
 
             
         }
 
             function getart_review(url){
-                //dictionaries used to maintain order of the values
-                //indicators for reached anc
-                let reached = {
-                    'pct05jgGcLt': 'Estimated Number of Pregnant Women',
-                    'uSxBUWnagGg': 'MOH 731 1st ANC Visits HV02-01',
-                    'vlme3PThHl1': 'Number tested for HIV at ANC',
-                    'i5jVVTm1vI8': 'MOH 731 Syphilis Screened_1st ANC HV02-24',
-                    'Fz0LzxMT1vV': 'Pregnant women completing 4 ANC visits',
-                    'KsxPBOVAyjJ': 'Delivery to HIV+ Mothers'
-                };
-
-                //indicators for missed opportunities
-                let missed = {
-                    'placeholder2': 0,
-                    'placeholder1': 0,
-                    'AlWRnztxhOU': 'Number tested for HIV at ANC Missed Opportunity',
-                    'xNTM673ne69': 'ANC Testing for Syphilis Missed Opportunity',
-                    'qp8WQXmWtnr': 'Pregnant women completing 4 ANC visits missed opportunities',
-                    'ivtLMB7qdKg': 'Delivery to HIV+ Mothers Missed Opportunity'
-   
-                }
-                //unlabelled values to plot
-                let reached_values = [];
-                let missed_values = [];
-                let unreached_values = [];
             justFetch(url, {})
                 .then(response=>{
-                    response.rows.map( row => {
-                            if(row[0] in reached) {
-                                reached[row[0]] = parseInt(row[2]);
-                            } else if(row[0] in missed){
-                                missed[row[0]] = parseInt(row[2]);
-                            }
-                        }
-                    );
-                    console.log ('response ', response)
 
+                    var cTitle = 'Patients on ART Review and Contact Listing'
                     var theorgunit = response.metaData.dimensions.ou[0];
                     var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                    var mechanismName = response.metaData.items[mechanism].name;
+                    var dx = response.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
                     var periodname = []
+                    var dataRows = []
+                   
+                    let dataToPlot = []
+                    
+                    dataValues = Array.from(response.rows, r=>r[3]) 
+                    const {rows}=response
                     response.metaData.dimensions.pe.map(pe=>{
-                        periodname.push(response.metaData.items[pe].name)
+                        periodname.push(response.metaData.items[pe].name)    
+
+
+                    })
+                    const getDXName=(id)=>{
+                        return response.metaData.items[id].name
                         
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                    dx.map(id=>{
+                      
+                        const data= rows.filter(row=>{
+                            return row[0] === id 
+                        }) 
+                        if (data.length > 1){
+                        
+                                const data1 = data.filter(datas=>{
+                                    return datas[0] === id
+                                })
+                               
+                        let dataSM = Array.from(data1, r=>r[3])
+                        let fData = toNumbers(dataSM)
+                        graphdata={"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        if (data[0] !== undefined){
+                        graphdata={"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                    }
+                    }
                     })
                     var fperiodname = periodRange()
                     function periodRange() {  
@@ -284,67 +359,97 @@
                     
                     return finalperiodname
                     } 
-
-                    //convert dictionary to array by extracting values only
-                    reached_values = Object.keys(reached).map(function (key) {
-                        return reached[key];
-                    });
-                    missed_values = Object.keys(missed).map(function (key) {
-                        return missed[key];
-                    });
-
-                    const unreached = reached_values[0] - reached_values[1];
-                    unreached_values = [0, unreached, unreached, unreached, unreached,unreached];
-
-                    //plot the charts
-                    Highcharts.chart('anc', {
-                            chart: {
-                                type: 'bar'
-                            },
-                            title: {
-                                text: fperiodname[0] +' - '+fperiodname[1]+' '+curorg
-                            },
-                            xAxis: {
-                                categories: ['Expected Pregnancies', 'First ANC Visit','Known HIV status at ANC','Testing for Syphilis', 'Pregnant women completing 4 ANC visit', 'Skilled Deliveries'  ]
-                            },
-                            yAxis: {
-                                min: 0,
-                                title: {
-                                    text: 'Maternal Population'
-                                }
-                            },
-                            legend: {
-                                reversed: true
-                            },
-                            plotOptions: {
-                                    series: {
-                                        dataLabels: {
-                                            enabled: true,
-                                            align: 'center',
-                                            color: '#FFFFFF'
-                                        },
-                                        stacking: 'normal'
-
-                                    }
-                                },
-                            series: [{
-                                name: 'Unreached Mothers',
-                                data: unreached_values,
-                                color:'#615e5d'
-                            }, {
-                                name: 'Missed Opportunities',
-                                data: missed_values,
-                                color:'#f28f43'
-                            }, {
-                                name: 'Reached Mothers',
-                                data: reached_values,
-                                color:'#2f7ed8'
-                            }]
-                        });
+                    drawbargraphs('onArtReview',periodname,fperiodname,mechanismName,cTitle,dataToPlot)  
+                    drawSpines()
 
                 });
             }
+            function getCurrentReviewed(url){
+            justFetch(url, {})
+                .then(response=>{
+                    console.log(response)
+                    var cTitle = 'TX_CURR Reviewed'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                    var mechanismName = response.metaData.items[mechanism].name;
+                    var dx = response.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var periodname = []
+                    var dataRows = []
+                   
+                    let dataToPlot = []
+                    
+                    dataValues = Array.from(response.rows, r=>r[3]) 
+                    const {rows}=response
+                    response.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(response.metaData.items[pe].name)    
 
+
+                    })
+                    const getDXName=(id)=>{
+                        return response.metaData.items[id].name
+                        
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                    // console.log(pe)
+
+                    dx.map(id=>{
+                      
+                        const data= rows.filter(row=>{
+                            return row[0] === id 
+                        })
+                        
+                        if (data.length > 1){
+                        
+                                const data1 = data.filter(datas=>{
+                                    return datas[0] === id
+                                })
+                               
+                        let dataSM = Array.from(data1, r=>r[3])
+                        let fData = toNumbers(dataSM)
+                        if (data[0] !== undefined){
+                            
+                        if (data[0][0]==="B1vk3KZikA8"){
+                            console.log(data)
+                        graphdata={"type":'spline',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        graphdata={"type":'column',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                            
+                        }}
+                        
+                        // graphdata={"type":'column',"name":getDXName(id), "data":fData}
+                        // dataToPlot.push(graphdata)
+                        }else{
+                            if (data[0] !== undefined){
+                        if (data[0][0]==="B1vk3KZikA8"){
+                        graphdata={"type":'spline',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        
+                        graphdata={"type":'column',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                            
+                        }
+                        }
+
+                    }
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    } 
+                    drawSpines('tx_curr_reviewed',cTitle,periodname,fperiodname,mechanismName,dataToPlot)
+
+                });
+            }
+            
             function getMaternal(url,e_url){ 
                 let reached = {
                     'ZH8BGmU9SHJ': 'Need for PMTCT',

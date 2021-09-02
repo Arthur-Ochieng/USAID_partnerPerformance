@@ -202,7 +202,7 @@ const sumArr = (array) => {
     });
     return sum_total;
 };
-function drawbargraphs(cName,periodname,fperiodname,mechanismName,cTitle,dataToPlot){
+function drawbargraphs(cName,periodname,fperiodname,mechanismName,cTitle,dataToPlot,stacking){
 
         Highcharts.chart(cName, {
                 chart: {
@@ -223,7 +223,7 @@ function drawbargraphs(cName,periodname,fperiodname,mechanismName,cTitle,dataToP
             yAxis: {
                 min: 0,
                 title: {
-                text: 'Nuumber '
+                text: 'Number '
                 }
             },
             tooltip: {
@@ -236,6 +236,7 @@ function drawbargraphs(cName,periodname,fperiodname,mechanismName,cTitle,dataToP
             },
             plotOptions: {
                 column: {
+                stacking: stacking,
                 pointPadding: 0.2,
                 borderWidth: 0
                 }

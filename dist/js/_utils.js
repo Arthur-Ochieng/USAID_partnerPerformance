@@ -223,13 +223,13 @@ function drawbargraphs(cName,periodname,fperiodname,mechanismName,cTitle,dataToP
             yAxis: {
                 min: 0,
                 title: {
-                text: 'Rainfall (mm)'
+                text: 'Nuumber '
                 }
             },
             tooltip: {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
                 footerFormat: '</table>',
                 shared: true,
                 useHTML: true
@@ -246,7 +246,7 @@ function drawbargraphs(cName,periodname,fperiodname,mechanismName,cTitle,dataToP
 
 
 function drawSpines(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot){
-    console.log(dataToPlot)
+    // console.log(dataToPlot[2].data)
     Highcharts.chart(cName, {
     title: {
         text: cTitle
@@ -257,21 +257,147 @@ function drawSpines(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot
     xAxis: {
         categories: periodname
     },
-    // labels: {
-    //     items: [{
-    //         html: 'Total fruit consumption',
-    //         style: {
-    //             left: '50px',
-    //             top: '18px',
-    //             color: ( // theme
-    //                 Highcharts.defaultOptions.title.style &&
-    //                 Highcharts.defaultOptions.title.style.color
-    //             ) || 'black'
-    //         }
-    //     }]
-    // },
-    series: dataToPlot
+    yAxis: [{ // Primary yAxis
+        labels: {
+            format: '{value}',
+            style: {
+                color: Highcharts.getOptions().colors[1]
+            }
+        },
+        title: {
+            text: 'Number ',
+            style: {
+                color: Highcharts.getOptions().colors[1]
+            }
+        }
+    }, { // Secondary yAxis
+        title: {
+            text: 'Propotions',
+            style: {
+                color: Highcharts.getOptions().colors[0]
+            }
+        },
+        labels: {
+            format: '{value} %',
+            style: {
+                color: Highcharts.getOptions().colors[0]
+            }
+        },
+        opposite: true
+    }],
+
+    series: [{
+        name: dataToPlot[0].name,
+        type: dataToPlot[0].type,
+        data: dataToPlot[0].data,
+        tooltip: {
+            valueSuffix: ''
+        }
+
+    }, {
+        name: dataToPlot[1].name,
+        type: dataToPlot[1].type,
+        data: dataToPlot[1].data,
+        tooltip: {
+            valueSuffix: ' '
+        }
+
+    },{
+        name: dataToPlot[2].name,
+        type: dataToPlot[2].type,
+        yAxis: 1,
+        data: dataToPlot[2].data,
+        tooltip: {
+            valueSuffix: ' %'
+        }
+    }]
 });
+}
+
+function drawmultipleSpines(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot){
+       console.log(dataToPlot)
+       Highcharts.chart(cName, {
+        title: {
+            text: cTitle
+        },
+        subtitle: {
+            text: fperiodname[0] +' - '+fperiodname[1]+' '+mechanismName
+        },
+        xAxis: {
+            categories: periodname
+        },
+        yAxis: [{ // Primary yAxis
+            labels: {
+                format: '{value}',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            },
+            title: {
+                text: 'Number ',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            }
+        }, { // Secondary yAxis
+            title: {
+                text: 'Propotions',
+                style: {
+                    color: Highcharts.getOptions().colors[0]
+                }
+            },
+            labels: {
+                format: '{value} %',
+                style: {
+                    color: Highcharts.getOptions().colors[0]
+                }
+            },
+            opposite: true
+        }],
+    
+        series: [{
+            name: dataToPlot[0].name,
+            type: dataToPlot[0].type,
+            data: dataToPlot[0].data,
+            tooltip: {
+                valueSuffix: ''
+            }
+    
+        }, {
+            name: dataToPlot[1].name,
+            type:  dataToPlot[1].type,
+            data: dataToPlot[1].data,
+            tooltip: {
+                valueSuffix: ' '
+            }
+    
+        },{
+            name: dataToPlot[2].name,
+            type:  dataToPlot[2].type,
+            data: dataToPlot[2].data,
+            tooltip: {
+                valueSuffix: ' '
+            }
+    
+        },
+        {
+            name: dataToPlot[3].name,
+            type:  dataToPlot[3].type,
+            data: dataToPlot[3].data,
+            tooltip: {
+                valueSuffix: ' '
+            }
+    
+        },{
+            name: dataToPlot[4].name,
+            type:  dataToPlot[4].type,
+            yAxis: 1,
+            data: dataToPlot[4].data,
+            tooltip: {
+                valueSuffix: ' %'
+            }
+        }]
+    }); 
 }
 
 

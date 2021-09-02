@@ -164,6 +164,28 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">QA check on contacts</h4>
+                                    <div class="graph" id="qa_check">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Contacts by HIV Status</h4>
+                                    <div class="graph" id="contact_hiv_status">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
 
                                             
@@ -257,11 +279,11 @@
                
                 // let org_unit = window.sessionStorage.getItem('ess_ou') || "HfVjCurKxh2"
                 let org_unit = "HfVjCurKxh2"
-                let mechanism = "MZQY1ZPAYCY"
+                // let mechanism = "MZQY1ZPAYCY"
                 if(prop && prop.ou){
                     org_unit = prop.ou
                 }
-                let prd = `202106`
+                let prd = `LAST_6_MONTHS`
                 if(prop && prop.pe){
                     prd = prop.pe
                 }
@@ -288,6 +310,19 @@
                 let onArtReview=`https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&dimension=dx:UW4B21MEvlk;coV33AERzhA;NW1vrnCyzXd;AeFO4noHEDJ;SHBwx5cuUkx;bjJPCcuY65I&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
                 let tx_curr_reviewed = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:C0gt9AAN7JY;coV33AERzhA;B1vk3KZikA8&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+                 
+                let tx_curr_indexed = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:coV33AERzhA;AeFO4noHEDJ;vqJRbCXt2RG&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+
+                let ElicitationRation = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:NW1vrnCyzXd;YFyGrIvwLlh;hu3t3GedH0u&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME`
+
+                let testingYield = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:udHxOEAM9jP;qHxws7Glw97;lzcJMJA0AiX;sWThEZcSXNC;X6Wiw3Dj7sq&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+
+                let onArt = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:Fy6ziYuDQo3;HpsOgDcwl1P;hiKuwyHMcud&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+
+                let ovcenrollment = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:Fy6ziYuDQo3;HD8FN7bkMxp;UsRas7M570x;QsE9CIjZIHx;mVaipc7VCZs&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+
+                let qaCheck = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:xAWG6liDMUP;Hzb155t24g1&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+
 
 
                 
@@ -296,6 +331,13 @@
                 let estimated_pmtct= ``
                 getart_review(onArtReview)
                 getCurrentReviewed(tx_curr_reviewed)
+                getTxCurrindexed(tx_curr_indexed)
+                getElicitationRation(ElicitationRation)
+                getTestingYield(testingYield)
+                getOnArt(onArt)
+                getovcenrollment(ovcenrollment)
+                getQaCheck(qaCheck)
+
             
 
             
@@ -360,8 +402,7 @@
                     return finalperiodname
                     } 
                     drawbargraphs('onArtReview',periodname,fperiodname,mechanismName,cTitle,dataToPlot)  
-                    drawSpines()
-
+                   
                 });
             }
             function getCurrentReviewed(url){
@@ -420,11 +461,101 @@
                             
                         }}
                         
+                        }else{
+                            if (data[0] !== undefined){
+                        if (data[0][0]==="B1vk3KZikA8"){
+                        graphdata={"type":'spline',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        
+                        graphdata={"type":'column',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                            
+                        }
+                      
+                        }
+                       
+                        // if (data[2] === undefined){
+                        // dataToPlot[2].data = 0
+                        // console.log('mmm', dataToPlot[2])
+                        // } 
+
+                    }
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    } 
+                   
+                    drawSpines('tx_curr_reviewed',cTitle,periodname,fperiodname,mechanismName,dataToPlot)
+
+                });
+            }
+            function getTxCurrindexed(url){
+                justFetch(url, {})
+                .then(response=>{
+                    console.log(response)
+                    var cTitle = 'tx_curr indexed'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                    var mechanismName = response.metaData.items[mechanism].name;
+                    var dx = response.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var periodname = []
+                    var dataRows = []
+                   
+                    let dataToPlot = []
+                    
+                    dataValues = Array.from(response.rows, r=>r[3]) 
+                    const {rows}=response
+                    response.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(response.metaData.items[pe].name)    
+
+
+                    })
+                    const getDXName=(id)=>{
+                        return response.metaData.items[id].name
+                        
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                    // console.log(pe)
+
+                    dx.map(id=>{
+                      
+                        const data= rows.filter(row=>{
+                            return row[0] === id 
+                        })
+                        
+                        if (data.length > 1){
+                        
+                                const data1 = data.filter(datas=>{
+                                    return datas[0] === id
+                                })
+                               
+                        let dataSM = Array.from(data1, r=>r[3])
+                        let fData = toNumbers(dataSM)
+                        if (data[0] !== undefined){
+                            
+                        if (data[0][0]==="vqJRbCXt2RG"){
+                            console.log(data)
+                        graphdata={"type":'spline',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        graphdata={"type":'column',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                            
+                        }}
+                        
                         // graphdata={"type":'column',"name":getDXName(id), "data":fData}
                         // dataToPlot.push(graphdata)
                         }else{
                             if (data[0] !== undefined){
-                        if (data[0][0]==="B1vk3KZikA8"){
+                        if (data[0][0]==="vqJRbCXt2RG"){
                         graphdata={"type":'spline',"name":getDXName(id), "data":[parseInt(data[0][3])]}
                         dataToPlot.push(graphdata)
                         }else{
@@ -445,69 +576,82 @@
                     
                     return finalperiodname
                     } 
-                    drawSpines('tx_curr_reviewed',cTitle,periodname,fperiodname,mechanismName,dataToPlot)
+                    drawSpines('tx_curr_indexed',cTitle,periodname,fperiodname,mechanismName,dataToPlot)
 
                 });
             }
-            
-            function getMaternal(url,e_url){ 
-                let reached = {
-                    'ZH8BGmU9SHJ': 'Need for PMTCT',
-                    'VsRrzNMda22': 'PMTCT Total Positive',
-                    'ArG6zbCMBr2': 'Total Maternal HAART',
-                    'KMy83Jn1QgO': 'PMTCT Infant Prophylaxis',
-                    'KsxPBOVAyjJ': 'Delivery to HIV+ Mothers'
-                };
 
-                //indicators for missed opportunities
-                let missed = {
-                    'placeholder2': 0,
-                    'placeholder1': 0,
-                    'kU5ew70I7kj': 'Maternal HAART Missed Opportunities',
-                    'xvUt174iyYS': 'Infant Prophylaxis Missed Opportunity',
-                    'ivtLMB7qdKg': 'Delivery to HIV+ Mothers Missed Opportunity'
-   
-                }
-                //unlabelled values to plot
-                let reached_values = [];
-                let missed_values = [];
-                let unreached_values = [];
-                var res = []
-
-                console.log('url',url)
-
-                console.log('eurl',e_url)
-            justFetch(url, {})
-                .then(response1=>{                    
-                    justFetch(e_url,{})
-                    .then(response2=>{                    
-                    res.push(response1)
-                    res = [...res,response2]
-                    res[0].rows.map( row => {
-                            if(row[0] in reached) {
-                                reached[row[0]] = parseInt(row[2]);
-                            } else if(row[0] in missed){
-                                missed[row[0]] = parseInt(row[2]);
-                            }
-                        }
-                    );
-                    res[1].rows.map( row => {
-                            if(row[0] in reached) {
-                                reached[row[0]] = parseInt(row[2]);
-                            } else if(row[0] in missed){
-                                missed[row[0]] = parseInt(row[2]);
-                            }
-                        }
-                    );
-                
-                    
-                    var theorgunit = res[0].metaData.dimensions.ou[0];
-                    var curorg = res[0].metaData.items[theorgunit].name;
-
+            function getElicitationRation(url){
+                justFetch(url, {})
+                .then(response=>{
+                    var cTitle = 'Elicitation Ration'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                    var mechanismName = response.metaData.items[mechanism].name;
+                    var dx = response.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
                     var periodname = []
-                    response1.metaData.dimensions.pe.map(pe=>{
-                        periodname.push(response1.metaData.items[pe].name)
+                    var dataRows = []
+                   
+                    let dataToPlot = []
+                    
+                    dataValues = Array.from(response.rows, r=>r[3]) 
+                    const {rows}=response
+                    response.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(response.metaData.items[pe].name)    
+
+
+                    })
+                    const getDXName=(id)=>{
+                        return response.metaData.items[id].name
                         
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                    // console.log(pe)
+
+                    dx.map(id=>{
+                      
+                        const data= rows.filter(row=>{
+                            return row[0] === id 
+                        })
+                        
+                        if (data.length > 1){
+                        
+                                const data1 = data.filter(datas=>{
+                                    return datas[0] === id
+                                })
+                               
+                        let dataSM = Array.from(data1, r=>r[3])
+                        let fData = toNumbers(dataSM)
+                        if (data[0] !== undefined){
+                            
+                        if (data[0][0]==="hu3t3GedH0u"){
+
+                        graphdata={"type":'spline',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        graphdata={"type":'column',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                            
+                        }}
+                        
+                        // graphdata={"type":'column',"name":getDXName(id), "data":fData}
+                        // dataToPlot.push(graphdata)
+                        }else{
+                            if (data[0] !== undefined){
+                        if (data[0][0]==="hu3t3GedH0u"){
+                        graphdata={"type":'spline',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        
+                        graphdata={"type":'column',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                            
+                        }
+                        }
+
+                    }
                     })
                     var fperiodname = periodRange()
                     function periodRange() {  
@@ -517,70 +661,325 @@
                     
                     return finalperiodname
                     } 
+                    drawSpines('ElicitationRation',cTitle,periodname,fperiodname,mechanismName,dataToPlot)
 
-                    
-                   
-                    
-                    //convert dictionary to array by extracting values only
-                    reached_values = Object.keys(reached).map(function (key) {
-                        return reached[key];
-                    });
-                    missed_values = Object.keys(missed).map(function (key) {
-                        return missed[key];
-                    });
-
-                    const unreached = reached_values[0] - reached_values[1];
-                    unreached_values = [0, reached_values[0] - reached_values[1], unreached, unreached, unreached];
-                Highcharts.chart('Maternal', {
-                            chart: {
-                                type: 'bar'
-                            },
-                            title: {
-                                text: fperiodname[0] +' - '+fperiodname[1]+' '+curorg
-                            },
-                            xAxis: {
-                                categories: ['Need for PMTCT', 'PMTCT Positives', 'Maternal HAART', 'Infant Prophylaxis','Delivery to HIV+ Mothers' ]
-                            },
-                            yAxis: {
-                                min: 0,
-                                title: {
-                                    text: 'Maternal Population'
-                                }
-                            },
-                            legend: {
-                                reversed: true
-                            },
-                            plotOptions: {
-                                    series: {
-                                        dataLabels: {
-                                            enabled: true,
-                                            align: 'center',
-                                            color: '#FFFFFF'
-                                        },
-                                        stacking: 'normal'
-                                    
-                                    }
-                                },
-                            series: [{
-                                name: 'Unreached Mothers',
-                                data: unreached_values,
-                                color:'#615e5d'
-                            }, {
-                                name: 'Missed Opportunities',
-                                data: missed_values,
-                                color:'#f28f43'
-                            }, {
-                                
-                                name: 'Reached Mothers',
-                                data: reached_values,
-                                color:'#2f7ed8'
-                            }]
-                        });
-                    })
-                
-            });
-                                        
+                });
             }
+
+          
+          function getTestingYield(url){
+            justFetch(url, {})
+                .then(response=>{
+                    console.log(response)
+                    var cTitle = 'Testing and Yield (cumulative)'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                    var mechanismName = response.metaData.items[mechanism].name;
+                    var dx = response.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var periodname = []
+                    var dataRows = []
+                   
+                    let dataToPlot = []
+                    
+                    dataValues = Array.from(response.rows, r=>r[3]) 
+                    const {rows}=response
+                    response.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(response.metaData.items[pe].name)    
+
+
+                    })
+                    const getDXName=(id)=>{
+                        return response.metaData.items[id].name
+                        
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                    // console.log(pe)
+
+                    dx.map(id=>{
+                      
+                        const data= rows.filter(row=>{
+                            return row[0] === id 
+                        })
+                        
+                        if (data.length > 1){
+                        
+                                const data1 = data.filter(datas=>{
+                                    return datas[0] === id
+                                })
+                               
+                        let dataSM = Array.from(data1, r=>r[3])
+                        let fData = toNumbers(dataSM)
+                        if (data[0] !== undefined){
+                            
+                        if (data[0][0]==="X6Wiw3Dj7sq"){
+                            console.log(data)
+                        graphdata={"type":'spline',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        graphdata={"type":'column',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                            
+                        }}
+                        
+                        // graphdata={"type":'column',"name":getDXName(id), "data":fData}
+                        // dataToPlot.push(graphdata)
+                        }else{
+                            if (data[0] !== undefined){
+                        if (data[0][0]==="X6Wiw3Dj7sq"){
+                        graphdata={"type":'spline',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        
+                        graphdata={"type":'column',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                            
+                        }
+                        }
+
+                    }
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    } 
+                    drawmultipleSpines('testing_yield',cTitle,periodname,fperiodname,mechanismName,dataToPlot)
+
+                });
+
+          }
+
+          function getOnArt(url){
+            justFetch(url, {})
+                .then(response=>{
+                    console.log(response)
+                    var cTitle = 'On ART Cumulative'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                    var mechanismName = response.metaData.items[mechanism].name;
+                    var dx = response.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var periodname = []
+                    var dataRows = []
+                   
+                    let dataToPlot = []
+                    
+                    dataValues = Array.from(response.rows, r=>r[3]) 
+                    const {rows}=response
+                    response.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(response.metaData.items[pe].name)    
+
+
+                    })
+                    const getDXName=(id)=>{
+                        return response.metaData.items[id].name
+                        
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                    // console.log(pe)
+
+                    dx.map(id=>{
+                      
+                        const data= rows.filter(row=>{
+                            return row[0] === id 
+                        })
+                        
+                        if (data.length > 1){
+                        
+                                const data1 = data.filter(datas=>{
+                                    return datas[0] === id
+                                })
+                               
+                        let dataSM = Array.from(data1, r=>r[3])
+                        let fData = toNumbers(dataSM)
+                        if (data[0] !== undefined){
+                            
+                        if (data[0][0]==="hiKuwyHMcud"){
+                        graphdata={"type":'spline',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        graphdata={"type":'column',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                            
+                        }}
+                        
+                        // graphdata={"type":'column',"name":getDXName(id), "data":fData}
+                        // dataToPlot.push(graphdata)
+                        }else{
+                            if (data[0] !== undefined){
+                        if (data[0][0]==="hiKuwyHMcud"){
+                        graphdata={"type":'spline',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        
+                        graphdata={"type":'column',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                            
+                        }
+                        }
+
+                    }
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    } 
+                    drawSpines('on_art',cTitle,periodname,fperiodname,mechanismName,dataToPlot)
+
+                });
+
+          }
+
+         function getovcenrollment(url){
+            justFetch(url, {})
+                .then(response=>{
+
+                    var cTitle = 'OVC enrollment (Cumulative)'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                    var mechanismName = response.metaData.items[mechanism].name;
+                    var dx = response.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var periodname = []
+                    var dataRows = []
+                   
+                    let dataToPlot = []
+                    
+                    dataValues = Array.from(response.rows, r=>r[3]) 
+                    const {rows}=response
+                    response.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(response.metaData.items[pe].name)    
+
+
+                    })
+                    const getDXName=(id)=>{
+                        return response.metaData.items[id].name
+                        
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                    dx.map(id=>{
+                      
+                        const data= rows.filter(row=>{
+                            return row[0] === id 
+                        }) 
+                        if (data.length > 1){
+                        
+                                const data1 = data.filter(datas=>{
+                                    return datas[0] === id
+                                })
+                               
+                        let dataSM = Array.from(data1, r=>r[3])
+                        let fData = toNumbers(dataSM)
+                        graphdata={"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        if (data[0] !== undefined){
+                        graphdata={"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                    }
+                    }
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    } 
+                    drawbargraphs('ovc_enrollment',periodname,fperiodname,mechanismName,cTitle,dataToPlot)  
+                   
+                });
+
+         }
+
+         function getQaCheck(url){
+            justFetch(url, {})
+                .then(response=>{
+
+                    var cTitle = 'QA check on contacts'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                    var mechanismName = response.metaData.items[mechanism].name;
+                    var dx = response.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var periodname = []
+                    var dataRows = []
+                   
+                    let dataToPlot = []
+                    
+                    dataValues = Array.from(response.rows, r=>r[3]) 
+                    const {rows}=response
+                    response.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(response.metaData.items[pe].name)    
+
+
+                    })
+                    const getDXName=(id)=>{
+                        return response.metaData.items[id].name
+                        
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                    dx.map(id=>{
+                      
+                        const data= rows.filter(row=>{
+                            return row[0] === id 
+                        }) 
+                        if (data.length > 1){
+                        
+                                const data1 = data.filter(datas=>{
+                                    return datas[0] === id
+                                })
+                               
+                        let dataSM = Array.from(data1, r=>r[3])
+                        let fData = toNumbers(dataSM)
+                        graphdata={"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        if (data[0] !== undefined){
+                        graphdata={"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                    }
+                    }
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    } 
+                    drawbargraphs('qa_check',periodname,fperiodname,mechanismName,cTitle,dataToPlot)  
+                   
+                });
+
+         }
+
+
+
+
+
+
+
+
+
+
+
+
+            
             function getInfant(url){
                 let reached = {
                     'pct05jgGcLt': 'Estimated Number of Pregnant Women',

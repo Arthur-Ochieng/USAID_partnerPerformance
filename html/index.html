@@ -121,11 +121,23 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Testing Cascade (Cumulative-last month of reporting)</h4>
                                     <div class="graph" id="testing_cascade">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Tested vs Tested with Results</h4>
+                                    <div class="graph" id="tested_results">
                                         
                                     </div>
                                 </div>
@@ -327,6 +339,10 @@
 
                 let subpop = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:lRK71O8Ks8W;vdwkGEovm1n;nZDcqciPEHX&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
+                let testingcoverage = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:lKYvovb7dFc;i4sOrA1zfrj;uWyFdcWMEvQ&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+
+                let testedresults = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:sWThEZcSXNC;qHxws7Glw97;lzcJMJA0AiX;udHxOEAM9jP&dimension=lRp2LBbTuM5:SuIPMBE1tdx&dimension=pe:LAST_6_MONTHS&filter=ou:HfVjCurKxh2&displayProperty=NAME&outputIdScheme=UID`
+
 
 
                 
@@ -343,6 +359,8 @@
                 getQaCheck(qaCheck)
                 getContactbyStatus(contactbyhivstatus)
                 getSubPop(subpop)
+                getTestingCoverage(testingcoverage)
+                getTestedResult(testedresults)
 
             
 
@@ -1100,7 +1118,156 @@
 
          }
 
+         function getTestingCoverage(url){
+                justFetch(url, {})
+                .then(response=>{
+                    var cTitle = 'Testing Coverage'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                    var mechanismName = response.metaData.items[mechanism].name;
+                    var dx = response.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var stacking = 'normal'
+                    var periodname = []
+                    var dataRows = []
+                   
+                    let dataToPlot = []
+                    
+                    dataValues = Array.from(response.rows, r=>r[3]) 
+                    const {rows}=response
+                    response.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(response.metaData.items[pe].name)    
 
+
+                    })
+                    const getDXName=(id)=>{
+                        return response.metaData.items[id].name
+                        
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                    // console.log(pe)
+
+                    dx.map(id=>{
+                      
+                        const data= rows.filter(row=>{
+                            return row[0] === id 
+                        })
+                        
+                        if (data.length > 1){
+                        
+                                const data1 = data.filter(datas=>{
+                                    return datas[0] === id
+                                })
+                               
+                        let dataSM = Array.from(data1, r=>r[3])
+                        let fData = toNumbers(dataSM)
+                        if (data[0] !== undefined){
+                            
+                        if (data[0][0]==="uWyFdcWMEvQ"){
+
+                        graphdata={"type":'spline',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        graphdata={"type":'column',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                            
+                        }}
+                        
+                        // graphdata={"type":'column',"name":getDXName(id), "data":fData}
+                        // dataToPlot.push(graphdata)
+                        }else{
+                            if (data[0] !== undefined){
+                        if (data[0][0]==="uWyFdcWMEvQ"){
+                        graphdata={"type":'spline',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        
+                        graphdata={"type":'column',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                            
+                        }
+                        }
+
+                    }
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    } 
+                    drawSpines('testing_coverage',cTitle,periodname,fperiodname,mechanismName,dataToPlot,stacking)
+
+                });
+            }
+
+            function getTestedResult(url){
+                justFetch(url, {})
+                .then(response=>{
+                    var cTitle = 'Tested vs Tested with Results'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                    var mechanismName = response.metaData.items[mechanism].name;
+                    var dx = response.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var stacking = 'normal'
+                    var periodname = []
+                    var dataRows = []
+                   
+                    let dataToPlot = []
+                    
+                    dataValues = Array.from(response.rows, r=>r[3]) 
+                    const {rows}=response
+                    response.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(response.metaData.items[pe].name)    
+
+
+                    })
+                    const getDXName=(id)=>{
+                        return response.metaData.items[id].name
+                        
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                    dx.map(id=>{
+                      
+                        const data= rows.filter(row=>{
+                            return row[0] === id 
+                        }) 
+                        if (data.length > 1){
+                        
+                                const data1 = data.filter(datas=>{
+                                    return datas[0] === id
+                                })
+                               
+                        let dataSM = Array.from(data1, r=>r[3])
+                        let fData = toNumbers(dataSM)
+                        graphdata={"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        if (data[0] !== undefined){
+                        graphdata={"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                    }
+                    }
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    } 
+                    console.log(dataToPlot)
+                    drawbargraphs('tested_results',periodname,fperiodname,mechanismName,cTitle,dataToPlot,stacking)  
+                   
+                });
+
+         }
 
 
 

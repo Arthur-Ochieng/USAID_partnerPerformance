@@ -246,7 +246,7 @@ function drawbargraphs(cName,periodname,fperiodname,mechanismName,cTitle,dataToP
 }
 
 
-function drawSpines(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot){
+function drawSpines(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot,stacking){
     // console.log(dataToPlot[2].data)
     Highcharts.chart(cName, {
     title: {
@@ -286,6 +286,13 @@ function drawSpines(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot
         },
         opposite: true
     }],
+    plotOptions: {
+        column: {
+        stacking: stacking,
+        pointPadding: 0.2,
+        borderWidth: 0
+        }
+    },
 
     series: [{
         name: dataToPlot[0].name,

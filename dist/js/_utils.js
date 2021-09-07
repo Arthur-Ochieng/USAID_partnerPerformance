@@ -246,7 +246,7 @@ function drawbargraphs(cName,periodname,fperiodname,mechanismName,cTitle,dataToP
 }
 
 
-function drawSpines(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot,stacking){
+function drawSpines(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot,stacking,yAxis){
     // console.log(dataToPlot[2].data)
     Highcharts.chart(cName, {
     title: {
@@ -273,13 +273,13 @@ function drawSpines(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot
         }
     }, { // Secondary yAxis
         title: {
-            text: 'Propotions',
+            text: yAxis,
             style: {
                 color: Highcharts.getOptions().colors[0]
             }
         },
         labels: {
-            format: '{value} %',
+            format: '{value} ',
             style: {
                 color: Highcharts.getOptions().colors[0]
             }
@@ -322,8 +322,8 @@ function drawSpines(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot
 });
 }
 
-function drawmultipleSpines(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot){
-       console.log(dataToPlot)
+function drawmultipleSpines(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot,yAxis){
+
        Highcharts.chart(cName, {
         title: {
             text: cTitle
@@ -349,13 +349,13 @@ function drawmultipleSpines(cName,cTitle,periodname,fperiodname,mechanismName,da
             }
         }, { // Secondary yAxis
             title: {
-                text: 'Propotions',
+                text: yAxis,
                 style: {
                     color: Highcharts.getOptions().colors[0]
                 }
             },
             labels: {
-                format: '{value} %',
+                format: '{value}',
                 style: {
                     color: Highcharts.getOptions().colors[0]
                 }
@@ -406,6 +406,137 @@ function drawmultipleSpines(cName,cTitle,periodname,fperiodname,mechanismName,da
             }
         }]
     }); 
+}
+function drawTestingCascade(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot,stacking,yAxis){
+    console.log(yAxis)
+
+    Highcharts.chart(cName, {
+     title: {
+         text: cTitle
+     },
+     subtitle: {
+         text: fperiodname[0] +' - '+fperiodname[1]+' '+mechanismName
+     },
+     xAxis: {
+         categories: periodname
+     },
+     yAxis: [{ // Primary yAxis
+         labels: {
+             format: '{value}',
+             style: {
+                 color: Highcharts.getOptions().colors[1]
+             }
+         },
+         title: {
+             text: 'Number ',
+             style: {
+                 color: Highcharts.getOptions().colors[1]
+             }
+         }
+     }, { // Secondary yAxis
+         title: {
+             text: yAxis,
+             style: {
+                 color: Highcharts.getOptions().colors[0]
+             }
+         },
+         labels: {
+             format: '{value}',
+             style: {
+                 color: Highcharts.getOptions().colors[0]
+             }
+         },
+         opposite: true
+     }],
+ 
+     series: [{
+         name: dataToPlot[0].name,
+         type: dataToPlot[0].type,
+         data: dataToPlot[0].data,
+         tooltip: {
+             valueSuffix: ''
+         }
+ 
+     }, {
+         name: dataToPlot[1].name,
+         type:  dataToPlot[1].type,
+         data: dataToPlot[1].data,
+         tooltip: {
+             valueSuffix: ' '
+         }
+ 
+     },{
+         name: dataToPlot[2].name,
+         yAxis: 1,
+         type:  dataToPlot[2].type,
+         data: dataToPlot[2].data,
+         tooltip: {
+             valueSuffix: ' '
+         }
+ 
+     },
+     {
+         name: dataToPlot[3].name,
+         type:  dataToPlot[3].type,
+         data: dataToPlot[3].data,
+         tooltip: {
+             valueSuffix: ' '
+         }
+ 
+     },{
+         name: dataToPlot[4].name,
+         yAxis: 1,
+         type:  dataToPlot[4].type,
+         data: dataToPlot[4].data,
+         tooltip: {
+             valueSuffix: ''
+         }
+     },{
+        name: dataToPlot[5].name,
+        type:  dataToPlot[5].type,
+        data: dataToPlot[5].data,
+        tooltip: {
+            valueSuffix: ''
+        }
+    },{
+        name: dataToPlot[6].name,
+        type:  dataToPlot[6].type,
+        yAxis: 1,
+        data: dataToPlot[6].data,
+        tooltip: {
+            valueSuffix: ''
+        }
+    },{
+        name: dataToPlot[7].name,
+        type:  dataToPlot[7].type,
+        data: dataToPlot[7].data,
+        tooltip: {
+            valueSuffix: ''
+        }
+    },{
+        name: dataToPlot[8].name,
+        type:  dataToPlot[8].type,
+        yAxis: 1,
+        data: dataToPlot[8].data,
+        tooltip: {
+            valueSuffix: ''
+        }
+    },{
+        name: dataToPlot[9].name,
+        type:  dataToPlot[9].type,
+        data: dataToPlot[9].data,
+        tooltip: {
+            valueSuffix: ''
+        }
+    },{
+        name: dataToPlot[10].name,
+        type:  dataToPlot[10].type,
+        data: dataToPlot[10].data,
+        tooltip: {
+            valueSuffix: ''
+        }
+    }]
+ }); 
 }
 
 

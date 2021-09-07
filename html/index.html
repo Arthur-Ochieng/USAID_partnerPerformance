@@ -136,16 +136,6 @@
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Tested vs Tested with Results</h4>
-                                    <div class="graph" id="tested_results">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-body">
                                     <h4 class="card-title">Testing and Yield (Cumulative)</h4>
                                     <div class="graph" id="testing_yield">
                                         
@@ -153,8 +143,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body">
@@ -164,25 +152,15 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">OVC enrollment (Cumulative)</h4>
                                     <div class="graph" id="ovc_enrollment">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">QA check on contacts</h4>
-                                    <div class="graph" id="qa_check">
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -197,6 +175,28 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">QA check on contacts</h4>
+                                    <div class="graph" id="qa_check">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Tested vs Tested with Results</h4>
+                                    <div class="graph" id="tested_results">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                     
 
@@ -295,7 +295,7 @@
                 if(prop && prop.ou){
                     org_unit = prop.ou
                 }
-                let prd = `LAST_6_MONTHS`
+                let prd = `2021;2020`
                 if(prop && prop.pe){
                     prd = prop.pe
                 }
@@ -327,8 +327,9 @@
 
                 let ElicitationRation = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:NW1vrnCyzXd;YFyGrIvwLlh;hu3t3GedH0u&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME`
 
-                let testingYield = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:udHxOEAM9jP;qHxws7Glw97;lzcJMJA0AiX;sWThEZcSXNC;X6Wiw3Dj7sq&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+                let testingYield = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:udHxOEAM9jP;qHxws7Glw97;lzcJMJA0AiX;sWThEZcSXNC;X6Wiw3Dj7sq&dimension=lRp2LBbTuM5:${mechanism}&filter=pe:2021;2020&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
+                
                 let onArt = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:Fy6ziYuDQo3;HpsOgDcwl1P;hiKuwyHMcud&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
                 let ovcenrollment = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:Fy6ziYuDQo3;HD8FN7bkMxp;UsRas7M570x;QsE9CIjZIHx;mVaipc7VCZs&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
@@ -341,14 +342,11 @@
 
                 let testingcoverage = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:lKYvovb7dFc;i4sOrA1zfrj;uWyFdcWMEvQ&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
-                let testedresults = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:sWThEZcSXNC;qHxws7Glw97;lzcJMJA0AiX;udHxOEAM9jP&dimension=lRp2LBbTuM5:SuIPMBE1tdx&dimension=pe:LAST_6_MONTHS&filter=ou:HfVjCurKxh2&displayProperty=NAME&outputIdScheme=UID`
+                let testedresults = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:sWThEZcSXNC;qHxws7Glw97;lzcJMJA0AiX;udHxOEAM9jP&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+
+                let testingcascade = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:lKYvovb7dFc;QdNNAEz7ttE;kfQAWeTuKzW;iJPCXlPkPo6;GIpH4qaVeI8;s6LkY1Uuroj;XjMHcVmlLno;udHxOEAM9jP;VkJSCzLdnMc;HTt9Ur5B5Ig;uWyFdcWMEvQ&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
 
-
-                
-                let ancascade = ``
-                
-                let estimated_pmtct= ``
                 getart_review(onArtReview)
                 getCurrentReviewed(tx_curr_reviewed)
                 getTxCurrindexed(tx_curr_indexed)
@@ -361,6 +359,7 @@
                 getSubPop(subpop)
                 getTestingCoverage(testingcoverage)
                 getTestedResult(testedresults)
+                getTestingCascade(testingcascade)
 
             
 
@@ -442,7 +441,193 @@
                     var pe = response.metaData.dimensions.pe;
                     var periodname = []
                     var dataRows = []
+                    var stacking = ''
+                    let dataToPlot = []
+                    
+                    dataValues = Array.from(response.rows, r=>r[3]) 
+                    const {rows}=response
+                    response.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(response.metaData.items[pe].name)    
+
+
+                    })
+                    const getDXName=(id)=>{
+                        return response.metaData.items[id].name
+                        
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                    // console.log(pe)
+
+                    dx.map(id=>{
+                      
+                        const data= rows.filter(row=>{
+                            return row[0] === id 
+                        })
+                        
+                        if (data.length > 1){
+                        
+                                const data1 = data.filter(datas=>{
+                                    return datas[0] === id
+                                })
+                               
+                        let dataSM = Array.from(data1, r=>r[3])
+                        let fData = toNumbers(dataSM)
+                        if (data[0] !== undefined){
+                            
+                        if (data[0][0]==="B1vk3KZikA8"){
+                        graphdata={"type":'spline',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        graphdata={"type":'column',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                            
+                        }}
+                        
+                        }else{
+                            if (data[0] !== undefined){
+                        if (data[0][0]==="B1vk3KZikA8"){
+                        graphdata={"type":'spline',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        
+                        graphdata={"type":'column',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                            
+                        }
+                      
+                        }
+                     
+
+                    }
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    } 
                    
+                    drawSpines('tx_curr_reviewed',cTitle,periodname,fperiodname,mechanismName,dataToPlot,stacking)
+
+                });
+            }
+            function getTestingCascade(url){
+                justFetch(url, {})
+                .then(response=>{
+                    var cTitle = 'Testing Cascade'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                    var mechanismName = response.metaData.items[mechanism].name;
+                    var dx = response.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var periodname = []
+                    var dataRows = []
+                    var stacking = ''
+                    let dataToPlot = []
+                    var yAxis = 'Percentage'
+                    
+                    dataValues = Array.from(response.rows, r=>r[3]) 
+                    const {rows}=response
+                    response.metaData.dimensions.pe.map(pe=>{
+                        periodname.push(response.metaData.items[pe].name)    
+
+
+                    })
+                    const getDXName=(id)=>{
+                        return response.metaData.items[id].name
+                        
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                    // console.log(pe)
+
+                    dx.map(id=>{
+                      
+                        const data= rows.filter(row=>{
+                            return row[0] === id 
+                        })
+                        
+                        if (data.length > 1){
+                        
+                                const data1 = data.filter(datas=>{
+                                    return datas[0] === id
+                                })
+                               
+                        let dataSM = Array.from(data1, r=>r[3])
+                        let fData = toNumbers(dataSM)
+                        if (data[0] !== undefined){
+                            
+                        if(data[0][0]==="kfQAWeTuKzW"){
+                        graphdata={"type":'scatter',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                        }else if(data[0][0]==="XjMHcVmlLno"){
+                        graphdata={"type":'scatter',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                        }else if(data[0][0]==="VkJSCzLdnMc"){
+                        graphdata={"type":'scatter',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                        }else if(data[0][0]==="GIpH4qaVeI8"){
+                        graphdata={"type":'scatter',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                        }else{
+                        graphdata={"type":'column',"name":getDXName(id), "data":fData}
+                        dataToPlot.push(graphdata)
+                            
+                        }}
+                        
+                        }else{
+                            if (data[0] !== undefined){
+                        if (data[0][0]==="kfQAWeTuKzW"){
+                        graphdata={"type":'scatter',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                        }else if(data[0][0]==="XjMHcVmlLno"){
+                        graphdata={"type":'scatter',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                        }else if(data[0][0]==="VkJSCzLdnMc"){
+                        graphdata={"type":'scatter',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                        }else if(data[0][0]==="GIpH4qaVeI8"){
+                        graphdata={"type":'scatter',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                        } else{                        
+                        graphdata={"type":'column',"name":getDXName(id), "data":[parseInt(data[0][3])]}
+                        dataToPlot.push(graphdata)
+                            
+                        }
+                      
+                        }
+                       
+
+                    }
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {  
+                    let finalperiodname = []
+                    finalperiodname.push(periodname[0]); 
+                    finalperiodname.push(periodname[periodname.length-1]);  
+                    
+                    return finalperiodname
+                    } 
+                   
+                    drawTestingCascade('testing_cascade',cTitle,periodname,fperiodname,mechanismName,dataToPlot,stacking,yAxis)
+
+                });
+            }
+            function getCurrentReviewed(url){
+            justFetch(url, {})
+                .then(response=>{
+                    var cTitle = 'TX_CURR Reviewed'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                    var mechanismName = response.metaData.items[mechanism].name;
+                    var dx = response.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var periodname = []
+                    var dataRows = []
+                    var stacking = ''
                     let dataToPlot = []
                     
                     dataValues = Array.from(response.rows, r=>r[3]) 
@@ -514,9 +699,10 @@
                     return finalperiodname
                     } 
                    
-                    drawSpines('tx_curr_reviewed',cTitle,periodname,fperiodname,mechanismName,dataToPlot)
+                    drawSpines('tx_curr_reviewed',cTitle,periodname,fperiodname,mechanismName,dataToPlot,stacking)
 
                 });
+
             }
             function getTxCurrindexed(url){
                 justFetch(url, {})
@@ -529,8 +715,9 @@
                     var dx = response.metaData.dimensions.dx;
                     var pe = response.metaData.dimensions.pe;
                     var periodname = []
+                    var stacking = ''
                     var dataRows = []
-                   
+                    var yAxis = 'Proportions'
                     let dataToPlot = []
                     
                     dataValues = Array.from(response.rows, r=>r[3]) 
@@ -597,7 +784,7 @@
                     
                     return finalperiodname
                     } 
-                    drawSpines('tx_curr_indexed',cTitle,periodname,fperiodname,mechanismName,dataToPlot)
+                    drawSpines('tx_curr_indexed',cTitle,periodname,fperiodname,mechanismName,dataToPlot,stacking,yAxis)
 
                 });
             }
@@ -614,9 +801,9 @@
                     var pe = response.metaData.dimensions.pe;
                     var periodname = []
                     var dataRows = []
-                   
+                    var stacking = ''
                     let dataToPlot = []
-                    
+                    var yAxis = 'Proportions'                    
                     dataValues = Array.from(response.rows, r=>r[3]) 
                     const {rows}=response
                     response.metaData.dimensions.pe.map(pe=>{
@@ -682,7 +869,7 @@
                     
                     return finalperiodname
                     } 
-                    drawSpines('ElicitationRation',cTitle,periodname,fperiodname,mechanismName,dataToPlot)
+                    drawSpines('ElicitationRation',cTitle,periodname,fperiodname,mechanismName,dataToPlot,stacking,yAxis)
 
                 });
             }
@@ -698,6 +885,7 @@
                     var mechanismName = response.metaData.items[mechanism].name;
                     var dx = response.metaData.dimensions.dx;
                     var pe = response.metaData.dimensions.pe;
+                    var yAxis = 'Yield'
                     var periodname = []
                     var dataRows = []
                    
@@ -723,14 +911,16 @@
                             return row[0] === id 
                         })
                         
-                        if (data.length > 1){
+                          
+                        if (data.length >= 1){
                         
                                 const data1 = data.filter(datas=>{
                                     return datas[0] === id
                                 })
-                               
-                        let dataSM = Array.from(data1, r=>r[3])
+                        //  console.log(data1)
+                        let dataSM = Array.from(data1, r=>r[2])
                         let fData = toNumbers(dataSM)
+                        
                         if (data[0] !== undefined){
                             
                         if (data[0][0]==="X6Wiw3Dj7sq"){
@@ -750,10 +940,8 @@
                         graphdata={"type":'spline',"name":getDXName(id), "data":[parseInt(data[0][3])]}
                         dataToPlot.push(graphdata)
                         }else{
-                        
                         graphdata={"type":'column',"name":getDXName(id), "data":[parseInt(data[0][3])]}
-                        dataToPlot.push(graphdata)
-                            
+                        dataToPlot.push(graphdata)                            
                         }
                         }
 
@@ -767,7 +955,8 @@
                     
                     return finalperiodname
                     } 
-                    drawmultipleSpines('testing_yield',cTitle,periodname,fperiodname,mechanismName,dataToPlot)
+                    console.log(dataToPlot)
+                    drawmultipleSpines('testing_yield',cTitle,periodname,fperiodname,mechanismName,dataToPlot,yAxis)
 
                 });
 
@@ -783,6 +972,8 @@
                     var mechanismName = response.metaData.items[mechanism].name;
                     var dx = response.metaData.dimensions.dx;
                     var pe = response.metaData.dimensions.pe;
+                    var yAxis = 'Linkage'
+                    var stacking = ''                    
                     var periodname = []
                     var dataRows = []
                    
@@ -852,7 +1043,7 @@
                     
                     return finalperiodname
                     } 
-                    drawSpines('on_art',cTitle,periodname,fperiodname,mechanismName,dataToPlot)
+                    drawSpines('on_art',cTitle,periodname,fperiodname,mechanismName,dataToPlot,stacking,yAxis)
 
                 });
 

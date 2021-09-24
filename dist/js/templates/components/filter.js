@@ -137,8 +137,7 @@ const filter_template = `
         <option value = "XazGLsdcppg">Tujitegemee</option>
         <option value = "jEtKvSdlHpK">Imarisha Jamii</option>
         <option value = "fBCEYe6pmaw">Jamii Tekelezi</option>
-        <option value = "I77vRIqUthh">Tujengee Jamii</option>
-        <option value = "ZP7695AsKWl">USAID Tujenge Jamii</option>
+        <option value = "I77vRIqUthh">USAID Tujengee Jamii</option>
 
 
         </select> 

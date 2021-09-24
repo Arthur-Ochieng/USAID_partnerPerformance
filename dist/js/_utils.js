@@ -247,7 +247,7 @@ function drawbargraphs(cName,periodname,fperiodname,mechanismName,cTitle,dataToP
 
 
 function drawSpines(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot,stacking,yAxis){
-    // console.log(dataToPlot[2].data)
+    // console.log(dataToPlot)
     Highcharts.chart(cName, {
     title: {
         text: cTitle
@@ -255,6 +255,7 @@ function drawSpines(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot
     subtitle: {
         text: fperiodname[0] +' - '+fperiodname[1]+' '+mechanismName
     },
+    
     xAxis: {
         categories: periodname
     },
@@ -287,6 +288,12 @@ function drawSpines(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot
         opposite: true
     }],
     plotOptions: {
+        // series: {
+        //     dataLabels: {
+        //         enabled: true,
+        //         inside: true
+        //     }
+        // },
         column: {
         stacking: stacking,
         pointPadding: 0.2,
@@ -408,7 +415,7 @@ function drawmultipleSpines(cName,cTitle,periodname,fperiodname,mechanismName,da
     }); 
 }
 function drawTestingCascade(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot,stacking,yAxis){
-    console.log(yAxis)
+    // console.log(yAxis)
 
     Highcharts.chart(cName, {
      title: {

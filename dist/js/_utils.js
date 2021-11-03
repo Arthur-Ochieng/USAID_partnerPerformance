@@ -104,11 +104,11 @@ let justFetch = async (endpoint, postoptions) => {
     let req_hd = {};
     let headers = {};
     let final_endpoint = endpoint;
-    if (!location.hostname.includes("localhost")) {
-        let encurl = window.encodeURIComponent(window.btoa(endpoint));
-        // console.log('encurl = '+encurl);
-        final_endpoint = "http://localhost:5600/request/" + encurl;
-    }
+    // if (!location.hostname.includes("localhost")) {
+    //     let encurl = window.encodeURIComponent(window.btoa(endpoint));
+    //     // console.log('encurl = '+encurl);
+    //     final_endpoint = "http://localhost:5600/request/" + encurl;
+    // }
     req_hd.headers = headers;
     req_hd.method = req_method;
     req_hd.Accept = "application/json";

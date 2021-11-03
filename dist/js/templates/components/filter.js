@@ -83,7 +83,8 @@ const filter_template = `
     <div class="col-md-2 col-sm-2 col-xs-2">
         <select class="form-control m-r-5 mb-1" id="mechanism-dropdown" name="mechanism">
         <option selected disabled>Select Mechanism</option>
-        <option selected="true" value="MZQY1ZPAYCY">Afya Jijini project</option>
+        <option selected="true" value="">All Partners</option>
+        <option value="MZQY1ZPAYCY">Afya Jijini project</option>
         <option value = "iI8P1gEpTxf">Afya Kamilisha</option>
         <option value = "XakDkEteZ8n">Afya Nyota ya Bonde</option>
         <option value = "vUO19dBpTi6">Afya Ziwani</option>

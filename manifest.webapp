@@ -1,11 +1,11 @@
 {
-    "version": "0.0.0",
+    "version": "0.0.6",
     "name": "Partner Reporting Dashboard",
     "description": "An App to Visualize USAID IM Indicators",
     "launch_path": "html/index.html",
     "appType": "APP",
     "icons": {
-        "48": "assets/images/index.png"
+        "48": "assets/images/prd.png"
     },
     "developer": {
         "name": "HealthIT",

@@ -201,6 +201,90 @@ const filter_template = `
         </div>
     </div>
 {{/is_period}}
+{{#is_biweek}}
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="input-group">
+                   
+
+                    <select class="form-control yearsfilt" id="period-dropdownFrom">
+                        <option value="" disabled selected>Year {{#is_period_range}} from {{/is_period_range}}</option>
+                    </select>
+                    
+                    <select class="form-control" id="period-dropdownFromQs" disabled>
+                        <option value="" selected>All year</option>
+                        <option value="BiW1" >Bi-Week 1</option>
+                        <option value="BiW2" >Bi-Week 2</option>
+                        <option value="BiW3" >Bi-Week 3</option>
+                        <option value="BiW4" >Bi-Week 4</option>
+                        <option value="BiW5" >Bi-Week 5</option>
+                        <option value="BiW6" >Bi-Week 6</option>
+                        <option value="BiW7" >Bi-Week 7</option>
+                        <option value="BiW8" >Bi-Week 8</option>
+                        <option value="BiW9" >Bi-Week 9</option>
+                        <option value="BiW10" >Bi-Week 10</option>
+                        <option value="BiW11" >Bi-Week 11</option>
+                        <option value="BiW12" >Bi-Week 12</option>
+                        <option value="BiW13" >Bi-Week 13</option>
+                        <option value="BiW14" >Bi-Week 14</option>
+                        <option value="BiW15" >Bi-Week 15</option>
+                        <option value="BiW16" >Bi-Week 16</option>
+                        <option value="BiW17" >Bi-Week 17</option>
+                        <option value="BiW18" >Bi-Week 18</option>
+                        <option value="BiW19" >Bi-Week 19</option>
+                        <option value="BiW20" >Bi-Week 20</option>
+                        <option value="BiW21" >Bi-Week 21</option>
+                        <option value="BiW22" >Bi-Week 22</option>
+                        <option value="BiW23" >Bi-Week 23</option>
+                        <option value="BiW24" >Bi-Week 24</option>
+                        <option value="BiW25" >Bi-Week 25</option>
+                        <option value="BiW26" >Bi-Week 26</option>                        
+                    </select>
+                </div>
+            </div>
+            {{#is_biweek_range}}
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <select class="form-control yearsfilt" id="period-dropdownTo" disabled>
+                            <option value="" disabled selected>Period to</option>
+                        </select>
+                        
+                        <select class="form-control" id="period-dropdownToQs" disabled>
+                        <option value="" selected>All year</option>
+                        <option value="BiW1" >Bi-Week 1</option>
+                        <option value="BiW2" >Bi-Week 2</option>
+                        <option value="BiW3" >Bi-Week 3</option>
+                        <option value="BiW4" >Bi-Week 4</option>
+                        <option value="BiW5" >Bi-Week 5</option>
+                        <option value="BiW6" >Bi-Week 6</option>
+                        <option value="BiW7" >Bi-Week 7</option>
+                        <option value="BiW8" >Bi-Week 8</option>
+                        <option value="BiW9" >Bi-Week 9</option>
+                        <option value="BiW10" >Bi-Week 10</option>
+                        <option value="BiW11" >Bi-Week 11</option>
+                        <option value="BiW12" >Bi-Week 12</option>
+                        <option value="BiW13" >Bi-Week 13</option>
+                        <option value="BiW14" >Bi-Week 14</option>
+                        <option value="BiW15" >Bi-Week 15</option>
+                        <option value="BiW16" >Bi-Week 16</option>
+                        <option value="BiW17" >Bi-Week 17</option>
+                        <option value="BiW18" >Bi-Week 18</option>
+                        <option value="BiW19" >Bi-Week 19</option>
+                        <option value="BiW20" >Bi-Week 20</option>
+                        <option value="BiW21" >Bi-Week 21</option>
+                        <option value="BiW22" >Bi-Week 22</option>
+                        <option value="BiW23" >Bi-Week 23</option>
+                        <option value="BiW24" >Bi-Week 24</option>
+                        <option value="BiW25" >Bi-Week 25</option>
+                        <option value="BiW26" >Bi-Week 26</option>  
+                        </select>
+                    </div> 
+                </div> 
+            {{/is_biweek_range}}
+        </div>
+    </div>
+{{/is_biweek}}
 `;
 
 $(document).ready(function () {

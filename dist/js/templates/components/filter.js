@@ -135,10 +135,17 @@ const filter_template = `
         <option value = "u4jzqfjzzbA">UON CRISSP+</option>
         <option value = "AmVEnLbY8uG">UON MARPS</option>
         <option value = "e1wDm7pEmod">UON-CoEHM</option>
-        <option value = "XazGLsdcppg">Tujitegemee</option>
-        <option value = "jEtKvSdlHpK">Imarisha Jamii</option>
-        <option value = "fBCEYe6pmaw">Jamii Tekelezi</option>
+        <option value = "XazGLsdcppg">USAID Tujitegemee</option>
+        <option value = "jEtKvSdlHpK">USAID Imarisha Jamii</option>
+        <option value = "fBCEYe6pmaw">USAID Jamii Tekelezi</option>
         <option value = "I77vRIqUthh">USAID Tujengee Jamii</option>
+        <option value = "kF0bPRXWYHw">USAID Boresha Jamii</option>
+        <option value = "DOVuNOK6W1q">USAID Nuru ya Mtoto</option>
+        <option value = "Gz7D5TtCtfA">USAID Tumikia Mtoto</option>
+        <option value = "is09NROcUeR">USAID4TheChild</option>
+        <option value = "lt6GFMucPzG">USAID Fahari Ya Jamii</option>
+
+        
 
 
         </select> 

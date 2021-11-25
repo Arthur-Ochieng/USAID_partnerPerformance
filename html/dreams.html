@@ -313,7 +313,8 @@
                 prd = prop.pe
             }
             if (prop && prop.pe && prop.pe_to) {
-                prd = dateRange(prop.pe, prop.pe_to)
+                console.log(prop.pe, prop.pe_to)
+                prd = dateRangeBiWeek(prop.pe, prop.pe_to)
             }
             console.log('prd = = = ' + prd);
 
@@ -378,7 +379,8 @@
             let active = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:ml3QiRDPDLY&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
             
-
+            console.log(sab)
+            console.log(sab_target)
 
             // getart_review(onArtReview)
             getSab(sab,sab_target)

@@ -104,11 +104,11 @@ let justFetch = async (endpoint, postoptions) => {
     let req_hd = {};
     let headers = {};
     let final_endpoint = endpoint;
-    // if (!location.hostname.includes("localhost")) {
-    //     let encurl = window.encodeURIComponent(window.btoa(endpoint));
-    //     // console.log('encurl = '+encurl);
-    //     final_endpoint = "http://localhost:5600/request/" + encurl;
-    // }
+    if (!location.hostname.includes("localhost")) {
+        let encurl = window.encodeURIComponent(window.btoa(endpoint));
+        // console.log('encurl = '+encurl);
+        final_endpoint = "http://localhost:5600/request/" + encurl;
+    }
     req_hd.headers = headers;
     req_hd.method = req_method;
     req_hd.Accept = "application/json";
@@ -149,6 +149,35 @@ function dateRange(startDate, endDate) {
             var displayMonth = month < 10 ? '0'+month : month;
             // dates.push([i, displayMonth, '01'].join('-'));
             dates.push(i+''+displayMonth)
+        }
+    }
+    return dates.join(';');
+}
+function dateRangeBiWeek(startDate, endDate) {
+    startDate = startDate+''
+    endDate = endDate+''
+    var start      = startDate.substr(7)   // startDate.split('-');
+    var end        = endDate.substr(7)   // endDate.split('-');
+    var startYear  = parseInt(
+        startDate.substring(0,4)
+        // start[0]
+    );
+    var endYear    = parseInt(
+        endDate.substring(0,4)
+        // end[0]
+    );
+    var dates      = [];
+    for(var i = startYear; i <= endYear; i++) {
+        var endMonth = i != endYear ? 25 : parseInt(end[1]) - 1;
+        var startMon = i === startYear ? parseInt(start[1])-1 : 1;
+        console.log(endMonth)
+        console.log(startMon)
+        for (var K = start; K <= end; K++) {
+            var week = K;
+            
+            var displayWeek = week < 10 ? '0'+week : week;
+            // dates.push([i, displayMonth, '01'].join('-'));
+            dates.push(i+'BiW'+''+displayWeek)
         }
     }
     return dates.join(';');

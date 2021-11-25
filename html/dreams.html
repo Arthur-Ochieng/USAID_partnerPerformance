@@ -58,7 +58,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title"> Active Brenficiaries</h4>
-                                <div class="graph" id="onArtReview">
+                                <div class="graph" id="active">
                                     <p class="card-text"></p>
                                 </div>
                             </div>
@@ -92,7 +92,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">(C) Financial Capabilities</h4>
-                                <div class="graph" id="tx_curr_indexed">
+                                <div class="graph" id="financial">
 
                                 </div>
                             </div>
@@ -102,7 +102,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">(D) Parenting/Caregiver Support</h4>
-                                <div class="graph" id="ElicitationRation">
+                                <div class="graph" id="parenting">
 
                                 </div>
                             </div>
@@ -115,7 +115,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">(E) Post Violence Care</h4>
-                                <div class="graph" id="testing_yield">
+                                <div class="graph" id="violence">
 
                                 </div>
                             </div>
@@ -125,7 +125,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">(F) Education Subsidy</h4>
-                                <div class="graph" id="on_art">
+                                <div class="graph" id="education">
 
                                 </div>
                             </div>
@@ -138,7 +138,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">(G) Condom Promotion</h4>
-                                <div class="graph" id="ovc_enrollment">
+                                <div class="graph" id="condom">
                                 </div>
                             </div>
                         </div>
@@ -147,7 +147,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">(H) Contraception IEC</h4>
-                                <div class="graph" id="contact_hiv_status">
+                                <div class="graph" id="contraception">
 
                                 </div>
                             </div>
@@ -159,7 +159,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">(I) PrEP IEC</h4>
-                                <div class="graph" id="qa_check">
+                                <div class="graph" id="prep">
                                 </div>
                             </div>
                         </div>
@@ -168,7 +168,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">(J) PrEP New</h4>
-                                <div class="graph" id="tested_results">
+                                <div class="graph" id="prep_new">
 
                                 </div>
                             </div>
@@ -180,7 +180,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">(K) CSEA</h4>
-                                <div class="graph" id="qa_check">
+                                <div class="graph" id="csea">
                                 </div>
                             </div>
                         </div>
@@ -189,7 +189,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">(L) Entrepreneurship Training</h4>
-                                <div class="graph" id="tested_results">
+                                <div class="graph" id="entrepreneurship">
 
                                 </div>
                             </div>
@@ -201,7 +201,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Service Layering</h4>
-                                <div class="graph" id="qa_check">
+                                <div class="graph" id="layering">
                                 </div>
                             </div>
                         </div>
@@ -343,34 +343,59 @@
             let hts = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:Z9xQn9NSbCZ&dimension=pe:${finalpe}&filter=ou:${org_unit}&filter=lRp2LBbTuM5:${mechanism}&displayProperty=NAME&outputIdScheme=UID`
             let hts_target = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:YC61Zc9zF4f&dimension=pe:${finalpe}&filter=ou:${org_unit}&filter=lRp2LBbTuM5:${mechanism}&displayProperty=NAME&outputIdScheme=UID`
             
+            let financial = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:aWY8VPAJLup&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+            let financial_target = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:Qcw0WSZDEKu&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
-            let tx_curr_indexed = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:coV33AERzhA;AeFO4noHEDJ;vqJRbCXt2RG&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+            let parenting = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:eqbfM98yO1V&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+            let parenting_target = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:yKOnQo5vjUU&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
-            let ElicitationRation = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:NW1vrnCyzXd;YFyGrIvwLlh;hu3t3GedH0u&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME`
+            let violence = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:hrBtGPr1kl1&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+            let violence_target = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:pQTmycY8NC8&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
-            let testingYield = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:udHxOEAM9jP;qHxws7Glw97;lzcJMJA0AiX;sWThEZcSXNC;X6Wiw3Dj7sq&filter=lRp2LBbTuM5:${mechanism}&dimension=ou:${org_unit}&filter=pe:${cummulativeperiod}&displayProperty=NAME&aggregationType=SUM&outputIdScheme=UID`  
+            let education = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:bQf7XglUaZC&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+            let education_target = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:m6B0ndjul7F&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+            
+            let condom = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:rdXlq50NEz0&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+            let condom_target = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:ejORwTymnlY&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
+            let contraception = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:xpA8jszQWFs&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+            let contraception_target = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:XKozV7I3leK&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
-            let onArt = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:Fy6ziYuDQo3;HpsOgDcwl1P;hiKuwyHMcud&filter=lRp2LBbTuM5:${mechanism}&filter=pe:${cummulativeperiod}&dimension=ou:${org_unit}&displayProperty=NAME&aggregationType=SUM&outputIdScheme=UID`
+            let prep = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:jWGndiP8GUS&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+            let prep_target = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:hWpSuKrXPrs&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
-            let ovcenrollment = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:Fy6ziYuDQo3;HD8FN7bkMxp;UsRas7M570x;QsE9CIjZIHx;mVaipc7VCZs&filter=lRp2LBbTuM5:${mechanism}&filter=pe:${cummulativeperiod}&dimension=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+            let prep_new = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:zBDelQIhkNa&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+            let prep_new_target = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:yoSQqfJLGKE&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
-            let qaCheck = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:xAWG6liDMUP;Hzb155t24g1&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+            let csea = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:q5fyr4N3okB&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+            let csea_target = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:JuFKVlyIAP8&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
-            let contactbyhivstatus = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:uEaonA39cPf;wJAoilEtQ97;lKYvovb7dFc&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+            let entrepreneurship = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:kmopkU9kSnI&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+            let entrepreneurship_target = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:kdapqXWDK0S&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
-            let subpop = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:lRK71O8Ks8W;vdwkGEovm1n;nZDcqciPEHX&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+            let layering = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:GGLPDgJAXwh;ZlcI1gmtSax;FpbPscuCVR1&dimension=pe:${finalpe}&dimension=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
-            // let testingcoverage = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:lKYvovb7dFc;i4sOrA1zfrj;uWyFdcWMEvQ&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+            let active = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:ml3QiRDPDLY&dimension=pe:${finalpe}&filter=lRp2LBbTuM5:${mechanism}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
-            let testedresults = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:sWThEZcSXNC;qHxws7Glw97;lzcJMJA0AiX;udHxOEAM9jP&dimension=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
-
-            // let testingcascade = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:lKYvovb7dFc;QdNNAEz7ttE;kfQAWeTuKzW;iJPCXlPkPo6;GIpH4qaVeI8;s6LkY1Uuroj;XjMHcVmlLno;udHxOEAM9jP;VkJSCzLdnMc;HTt9Ur5B5Ig;uWyFdcWMEvQ&filter=lRp2LBbTuM5:${mechanism}&filter=pe:${cummulativeperiod}&dimension=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
+            
 
 
             // getart_review(onArtReview)
             getSab(sab,sab_target)
             getHts(hts,hts_target)
+            getfinancial(financial,financial_target)
+            getParenting(parenting,parenting_target)
+            getViolence(violence,violence_target)
+            getEducation(education,education_target)
+            getCondom(condom,condom_target)
+            getContraception(contraception,contraception_target)
+            getPrep(prep,prep_target)
+            getPrep_new(prep_new,prep_new_target)
+            getcsea(csea,csea_target)
+            getEntre(entrepreneurship,entrepreneurship_target)
+            getLayering(layering)
+            getActive(active)
+
             // getTxCurrindexed(tx_curr_indexed)
             // getElicitationRation(ElicitationRation)
             // getTestingYield(testingYield)
@@ -403,7 +428,6 @@
                         var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
                         var mechanismName = response.metaData.items[mechanism].name;
                     }             
-                    console.log(response)
                     var dx = response.metaData.dimensions.dx;
                     var dx_target = target.metaData.dimensions.dx;
                     var pe = response.metaData.dimensions.pe;
@@ -479,7 +503,7 @@
                         var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
                         var mechanismName = response.metaData.items[mechanism].name;
                     }             
-                    console.log(response)
+                    
                     var dx = response.metaData.dimensions.dx;
                     var dx_target = target.metaData.dimensions.dx;
                     var pe = response.metaData.dimensions.pe;
@@ -540,619 +564,773 @@
                 })
                 });
         }
+        function getfinancial(url,url1) {
+            justFetch(url, {})
+                .then(response => {
+                    justFetch(url1,{})
+                        .then(target=>{
+                    var cTitle = 'Financial Capabilities'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
+                    if (mechanism_length.length > 1){
+                        var mechanismName = 'All Partners'
+                    }else{
+                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                        var mechanismName = response.metaData.items[mechanism].name;
+                    }             
+                    
+                    var dx = response.metaData.dimensions.dx;
+                    var dx_target = target.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var stacking = ''
+                    var periodname = []
+                    var dataRows = []
+
+                    let dataToPlot = []
+
+                    dataValues = Array.from(response.rows, r => r[3])
+                    const { rows } = response
+                    response.metaData.dimensions.pe.map(pe => {
+                        periodname.push(response.metaData.items[pe].name)
+
+
+                    })
+                    const getDXName = (id) => {
+                        return response.metaData.items[id].name
+
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                   
+                    dx.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = response.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'column'
+                        pe.map(p_e=>{
+                            let rw = response.rows.find(rw1=>rw1[response.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[response.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                response.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    dx_target.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = target.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'spline'
+                        pe.map(p_e=>{
+                            let rw = target.rows.find(rw1=>rw1[target.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[target.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                target.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {
+                        let finalperiodname = []
+                        finalperiodname.push(periodname[0]);
+                        finalperiodname.push(periodname[periodname.length - 1]);
+
+                        return finalperiodname
+                    }
+                    drawbargraphs('financial', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
+                })
+                });
+        }
+
+        function getParenting(url,url1) {
+            justFetch(url, {})
+                .then(response => {
+                    justFetch(url1,{})
+                        .then(target=>{
+                    var cTitle = 'Parenting/Caregiver Support'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
+                    if (mechanism_length.length > 1){
+                        var mechanismName = 'All Partners'
+                    }else{
+                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                        var mechanismName = response.metaData.items[mechanism].name;
+                    }             
+                    
+                    var dx = response.metaData.dimensions.dx;
+                    var dx_target = target.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var stacking = ''
+                    var periodname = []
+                    var dataRows = []
+
+                    let dataToPlot = []
+
+                    dataValues = Array.from(response.rows, r => r[3])
+                    const { rows } = response
+                    response.metaData.dimensions.pe.map(pe => {
+                        periodname.push(response.metaData.items[pe].name)
+
+
+                    })
+                    const getDXName = (id) => {
+                        return response.metaData.items[id].name
+
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                   
+                    dx.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = response.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'column'
+                        pe.map(p_e=>{
+                            let rw = response.rows.find(rw1=>rw1[response.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[response.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                response.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    dx_target.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = target.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'spline'
+                        pe.map(p_e=>{
+                            let rw = target.rows.find(rw1=>rw1[target.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[target.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                target.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {
+                        let finalperiodname = []
+                        finalperiodname.push(periodname[0]);
+                        finalperiodname.push(periodname[periodname.length - 1]);
+
+                        return finalperiodname
+                    }
+                    drawbargraphs('parenting', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
+                })
+                });
+        }
+        function getViolence(url,url1) {
+            justFetch(url, {})
+                .then(response => {
+                    justFetch(url1,{})
+                        .then(target=>{
+                    var cTitle = 'Post Violence Care'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
+                    if (mechanism_length.length > 1){
+                        var mechanismName = 'All Partners'
+                    }else{
+                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                        var mechanismName = response.metaData.items[mechanism].name;
+                    }             
+                    
+                    var dx = response.metaData.dimensions.dx;
+                    var dx_target = target.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var stacking = ''
+                    var periodname = []
+                    var dataRows = []
+
+                    let dataToPlot = []
+
+                    dataValues = Array.from(response.rows, r => r[3])
+                    const { rows } = response
+                    response.metaData.dimensions.pe.map(pe => {
+                        periodname.push(response.metaData.items[pe].name)
+
+
+                    })
+                    const getDXName = (id) => {
+                        return response.metaData.items[id].name
+
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                   
+                    dx.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = response.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'column'
+                        pe.map(p_e=>{
+                            let rw = response.rows.find(rw1=>rw1[response.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[response.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                response.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    dx_target.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = target.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'spline'
+                        pe.map(p_e=>{
+                            let rw = target.rows.find(rw1=>rw1[target.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[target.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                target.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {
+                        let finalperiodname = []
+                        finalperiodname.push(periodname[0]);
+                        finalperiodname.push(periodname[periodname.length - 1]);
+
+                        return finalperiodname
+                    }
+                    drawbargraphs('violence', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
+                })
+                });
+        }
+        function getEducation(url,url1) {
+            justFetch(url, {})
+                .then(response => {
+                    justFetch(url1,{})
+                        .then(target=>{
+                    var cTitle = 'Education Subsidy'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
+                    if (mechanism_length.length > 1){
+                        var mechanismName = 'All Partners'
+                    }else{
+                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                        var mechanismName = response.metaData.items[mechanism].name;
+                    }             
+                    
+                    var dx = response.metaData.dimensions.dx;
+                    var dx_target = target.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var stacking = ''
+                    var periodname = []
+                    var dataRows = []
+
+                    let dataToPlot = []
+
+                    dataValues = Array.from(response.rows, r => r[3])
+                    const { rows } = response
+                    response.metaData.dimensions.pe.map(pe => {
+                        periodname.push(response.metaData.items[pe].name)
+
+
+                    })
+                    const getDXName = (id) => {
+                        return response.metaData.items[id].name
+
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                   
+                    dx.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = response.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'column'
+                        pe.map(p_e=>{
+                            let rw = response.rows.find(rw1=>rw1[response.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[response.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                response.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    dx_target.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = target.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'spline'
+                        pe.map(p_e=>{
+                            let rw = target.rows.find(rw1=>rw1[target.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[target.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                target.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {
+                        let finalperiodname = []
+                        finalperiodname.push(periodname[0]);
+                        finalperiodname.push(periodname[periodname.length - 1]);
+
+                        return finalperiodname
+                    }
+                    drawbargraphs('education', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
+                })
+                });
+        }
+        function getCondom(url,url1) {
+            justFetch(url, {})
+                .then(response => {
+                    justFetch(url1,{})
+                        .then(target=>{
+                    var cTitle = 'Condom Promotion'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
+                    if (mechanism_length.length > 1){
+                        var mechanismName = 'All Partners'
+                    }else{
+                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                        var mechanismName = response.metaData.items[mechanism].name;
+                    }             
+                    
+                    var dx = response.metaData.dimensions.dx;
+                    var dx_target = target.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var stacking = ''
+                    var periodname = []
+                    var dataRows = []
+
+                    let dataToPlot = []
+
+                    dataValues = Array.from(response.rows, r => r[3])
+                    const { rows } = response
+                    response.metaData.dimensions.pe.map(pe => {
+                        periodname.push(response.metaData.items[pe].name)
+
+
+                    })
+                    const getDXName = (id) => {
+                        return response.metaData.items[id].name
+
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                   
+                    dx.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = response.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'column'
+                        pe.map(p_e=>{
+                            let rw = response.rows.find(rw1=>rw1[response.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[response.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                response.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    dx_target.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = target.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'spline'
+                        pe.map(p_e=>{
+                            let rw = target.rows.find(rw1=>rw1[target.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[target.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                target.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {
+                        let finalperiodname = []
+                        finalperiodname.push(periodname[0]);
+                        finalperiodname.push(periodname[periodname.length - 1]);
+
+                        return finalperiodname
+                    }
+                    drawbargraphs('condom', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
+                })
+                });
+        }
+        function getContraception(url,url1) {
+            justFetch(url, {})
+                .then(response => {
+                    justFetch(url1,{})
+                        .then(target=>{
+                    var cTitle = 'Contraception IEC'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
+                    if (mechanism_length.length > 1){
+                        var mechanismName = 'All Partners'
+                    }else{
+                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                        var mechanismName = response.metaData.items[mechanism].name;
+                    }             
+                    
+                    var dx = response.metaData.dimensions.dx;
+                    var dx_target = target.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var stacking = ''
+                    var periodname = []
+                    var dataRows = []
+
+                    let dataToPlot = []
+
+                    dataValues = Array.from(response.rows, r => r[3])
+                    const { rows } = response
+                    response.metaData.dimensions.pe.map(pe => {
+                        periodname.push(response.metaData.items[pe].name)
+
+
+                    })
+                    const getDXName = (id) => {
+                        return response.metaData.items[id].name
+
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                   
+                    dx.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = response.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'column'
+                        pe.map(p_e=>{
+                            let rw = response.rows.find(rw1=>rw1[response.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[response.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                response.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    dx_target.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = target.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'spline'
+                        pe.map(p_e=>{
+                            let rw = target.rows.find(rw1=>rw1[target.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[target.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                target.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {
+                        let finalperiodname = []
+                        finalperiodname.push(periodname[0]);
+                        finalperiodname.push(periodname[periodname.length - 1]);
+
+                        return finalperiodname
+                    }
+                    drawbargraphs('contraception', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
+                })
+                });
+        }
+        function getPrep(url,url1) {
+            justFetch(url, {})
+                .then(response => {
+                    justFetch(url1,{})
+                        .then(target=>{
+                    var cTitle = 'Prep IEC'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
+                    if (mechanism_length.length > 1){
+                        var mechanismName = 'All Partners'
+                    }else{
+                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                        var mechanismName = response.metaData.items[mechanism].name;
+                    }             
+                    
+                    var dx = response.metaData.dimensions.dx;
+                    var dx_target = target.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var stacking = ''
+                    var periodname = []
+                    var dataRows = []
+
+                    let dataToPlot = []
+
+                    dataValues = Array.from(response.rows, r => r[3])
+                    const { rows } = response
+                    response.metaData.dimensions.pe.map(pe => {
+                        periodname.push(response.metaData.items[pe].name)
+
+
+                    })
+                    const getDXName = (id) => {
+                        return response.metaData.items[id].name
+
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                   
+                    dx.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = response.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'column'
+                        pe.map(p_e=>{
+                            let rw = response.rows.find(rw1=>rw1[response.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[response.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                response.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    dx_target.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = target.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'spline'
+                        pe.map(p_e=>{
+                            let rw = target.rows.find(rw1=>rw1[target.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[target.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                target.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {
+                        let finalperiodname = []
+                        finalperiodname.push(periodname[0]);
+                        finalperiodname.push(periodname[periodname.length - 1]);
+
+                        return finalperiodname
+                    }
+                    drawbargraphs('prep', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
+                })
+                });
+        }
+        function getPrep_new(url,url1) {
+            justFetch(url, {})
+                .then(response => {
+                    justFetch(url1,{})
+                        .then(target=>{
+                    var cTitle = 'Prep New'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
+                    if (mechanism_length.length > 1){
+                        var mechanismName = 'All Partners'
+                    }else{
+                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                        var mechanismName = response.metaData.items[mechanism].name;
+                    }             
+                    
+                    var dx = response.metaData.dimensions.dx;
+                    var dx_target = target.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var stacking = ''
+                    var periodname = []
+                    var dataRows = []
+
+                    let dataToPlot = []
+
+                    dataValues = Array.from(response.rows, r => r[3])
+                    const { rows } = response
+                    response.metaData.dimensions.pe.map(pe => {
+                        periodname.push(response.metaData.items[pe].name)
+
+
+                    })
+                    const getDXName = (id) => {
+                        return response.metaData.items[id].name
+
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                   
+                    dx.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = response.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'column'
+                        pe.map(p_e=>{
+                            let rw = response.rows.find(rw1=>rw1[response.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[response.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                response.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    dx_target.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = target.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'spline'
+                        pe.map(p_e=>{
+                            let rw = target.rows.find(rw1=>rw1[target.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[target.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                target.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {
+                        let finalperiodname = []
+                        finalperiodname.push(periodname[0]);
+                        finalperiodname.push(periodname[periodname.length - 1]);
+
+                        return finalperiodname
+                    }
+                    drawbargraphs('prep_new', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
+                })
+                });
+        }
+        function getcsea(url,url1) {
+            justFetch(url, {})
+                .then(response => {
+                    justFetch(url1,{})
+                        .then(target=>{
+                    var cTitle = 'CSEA'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
+                    if (mechanism_length.length > 1){
+                        var mechanismName = 'All Partners'
+                    }else{
+                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                        var mechanismName = response.metaData.items[mechanism].name;
+                    }         
+                    var dx = response.metaData.dimensions.dx;
+                    var dx_target = target.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var stacking = ''
+                    var periodname = []
+                    var dataRows = []
+
+                    let dataToPlot = []
+
+                    dataValues = Array.from(response.rows, r => r[3])
+                    const { rows } = response
+                    response.metaData.dimensions.pe.map(pe => {
+                        periodname.push(response.metaData.items[pe].name)
+
+
+                    })
+                    const getDXName = (id) => {
+                        return response.metaData.items[id].name
+
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                   
+                    dx.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = response.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'column'
+                        pe.map(p_e=>{
+                            let rw = response.rows.find(rw1=>rw1[response.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[response.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                response.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    dx_target.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = target.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'spline'
+                        pe.map(p_e=>{
+                            let rw = target.rows.find(rw1=>rw1[target.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[target.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                target.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {
+                        let finalperiodname = []
+                        finalperiodname.push(periodname[0]);
+                        finalperiodname.push(periodname[periodname.length - 1]);
+
+                        return finalperiodname
+                    }
+                    drawbargraphs('csea', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
+                })
+                });
+        }
+        function getEntre(url,url1) {
+            justFetch(url, {})
+                .then(response => {
+                    justFetch(url1,{})
+                        .then(target=>{
+                    var cTitle = 'CSEA'
+                    var theorgunit = response.metaData.dimensions.ou[0];
+                    var curorg = response.metaData.items[theorgunit].name;
+                    var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
+                    if (mechanism_length.length > 1){
+                        var mechanismName = 'All Partners'
+                    }else{
+                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
+                        var mechanismName = response.metaData.items[mechanism].name;
+                    }             
+                    console.log(target)
+                    var dx = response.metaData.dimensions.dx;
+                    var dx_target = target.metaData.dimensions.dx;
+                    var pe = response.metaData.dimensions.pe;
+                    var stacking = ''
+                    var periodname = []
+                    var dataRows = []
+
+                    let dataToPlot = []
+
+                    dataValues = Array.from(response.rows, r => r[3])
+                    const { rows } = response
+                    response.metaData.dimensions.pe.map(pe => {
+                        periodname.push(response.metaData.items[pe].name)
+
+
+                    })
+                    const getDXName = (id) => {
+                        return response.metaData.items[id].name
+
+                    }
+                    const toNumbers = arr => arr.map(Number);
+                   
+                    dx.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = response.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'column'
+                        pe.map(p_e=>{
+                            let rw = response.rows.find(rw1=>rw1[response.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[response.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                response.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    dx_target.map((d_x,ix)=>{
+                        let datapoint = {}
+                        datapoint.name = target.metaData.items[d_x].name
+                        datapoint.data = []
+                        datapoint.type = 'spline'
+                        pe.map(p_e=>{
+                            let rw = target.rows.find(rw1=>rw1[target.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[target.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
+                            datapoint.data.push(parseFloat(rw[
+                                target.headers.findIndex(jk => jk.name == "value")
+                            ]))
+                        })
+                        dataToPlot.push(datapoint)
+                    })
+                    var fperiodname = periodRange()
+                    function periodRange() {
+                        let finalperiodname = []
+                        finalperiodname.push(periodname[0]);
+                        finalperiodname.push(periodname[periodname.length - 1]);
+
+                        return finalperiodname
+                    }
+                    drawbargraphs('entrepreneurship', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
+                })
+                });
+        }
         
-        function getTestingCascade(url) {
-            justFetch(url, {})
-                .then(response => {
-                    var cTitle = 'Testing Cascade'
-                    var theorgunit = response.metaData.dimensions.ou[0];
-                    var curorg = response.metaData.items[theorgunit].name;
-                     var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
-                    if (mechanism_length.length > 1){
-                        var mechanismName = 'All Partners'
-                    }else{
-                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
-                        var mechanismName = response.metaData.items[mechanism].name;
-                    }    
-                    var dx = response.metaData.dimensions.dx;
-                    var pe = response.metaData.dimensions.pe;
-                    var periodname = []
-                    var dataRows = []
-                    var stacking = ''
-                    let dataToPlot = []
-                    var yAxis = 'Percentage'
-                    var today = new Date()
-                    var year = today.getFullYear()
-                    var month = today.getMonth()
-                    var todayMonth = `${year}${month}`
-                    var periodsArray = []
-                    
-                    if (finalpe == `LAST_6_MONTHS`){
-                    response.metaData.dimensions.pe.map(pe => {  
-                        periodname.push(response.metaData.items[todayMonth].name)
-                    })}else{
-                        response.metaData.dimensions.pe.map(pe => {  
-                        periodsArray.push(pe)
-                    })
-                       var lastPeriod = periodsArray.slice(-1).pop()
-                       periodname.push(response.metaData.items[lastPeriod].name)
-                    }
 
-                    dataValues = Array.from(response.rows, r => r[2])
-                    const { rows } = response
-                    response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
-
-
-                    })
-                    const getDXName = (id) => {
-                        return response.metaData.items[id].name
-
-                    }
-                    const toNumbers = arr => arr.map(Number);
-                  
-                    
-                    
-                    dx.map(id=>{
-
-                            const data= rows.filter(row=>{
-                                return row[0] === id 
-                            })
-                           
-                        if (data.length > 1){
-
-                                    const data1 = data.filter(datas=>{
-                                        return datas[0] === id
-                                    })
-                                 
-                            let dataSM = Array.from(data1, r=>r[2])
-                            let fData = toNumbers(dataSM)
-                           
-                        if (data[0] !== undefined){
-                                
-                            if(data[0][0]==="kfQAWeTuKzW"){
-                            graphdata={"type":'scatter',"name":getDXName(id), "data":fData}
-                            dataToPlot.push(graphdata)
-                            }else if(data[0][0]==="XjMHcVmlLno"){
-                            graphdata={"type":'scatter',"name":getDXName(id), "data":fData}
-                            dataToPlot.push(graphdata)
-                            }else if(data[0][0]==="VkJSCzLdnMc"){
-                            graphdata={"type":'scatter',"name":getDXName(id), "data":fData}
-                            dataToPlot.push(graphdata)
-                            }else if(data[0][0]==="GIpH4qaVeI8"){
-                            graphdata={"type":'scatter',"name":getDXName(id), "data":fData}
-                            dataToPlot.push(graphdata)
-                            }else{
-                            graphdata={"type":'column',"name":getDXName(id), "data":fData}
-                            dataToPlot.push(graphdata)
-
-                            }}
-
-                        }else{
-                        if (data[0] !== undefined){
-                            if (data[0][0]==="kfQAWeTuKzW"){
-                            graphdata={"type":'scatter',"name":getDXName(id), "data":[parseInt(data[0][2])]}
-                            dataToPlot.push(graphdata)
-                            }else if(data[0][0]==="XjMHcVmlLno"){
-                            graphdata={"type":'scatter',"name":getDXName(id), "data":[parseInt(data[0][2])]}
-                            dataToPlot.push(graphdata)
-                            }else if(data[0][0]==="VkJSCzLdnMc"){
-                            graphdata={"type":'scatter',"name":getDXName(id), "data":[parseInt(data[0][2])]}
-                            dataToPlot.push(graphdata)
-                            }else if(data[0][0]==="GIpH4qaVeI8"){
-                            graphdata={"type":'scatter',"name":getDXName(id), "data":[parseInt(data[0][2])]}
-                            dataToPlot.push(graphdata)
-                            } else{                        
-                            graphdata={"type":'column',"name":getDXName(id), "data":[parseInt(data[0][2])]}
-                            dataToPlot.push(graphdata)
-
-                            }
-                            }
-                            }
-                            })
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push('September 2020');
-                        finalperiodname.push(periodname[0]);
-
-                        return finalperiodname
-                    }
-
-                    drawTestingCascade('testing_cascade', cTitle, periodname, fperiodname, mechanismName, dataToPlot, stacking, yAxis)
-
-                });
-        }
-
-        function getTxCurrindexed(url) {
-            justFetch(url, {})
-                .then(response => {
-                    var cTitle = 'tx_curr indexed'
-                    var theorgunit = response.metaData.dimensions.ou[0];
-                    var curorg = response.metaData.items[theorgunit].name;
-                     var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
-                    if (mechanism_length.length > 1){
-                        var mechanismName = 'All Partners'
-                    }else{
-                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
-                        var mechanismName = response.metaData.items[mechanism].name;
-                    }    
-                    var dx = response.metaData.dimensions.dx;
-                    var pe = response.metaData.dimensions.pe;
-                    var periodname = []
-                    var stacking = ''
-                    var dataRows = []
-                    var yAxis = 'Proportions'
-                    let dataToPlot = []
-
-                    dataValues = Array.from(response.rows, r => r[3])
-                    const { rows } = response
-                    response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
-
-
-                    })
-                    const getDXName = (id) => {
-                        return response.metaData.items[id].name
-
-                    }
-                    const toNumbers = arr => arr.map(Number);
-
-                    dx.map((d_x,ix)=>{
-                        let datapoint = {}
-                        datapoint.name = response.metaData.items[d_x].name
-                        datapoint.data = []
-                        datapoint.type = 'column'
-                        pe.map(p_e=>{
-                            let rw = response.rows.find(rw1=>rw1[response.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[response.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
-                            datapoint.data.push(parseFloat(rw[
-                                response.headers.findIndex(jk => jk.name == "value")
-                            ]))
-                        })
-                        // console.log(datapoint.name.toLowerCase().split(" ").join("_"))
-                        if (datapoint.name.toLowerCase().split(" ").join("_").includes("proportion_of_tx_curr_with_contacts_<19_yo")) {
-                            
-                                datapoint.type = 'spline'
-                            }
-                        dataToPlot.push(datapoint)
-                    })
-
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push(periodname[0]);
-                        finalperiodname.push(periodname[periodname.length - 1]);
-
-                        return finalperiodname
-                    }
-                    drawSpines('tx_curr_indexed', cTitle, periodname, fperiodname, mechanismName, dataToPlot, stacking, yAxis)
-
-                });
-        }
-
-        function getElicitationRation(url) {
-            justFetch(url, {})
-                .then(response => {
-                    var cTitle = 'Elicitation Ration'
-                    var theorgunit = response.metaData.dimensions.ou[0];
-                    var curorg = response.metaData.items[theorgunit].name;
-                     var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
-                    if (mechanism_length.length > 1){
-                        var mechanismName = 'All Partners'
-                    }else{
-                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
-                        var mechanismName = response.metaData.items[mechanism].name;
-                    }    
-                    var dx = response.metaData.dimensions.dx;
-                    var pe = response.metaData.dimensions.pe;
-                    var periodname = []
-                    var dataRows = []
-                    var stacking = ''
-                    let dataToPlot = []
-                    var yAxis = 'Proportions'
-                    dataValues = Array.from(response.rows, r => r[3])
-                    const { rows } = response
-                    response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
-
-
-                    })
-                    const getDXName = (id) => {
-                        return response.metaData.items[id].name
-
-                    }
-                    const toNumbers = arr => arr.map(Number);
-
-                     dx.map((d_x,ix)=>{
-                        let datapoint = {}
-                        datapoint.name = response.metaData.items[d_x].name
-                        datapoint.data = []
-                        datapoint.type = 'column'
-                        pe.map(p_e=>{
-                            let rw = response.rows.find(rw1=>rw1[response.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[response.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
-                            datapoint.data.push(parseFloat(rw[
-                                response.headers.findIndex(jk => jk.name == "value")
-                            ]))
-                        })
-                        // console.log(datapoint.name.toLowerCase().split(" ").join("_"))
-                        if (datapoint.name.toLowerCase().split(" ").join("_").includes("elicitation_ratio")) {
-                            
-                                datapoint.type = 'spline'
-                            }
-                        dataToPlot.push(datapoint)
-                    })
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push(periodname[0]);
-                        finalperiodname.push(periodname[periodname.length - 1]);
-
-                        return finalperiodname
-                    }
-                    drawSpines('ElicitationRation', cTitle, periodname, fperiodname, mechanismName, dataToPlot, stacking, yAxis)
-
-                });
-        }
-
-
-        function getTestingYield(url) {
-            justFetch(url, {})
-                .then(response => {
-                    var cTitle = 'Testing and Yield (cumulative)'
-                    var theorgunit = response.metaData.dimensions.ou[0];
-                    var curorg = response.metaData.items[theorgunit].name;
-                     var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
-                    if (mechanism_length.length > 1){
-                        var mechanismName = 'All Partners'
-                    }else{
-                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
-                        var mechanismName = response.metaData.items[mechanism].name;
-                    }    
-                    var dx = response.metaData.dimensions.dx;
-                    var pe = response.metaData.dimensions.pe;
-                    
-                    var yAxis = 'Yield'
-                    var periodname = []
-                    var dataRows = []
-
-                    let dataToPlot = []
-
-                    dataValues = Array.from(response.rows, r => r[3])
-                    const { rows } = response
-                    var today = new Date()
-                    var year = today.getFullYear()
-                    var month = today.getMonth()
-                    var todayMonth = `${year}${month}`
-                    var periodsArray = []
-                    
-                    if (finalpe == `LAST_6_MONTHS`){
-                    response.metaData.dimensions.pe.map(pe => {  
-                        periodname.push(response.metaData.items[todayMonth].name)
-                    })}else{
-                        response.metaData.dimensions.pe.map(pe => {  
-                        periodsArray.push(pe)
-                    })
-                       var lastPeriod = periodsArray.slice(-1).pop()
-                       periodname.push(response.metaData.items[lastPeriod].name)
-                    }
-                    const getDXName = (id) => {
-                        return response.metaData.items[id].name
-
-                    }
-                    const toNumbers = arr => arr.map(Number);
-                    
-
-                    dx.map(id => {
-
-                        const data = rows.filter(row => {
-                            return row[0] === id
-                        })
-
-
-                        if (data.length >= 1) {
-
-                            const data1 = data.filter(datas => {
-                                return datas[0] === id
-                            })
-                            let dataSM = Array.from(data1, r => r[2])
-                            let fData = toNumbers(dataSM)
-                            if (data[0] !== undefined) {
-
-                                if (data[0][0] === "X6Wiw3Dj7sq") {
-                                    graphdata = { "type": 'spline', "name": getDXName(id), "data": fData }
-                                    dataToPlot.push(graphdata)
-                                } else {
-                                    graphdata = { "type": 'column', "name": getDXName(id), "data": fData }
-                                    dataToPlot.push(graphdata)
-
-                                }
-                            }
-
-                        } else {
-                            if (data[0] !== undefined) {
-                                if (data[0][0] === "X6Wiw3Dj7sq") {
-                                    graphdata = { "type": 'spline', "name": getDXName(id), "data": [parseInt(data[0][3])] }
-                                    dataToPlot.push(graphdata)
-                                } else {
-                                    graphdata = { "type": 'column', "name": getDXName(id), "data": [parseInt(data[0][3])] }
-                                    dataToPlot.push(graphdata)
-                                }
-                            }
-
-                        }
-                    })
-                    
-
-                    // console.log(response.headers)
-                    // dx.map((d_x,ix)=>{
-                    //     let datapoint = {}
-                    //     datapoint.name = response.metaData.items[d_x].name
-                    //     datapoint.data = []
-                    //     datapoint.type = 'column'
-                    //     pe.map(p_e=>{
-                    //         let rw = response.rows.find(rw1=>rw1[response.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[response.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
-                    //         console.log(response.rows)
-                    //         datapoint.data.push(parseFloat(rw[
-                    //             response.headers.findIndex(jk => jk.name == "value")
-                    //         ]))
-                    //     })
-                    //     // console.log(datapoint.name.toLowerCase().split(" ").join("_"))
-                        
-                    //     if (datapoint.name.toLowerCase().split(" ").join("_").includes("yield")) {
-                            
-                    //             datapoint.type = 'spline'
-                    //         }
-                    //     dataToPlot.push(datapoint)
-                    // })
-
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push('September 2020');
-                        finalperiodname.push(periodname[periodname.length - 1]);
-
-                        return finalperiodname
-                    }
-                    drawmultipleSpines('testing_yield', cTitle, periodname, fperiodname, mechanismName, dataToPlot, yAxis)
-
-                });
-
-        }
-
-        function getOnArt(url) {
-            justFetch(url, {})
-                .then(response => {
-                    var cTitle = 'On ART Cumulative'
-                    var theorgunit = response.metaData.dimensions.ou[0];
-                    var curorg = response.metaData.items[theorgunit].name;
-                     var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
-                    if (mechanism_length.length > 1){
-                        var mechanismName = 'All Partners'
-                    }else{
-                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
-                        var mechanismName = response.metaData.items[mechanism].name;
-                    }    
-                    var dx = response.metaData.dimensions.dx;
-                    var pe = response.metaData.dimensions.pe;
-                    var yAxis = 'Linkage'
-                    var stacking = ''
-                    var periodname = []
-                    var dataRows = []
-
-                    let dataToPlot = []
-
-                    dataValues = Array.from(response.rows, r => r[3])
-                    var today = new Date()
-                    var year = today.getFullYear()
-                    var month = today.getMonth()
-                    var todayMonth = `${year}${month}`
-                    var periodsArray = []
-                    
-                    if (finalpe == `LAST_6_MONTHS`){
-                    response.metaData.dimensions.pe.map(pe => {  
-                        periodname.push(response.metaData.items[todayMonth].name)
-                    })}else{
-                        response.metaData.dimensions.pe.map(pe => {  
-                        periodsArray.push(pe)
-                    })
-                       var lastPeriod = periodsArray.slice(-1).pop()
-                       periodname.push(response.metaData.items[lastPeriod].name)
-                    }
-                    const { rows } = response
-                    
-                    const getDXName = (id) => {
-                        return response.metaData.items[id].name
-
-                    }
-                    const toNumbers = arr => arr.map(Number);
-                    // console.log(pe)
-
-                    dx.map(id => {
-
-                        const data = rows.filter(row => {
-                            return row[0] === id
-                        })
-
-                        if (data.length >= 1) {
-
-                            const data1 = data.filter(datas => {
-                                return datas[0] === id
-                            })
-
-                            let dataSM = Array.from(data1, r => r[2])
-                            let fData = toNumbers(dataSM)
-                            if (data[0] !== undefined) {
-
-                                if (data[0][0] === "hiKuwyHMcud") {
-                                    graphdata = { "type": 'spline', "name": getDXName(id), "data": fData }
-                                    dataToPlot.push(graphdata)
-                                } else {
-                                    graphdata = { "type": 'column', "name": getDXName(id), "data": fData }
-                                    dataToPlot.push(graphdata)
-
-                                }
-                            }
-
-                            // graphdata={"type":'column',"name":getDXName(id), "data":fData}
-                            // dataToPlot.push(graphdata)
-                        } else {
-                            if (data[0] !== undefined) {
-                                if (data[0][0] === "hiKuwyHMcud") {
-                                    graphdata = { "type": 'spline', "name": getDXName(id), "data": [parseInt(data[0][3])] }
-                                    dataToPlot.push(graphdata)
-                                } else {
-
-                                    graphdata = { "type": 'column', "name": getDXName(id), "data": [parseInt(data[0][3])] }
-                                    dataToPlot.push(graphdata)
-
-                                }
-                            }
-
-                        }
-                    })
-                    // dx.map((d_x,ix)=>{
-                    //     let datapoint = {}
-                    //     datapoint.name = response.metaData.items[d_x].name
-                    //     datapoint.data = []
-                    //     datapoint.type = 'column'
-                    //     pe.map(p_e=>{
-                    //         let rw = response.rows.find(rw1=>rw1[response.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[response.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
-                    //         // console.log(d_x)
-                    //         datapoint.data.push(parseFloat(rw[
-                    //             response.headers.findIndex(jk => jk.name == "value")
-                    //         ]))
-                    //     })
-                    //     // console.log(datapoint.name.toLowerCase().split(" ").join("_"))
-                        
-                    //     if (datapoint.name.toLowerCase().split(" ").join("_").includes("linkage")) {
-                            
-                    //             datapoint.type = 'spline'
-                    //         }
-                    //     dataToPlot.push(datapoint)
-                    // })
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push('September 2020');
-                        finalperiodname.push(periodname[periodname.length - 1]);
-
-                        return finalperiodname
-                    }
-                    drawSpines('on_art', cTitle, periodname, fperiodname, mechanismName, dataToPlot, stacking, yAxis)
-
-                });
-
-        }
-
-        function getovcenrollment(url) {
+        function getActive(url) {
             justFetch(url, {})
                 .then(response => {
 
-                    var cTitle = 'OVC enrollment (Cumulative)'
-                    var theorgunit = response.metaData.dimensions.ou[0];
-                    var curorg = response.metaData.items[theorgunit].name;
-                     var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
-                    if (mechanism_length.length > 1){
-                        var mechanismName = 'All Partners'
-                    }else{
-                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
-                        var mechanismName = response.metaData.items[mechanism].name;
-                    }    
-                    var dx = response.metaData.dimensions.dx;
-                    var pe = response.metaData.dimensions.pe;
-                    var stacking = ''
-                    var periodname = []
-                    var dataRows = []
-
-                    let dataToPlot = []
-                    var today = new Date()
-                    var year = today.getFullYear()
-                    var month = today.getMonth()
-                    var todayMonth = `${year}${month}`
-                    var periodsArray = []
-                    
-                    if (finalpe == `LAST_6_MONTHS`){
-                    response.metaData.dimensions.pe.map(pe => {  
-                        periodname.push(response.metaData.items[todayMonth].name)
-                    })}else{
-                        response.metaData.dimensions.pe.map(pe => {  
-                        periodsArray.push(pe)
-                    })
-                       var lastPeriod = periodsArray.slice(-1).pop()
-                       periodname.push(response.metaData.items[lastPeriod].name)
-                    }
-
-                    dataValues = Array.from(response.rows, r => r[2])
-                    const { rows } = response
-                    response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
-
-
-                    })
-                    const getDXName = (id) => {
-                        return response.metaData.items[id].name
-
-                    }
-                    
-                    const toNumbers = arr => arr.map(Number);
- 
-                    // dx.map((d_x,ix)=>{
-                    //     let datapoint = {}
-                    //     datapoint.name = response.metaData.items[d_x].name
-                    //     datapoint.data = []
-                    //     datapoint.type = 'column'
-                    //     pe.map(p_e=>{
-                    //         let rw = response.rows.find(rw1=>rw1[response.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[response.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
-                    //         datapoint.data.push(parseFloat(rw[
-                    //             response.headers.findIndex(jk => jk.name == "value")
-                    //         ]))
-                    //     })
-                        
-                    //     dataToPlot.push(datapoint)
-                    // })
-                    dx.map(id=>{
-                      
-                      const data= rows.filter(row=>{
-                          return row[0] === id 
-                      }) 
-                      if (data.length > 1){
-                      
-                              const data1 = data.filter(datas=>{
-                                  return datas[0] === id
-                              })
-                             
-                      let dataSM = Array.from(data1, r=>r[3])
-                      let fData = toNumbers(dataSM)
-                      graphdata={"name":getDXName(id), "data":fData}
-                      dataToPlot.push(graphdata)
-                      }else{
-                      if (data[0] !== undefined){
-                      graphdata={"name":getDXName(id), "data":[parseInt(data[0][2])]}
-                      dataToPlot.push(graphdata)
-                  }
-                  }
-                  })
-                    
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push('September 2020');
-                        // console.log(periodname)
-                        finalperiodname.push(periodname[0]);
-
-                        return finalperiodname
-                    }
-                    drawbargraphs('ovc_enrollment', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
-
-                });
-
-        }
-
-        function getQaCheck(url) {
-            justFetch(url, {})
-                .then(response => {
-
-                    var cTitle = 'QA check on contacts'
+                    var cTitle = 'Active Beneficiaries'
                     var theorgunit = response.metaData.dimensions.ou[0];
                     var curorg = response.metaData.items[theorgunit].name;
                      var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
@@ -1205,17 +1383,22 @@
 
                         return finalperiodname
                     }
-                    drawbargraphs('qa_check', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
+                    drawArea('active', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
 
                 });
 
         }
 
-        function getContactbyStatus(url) {
+
+
+
+
+
+        function getLayering(url) {
             justFetch(url, {})
                 .then(response => {
 
-                    var cTitle = 'Contacts by HIV Status'
+                    var cTitle = 'Service Layering'
                     var theorgunit = response.metaData.dimensions.ou[0];
                     var curorg = response.metaData.items[theorgunit].name;
                      var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
@@ -1268,212 +1451,23 @@
 
                         return finalperiodname
                     }
-                    drawbargraphs('contact_hiv_status', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
+                    drawbargraphs('layering', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
 
                 });
 
         }
 
-        function getSubPop(url) {
-            justFetch(url, {})
-                .then(response => {
-
-                    var cTitle = 'TX_CURR reviewed by sub population'
-                    var theorgunit = response.metaData.dimensions.ou[0];
-                    var curorg = response.metaData.items[theorgunit].name;
-                     var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
-                    if (mechanism_length.length > 1){
-                        var mechanismName = 'All Partners'
-                    }else{
-                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
-                        var mechanismName = response.metaData.items[mechanism].name;
-                    }    
-                    var dx = response.metaData.dimensions.dx;
-                    var pe = response.metaData.dimensions.pe;
-                    var stacking = 'normal'
-                    var periodname = []
-                    var dataRows = []
-
-                    let dataToPlot = []
-
-                    dataValues = Array.from(response.rows, r => r[3])
-                    const { rows } = response
-                    response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
 
 
-                    })
-                    const getDXName = (id) => {
-                        return response.metaData.items[id].name
-
-                    }
-                    const toNumbers = arr => arr.map(Number);
 
 
-                    dx.map((d_x,ix)=>{
-                        let datapoint = {}
-                        datapoint.name = response.metaData.items[d_x].name
-                        datapoint.data = []
-                        datapoint.type = 'column'
-                        pe.map(p_e=>{
-                            let rw = response.rows.find(rw1=>rw1[response.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[response.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
-                            datapoint.data.push(parseFloat(rw[
-                                response.headers.findIndex(jk => jk.name == "value")
-                            ]))
-                        })
-                        if (datapoint.name.toLowerCase().split(" ").join("_").includes("proportion_reviewed")) {
-                                datapoint.type = 'spline'
-                            }
-                        dataToPlot.push(datapoint)
-                    })
-                   
-
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push(periodname[0]);
-                        finalperiodname.push(periodname[periodname.length - 1]);
-
-                        return finalperiodname
-                    }
-                    drawbargraphs('tx_curr_reviewed_subpop', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
-
-                });
-
-        }
-
-        function getTestingCoverage(url) {
-            justFetch(url, {})
-                .then(response => {
-                    var cTitle = 'Testing Coverage'
-                    var theorgunit = response.metaData.dimensions.ou[0];
-                    var curorg = response.metaData.items[theorgunit].name;
-                     var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
-                    if (mechanism_length.length > 1){
-                        var mechanismName = 'All Partners'
-                    }else{
-                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
-                        var mechanismName = response.metaData.items[mechanism].name;
-                    }    
-                    var dx = response.metaData.dimensions.dx;
-                    var pe = response.metaData.dimensions.pe;
-                    var stacking = 'normal'
-                    var periodname = []
-                    var dataRows = []
-
-                    let dataToPlot = []
-
-                    dataValues = Array.from(response.rows, r => r[3])
-                    const { rows } = response
-                    response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
 
 
-                    })
-                    const getDXName = (id) => {
-                        return response.metaData.items[id].name
-
-                    }
-                    const toNumbers = arr => arr.map(Number);
 
 
-                    dx.map((d_x,ix)=>{
-                        let datapoint = {}
-                        datapoint.name = response.metaData.items[d_x].name
-                        datapoint.data = []
-                        datapoint.type = 'column'
-                        pe.map(p_e=>{
-                            let rw = response.rows.find(rw1=>rw1[response.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[response.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
-                            datapoint.data.push(parseFloat(rw[
-                                response.headers.findIndex(jk => jk.name == "value")
-                            ]))
-                        })
-                        // console.log(datapoint.name.toLowerCase().split(" ").join("_"))
-                        if (datapoint.name.toLowerCase().split(" ").join("_").includes("testing_coverage")) {
-                            
-                                datapoint.type = 'spline'
-                            }
-                        dataToPlot.push(datapoint)
-                    })
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push(periodname[0]);
-                        finalperiodname.push(periodname[periodname.length - 1]);
-
-                        return finalperiodname
-                    }
-                    drawSpines('testing_coverage', cTitle, periodname, fperiodname, mechanismName, dataToPlot, stacking)
-
-                });
-        }
-
-        function getTestedResult(url) {
-            justFetch(url, {})
-                .then(response => {
-                    var cTitle = 'Tested vs Tested with Results'
-                    var theorgunit = response.metaData.dimensions.ou[0];
-                    var curorg = response.metaData.items[theorgunit].name;
-                     var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5
-                    if (mechanism_length.length > 1){
-                        var mechanismName = 'All Partners'
-                    }else{
-                        var mechanism = response.metaData.dimensions.lRp2LBbTuM5[0];
-                        var mechanismName = response.metaData.items[mechanism].name;
-                    }    
-                    var dx = response.metaData.dimensions.dx;
-                    var pe = response.metaData.dimensions.pe;
-                    var stacking = 'normal'
-                    var periodname = []
-                    var dataRows = []
-
-                    let dataToPlot = []
-
-                    dataValues = Array.from(response.rows, r => r[3])
-                    const { rows } = response
-                    response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
 
 
-                    })
-                    const getDXName = (id) => {
-                        return response.metaData.items[id].name
-
-                    }
-                    const toNumbers = arr => arr.map(Number);
-
-                    dx.map((d_x,ix)=>{
-                        let datapoint = {}
-                        datapoint.name = response.metaData.items[d_x].name
-                        datapoint.data = []
-                        datapoint.type = 'column'
-                        pe.map(p_e=>{
-                            let rw = response.rows.find(rw1=>rw1[response.headers.findIndex(jk => jk.name == "dx")] == d_x && rw1[response.headers.findIndex(jk => jk.name == "pe")] == p_e) || [0,0,0,0,0]
-                            datapoint.data.push(parseFloat(rw[
-                                response.headers.findIndex(jk => jk.name == "value")
-                            ]))
-                        })
-                        // console.log(datapoint.name.toLowerCase().split(" ").join("_"))
-                        if (datapoint.name.toLowerCase().split(" ").join("_").includes("testing_coverage")) {
-                            
-                                datapoint.type = 'spline'
-                            }
-                        dataToPlot.push(datapoint)
-                    })
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push(periodname[0]);
-                        finalperiodname.push(periodname[periodname.length - 1]);
-
-                        return finalperiodname
-                    }
-                    // console.log(dataToPlot)
-                    drawbargraphs('tested_results', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
-
-                });
-
-        }
+        
 
 
 

@@ -104,11 +104,11 @@ let justFetch = async (endpoint, postoptions) => {
     let req_hd = {};
     let headers = {};
     let final_endpoint = endpoint;
-    if (!location.hostname.includes("localhost")) {
-        let encurl = window.encodeURIComponent(window.btoa(endpoint));
-        // console.log('encurl = '+encurl);
-        final_endpoint = "http://localhost:5600/request/" + encurl;
-    }
+    // if (!location.hostname.includes("localhost")) {
+    //     let encurl = window.encodeURIComponent(window.btoa(endpoint));
+    //     // console.log('encurl = '+encurl);
+    //     final_endpoint = "http://localhost:5600/request/" + encurl;
+    // }
     req_hd.headers = headers;
     req_hd.method = req_method;
     req_hd.Accept = "application/json";
@@ -243,6 +243,59 @@ function drawbargraphs(cName,periodname,fperiodname,mechanismName,cTitle,dataToP
             },
             series: dataToPlot
             });
+}
+function drawArea(cName,periodname,fperiodname,mechanismName,cTitle,dataToPlot,stacking){
+
+    console.log(dataToPlot)
+    Highcharts.chart(cName, {
+            chart: {
+            type: 'area'
+        },
+        title: {
+            text: cTitle
+        },
+        subtitle: {
+            text: fperiodname[0] +' - '+fperiodname[1]+' '+mechanismName
+        },
+        xAxis: {
+            categories: 
+            periodname
+            ,
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+            text: 'Number '
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            area: {
+                marker: {
+                    enabled: false,
+                    symbol: 'circle',
+                    radius: 2,
+                    states: {
+                        hover: {
+                            enabled: true
+                        }
+                    }
+                }
+            }
+        },
+        series: [ {
+            name: dataToPlot[0].name,
+            data: dataToPlot[0].data
+        }]
+        });
 }
 
 

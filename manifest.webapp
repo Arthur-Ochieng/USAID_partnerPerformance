@@ -1,5 +1,5 @@
 {
-    "version": "0.1.3",
+    "version": "0.1.5",
     "name": "Partner Reporting Dashboard",
     "description": "An App to Visualize USAID IM Indicators",
     "launch_path": "html/index.html",

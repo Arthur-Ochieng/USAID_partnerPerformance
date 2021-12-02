@@ -144,6 +144,7 @@ function dateRange(startDate, endDate) {
     for(var i = startYear; i <= endYear; i++) {
         var endMonth = i != endYear ? 11 : parseInt(end[1]) - 1;
         var startMon = i === startYear ? parseInt(start[1])-1 : 0;
+        console.log(startMon,endMonth)
         for(var j = startMon; j <= endMonth; j = j > 12 ? j % 12 || 11 : j+1) {
             var month = j+1;
             var displayMonth = month < 10 ? '0'+month : month;
@@ -405,7 +406,7 @@ function drawSpines(cName,cTitle,periodname,fperiodname,mechanismName,dataToPlot
         yAxis: 1,
         data: dataToPlot[2].data,
         tooltip: {
-            valueSuffix: ' %'
+            valueSuffix: ' '
         }
     }]
 });
@@ -491,7 +492,7 @@ function drawmultipleSpines(cName,cTitle,periodname,fperiodname,mechanismName,da
             yAxis: 1,
             data: dataToPlot[4].data,
             tooltip: {
-                valueSuffix: ' %'
+                valueSuffix: ' '
             }
         }]
     }); 

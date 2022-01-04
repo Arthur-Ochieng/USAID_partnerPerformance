@@ -1,6 +1,6 @@
 {
-    "version": "0.1.5",
-    "name": "Partner Reporting Dashboard",
+    "version": "0.1.14",
+    "name": "Partner Reporting Dashboard alpha",
     "description": "An App to Visualize USAID IM Indicators",
     "launch_path": "html/index.html",
     "appType": "APP",

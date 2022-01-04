@@ -54,6 +54,80 @@
                     <div class="col-md-12 p-0" id="loading_target"> </div>
                 </div>
                 <div class="row">
+                    <div class="col-md-3">
+                        <div class="card m-b-1" style="background-color:lightblue;">
+                            <div class="card-body p-2">
+                                <div class="card-text text-caps" style="font-size: 0.8rem; font-weight: 600; color:#111;">
+                                    Patients on Treatment Reviewed
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col-md-12 text-left p-1">
+                                        <h4 class="card-title m-t-1 m-b-1 text-black" style="font-weight:700; font-size: 1.5rem;" id="patients_reviewed">575,187</h4>
+                                    </div>
+                                </div>
+                                <hr class="m-t-0 m-b-0" style="border-color: #eef;"/>
+                                <div class="col-md-12 text-left p-1">
+                                    <div class="card-text text-small latest_month" style="color: #556; font-size: 0.85rem; font-weight: 600;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card m-b-1" style="background-color:lightblue;">
+                            <div class="card-body p-2">
+                                <div class="card-text text-caps" style="font-size: 0.8rem; font-weight: 600; color:#111;">
+                                   Patients on Treatement have Contacts < 19 years
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col-md-12 text-left p-1">
+                                        <h4 class="card-title m-t-1 m-b-1 text-black" style="font-weight:700; font-size: 1.5rem;" id="contacts_19">575,187</h4>
+                                    </div>
+                                </div>
+                                <hr class="m-t-0 m-b-0" style="border-color: #eef;"/>
+                                <div class="col-md-12 text-left p-1">
+                                    <div class="card-text text-small latest_month" style="color: #556; font-size: 0.85rem; font-weight: 600;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card m-b-1" style="background-color:lightblue;">
+                            <div class="card-body p-2">
+                                <div class="card-text text-caps" style="font-size: 0.8rem; font-weight: 600; color:#111;">
+                                    Index to Contact Ration
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col-md-12 text-left p-1">
+                                        <h4 class="card-title m-t-1 m-b-1 text-black" style="font-weight:700; font-size: 1.5rem;" id="contact_ratio">575,187</h4>
+                                    </div>
+                                </div>
+                                <hr class="m-t-0 m-b-0" style="border-color: #eef;"/>
+                                <div class="col-md-12 text-left p-1">
+                                    <div class="card-text text-small latest_month" style="color: #556; font-size: 0.85rem; font-weight: 600;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card m-b-1" style="background-color:lightblue;">
+                            <div class="card-body p-2">
+                                <div class="card-text text-caps" style="font-size: 0.8rem; font-weight: 600; color:#111;">
+                                   Baseline Index Testing Coverage in Children
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col-md-12 text-left p-1">
+                                        <h4 class="card-title m-t-1 m-b-1 text-black" style="font-weight:700; font-size: 1.5rem;" id="baseline">575,187</h4>
+                                    </div>
+                                </div>
+                                <hr class="m-t-0 m-b-0" style="border-color: #eef;"/>
+                                <div class="col-md-12 text-left p-1">
+                                    <div class="card-text text-small latest_month" style="color: #556; font-size: 0.85rem; font-weight: 600;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
@@ -298,7 +372,7 @@
             if (prop && prop.ou) {
                 org_unit = prop.ou
             }
-            let prd = `202109`
+            let prd = getPreviousPMonth()
             if (prop && prop.pe) {
                 prd = prop.pe
             }
@@ -327,8 +401,31 @@
             //     cummulativeperiod = finalpe
             // }
 
+           
+            function getPreviousPMonth() 
+		    {
+                var curdate = new Date();
+
+				var today = curdate.getDate();
+
+				if(today<20)
+					curdate.setMonth(curdate.getMonth() - 2);
+				else
+					curdate.setMonth(curdate.getMonth() - 1);
+
+				per_y = curdate.getFullYear();
+				per_m = parseFloat(curdate.getMonth())+1;
+				
+				if(parseFloat(per_m) < 10){ per_m = "0"+per_m}
+				
+				var per = per_y+""+per_m;
+				
+                return per
+                //return(getPerio(per, false))
+             }
+
             let onArtReview = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?filter=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&dimension=dx:UW4B21MEvlk;coV33AERzhA;NW1vrnCyzXd;AeFO4noHEDJ;SHBwx5cuUkx;bjJPCcuY65I&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
-            console.log(onArtReview)
+            // console.log(onArtReview)
 
             let tx_curr_reviewed = `https://indextestingapp.uonbi.ac.ke/api/29/analytics.json?dimension=dx:UW4B21MEvlk;coV33AERzhA;B1vk3KZikA8&filter=lRp2LBbTuM5:${mechanism}&dimension=pe:${finalpe}&filter=ou:${org_unit}&displayProperty=NAME&outputIdScheme=UID`
 
@@ -376,6 +473,14 @@
 
         }
 
+        function periodRange(periodName) {
+            let finalperiodName = []
+            finalperiodName.push(periodName[0]);
+            finalperiodName.push(periodName[periodName.length - 1]);
+
+            return finalperiodName
+        }
+
         function getart_review(url) {
             justFetch(url, {})
                 .then(response => {
@@ -394,7 +499,7 @@
                     var dx = response.metaData.dimensions.dx;
                     var pe = response.metaData.dimensions.pe;
                     var stacking = ''
-                    var periodname = []
+                    var periodName = []
                     var dataRows = []
 
                     let dataToPlot = []
@@ -402,7 +507,7 @@
                     dataValues = Array.from(response.rows, r => r[3])
                     const { rows } = response
                     response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
+                        periodName.push(response.metaData.items[pe].name)
 
 
                     })
@@ -425,17 +530,27 @@
                         })
                         dataToPlot.push(datapoint)
                     })
-                    console.log(dataToPlot)
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push(periodname[0]);
-                        finalperiodname.push(periodname[periodname.length - 1]);
+                    var fperiodName = periodRange(periodName)
+                    
+                    drawbargraphs('onArtReview', periodName, fperiodName, mechanismName, cTitle, dataToPlot, stacking)
 
-                        return finalperiodname
-                    }
-                    console.log(mechanismName)
-                    drawbargraphs('onArtReview', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
+                    
+                    ////  Patients on Treatment Reviewed 
+                    // console.log(dataToPlot[0].data.length)
+                    let len = dataToPlot[0].data.length - 1
+                    // console.log(len)
+                    let tx_curr_val = dataToPlot.find(r=>r.name=="TX_Curr")?.data[len] || 0
+                    let tx_curr_rev_val = dataToPlot.find(r=>r.name=="TX_curr reviewed")?.data[len] || 0
+                    let contact_less_19 = dataToPlot.find(r=>r.name=="Contacts < 19 years")?.data[len] || 0
+                    let tx_curr_contact_less_19 = dataToPlot.find(r=>r.name=="TX_CURR with contacts <19 years")?.data[len] || 0
+                    let contacts_known_hiv = dataToPlot.find(r=>r.name=="Contacts Known HIV Status")?.data[len] || 0
+                    
+                    
+                    $('#patients_reviewed').html( (parseFloat(tx_curr_rev_val)*100 / parseFloat(tx_curr_val)).toFixed(1)+'%' )
+                    $('#contacts_19').html( (parseFloat(contact_less_19)*100 / parseFloat(tx_curr_val)).toFixed(1)+'%' )
+                    $('#contact_ratio').html( (parseFloat(contact_less_19) / parseFloat(tx_curr_contact_less_19)).toFixed(1)+'' )
+                    $('#baseline').html( (parseFloat(contacts_known_hiv)*100 / parseFloat(contact_less_19)).toFixed(1)+'%' )
+
 
                 });
         }
@@ -455,7 +570,7 @@
                     }    
                     var dx = response.metaData.dimensions.dx;
                     var pe = response.metaData.dimensions.pe;
-                    var periodname = []
+                    var periodName = []
                     var dataRows = []
                     var stacking = ''
                     let dataToPlot = []
@@ -463,13 +578,12 @@
                     dataValues = Array.from(response.rows, r => r[3])
                     const { rows } = response
                     response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
+                        periodName.push(response.metaData.items[pe].name)
 
 
                     })
                     const getDXName = (id) => {
                         return response.metaData.items[id].name
-
                     }
                     const toNumbers = arr => arr.map(Number);
                     // console.log(pe)
@@ -491,15 +605,9 @@
                         dataToPlot.push(datapoint)
                     })
                    
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push(periodname[0]);
-                        finalperiodname.push(periodname[periodname.length - 1]);
-
-                        return finalperiodname
-                    }
-                    drawSpines('tx_curr_reviewed', cTitle, periodname, fperiodname, mechanismName, dataToPlot, stacking)
+                    var fperiodName = periodRange(periodName)
+                    
+                    drawSpines('tx_curr_reviewed', cTitle, periodName, fperiodName, mechanismName, dataToPlot, stacking)
 
                 });
         }
@@ -518,7 +626,7 @@
                     }    
                     var dx = response.metaData.dimensions.dx;
                     var pe = response.metaData.dimensions.pe;
-                    var periodname = []
+                    var periodName = []
                     var dataRows = []
                     var stacking = ''
                     let dataToPlot = []
@@ -531,19 +639,19 @@
                     
                     // if (finalpe == `LAST_6_MONTHS`){
                     // response.metaData.dimensions.pe.map(pe => {  
-                    //     periodname.push(response.metaData.items[todayMonth].name)
+                    //     periodName.push(response.metaData.items[todayMonth].name)
                     // })}else{
                     //     response.metaData.dimensions.pe.map(pe => {  
                     //     periodsArray.push(pe)
                     // })
                     //    var lastPeriod = periodsArray.slice(-1).pop()
-                    //    periodname.push(response.metaData.items[lastPeriod].name)
+                    //    periodName.push(response.metaData.items[lastPeriod].name)
                     // }
 
                     dataValues = Array.from(response.rows, r => r[2])
                     const { rows } = response
                     response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
+                        periodName.push(response.metaData.items[pe].name)
 
 
                     })
@@ -640,16 +748,10 @@
                     //         }
                     //         }
                     //         })
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push(periodname[0]);
-                        finalperiodname.push(periodname[periodname.length - 1]);
+                    var fperiodName = periodRange(periodName)
+                    
 
-                        return finalperiodname
-                    }
-
-                    drawTestingCascade('testing_cascade', cTitle, periodname, fperiodname, mechanismName, dataToPlot, stacking, yAxis)
+                    drawTestingCascade('testing_cascade', cTitle, periodName, fperiodName, mechanismName, dataToPlot, stacking, yAxis)
 
                 });
         }
@@ -669,7 +771,7 @@
                     }    
                     var dx = response.metaData.dimensions.dx;
                     var pe = response.metaData.dimensions.pe;
-                    var periodname = []
+                    var periodName = []
                     var stacking = ''
                     var dataRows = []
                     var yAxis = 'Proportions'
@@ -678,7 +780,7 @@
                     dataValues = Array.from(response.rows, r => r[3])
                     const { rows } = response
                     response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
+                        periodName.push(response.metaData.items[pe].name)
 
 
                     })
@@ -707,15 +809,9 @@
                         dataToPlot.push(datapoint)
                     })
 
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push(periodname[0]);
-                        finalperiodname.push(periodname[periodname.length - 1]);
-
-                        return finalperiodname
-                    }
-                    drawSpines('tx_curr_indexed', cTitle, periodname, fperiodname, mechanismName, dataToPlot, stacking, yAxis)
+                    var fperiodName = periodRange(periodName)
+                    
+                    drawSpines('tx_curr_indexed', cTitle, periodName, fperiodName, mechanismName, dataToPlot, stacking, yAxis)
 
                 });
         }
@@ -735,7 +831,7 @@
                     }    
                     var dx = response.metaData.dimensions.dx;
                     var pe = response.metaData.dimensions.pe;
-                    var periodname = []
+                    var periodName = []
                     var dataRows = []
                     var stacking = ''
                     let dataToPlot = []
@@ -743,7 +839,7 @@
                     dataValues = Array.from(response.rows, r => r[3])
                     const { rows } = response
                     response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
+                        periodName.push(response.metaData.items[pe].name)
 
 
                     })
@@ -771,15 +867,9 @@
                             }
                         dataToPlot.push(datapoint)
                     })
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push(periodname[0]);
-                        finalperiodname.push(periodname[periodname.length - 1]);
-
-                        return finalperiodname
-                    }
-                    drawSpines('ElicitationRation', cTitle, periodname, fperiodname, mechanismName, dataToPlot, stacking, yAxis)
+                    var fperiodName = periodRange(periodName)
+                    
+                    drawSpines('ElicitationRation', cTitle, periodName, fperiodName, mechanismName, dataToPlot, stacking, yAxis)
 
                 });
         }
@@ -802,7 +892,7 @@
                     var pe = response.metaData.dimensions.pe;
                     
                     var yAxis = 'Yield'
-                    var periodname = []
+                    var periodName = []
                     var dataRows = []
 
                     let dataToPlot = []
@@ -817,16 +907,16 @@
                     
                     // if (finalpe == `LAST_6_MONTHS`){
                     // response.metaData.dimensions.pe.map(pe => {  
-                    //     periodname.push(response.metaData.items[todayMonth].name)
+                    //     periodName.push(response.metaData.items[todayMonth].name)
                     // })}else{
                     //     response.metaData.dimensions.pe.map(pe => {  
                     //     periodsArray.push(pe)
                     // })
                     //    var lastPeriod = periodsArray.slice(-1).pop()
-                    //    periodname.push(response.metaData.items[lastPeriod].name)
+                    //    periodName.push(response.metaData.items[lastPeriod].name)
                     // }
                     response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
+                        periodName.push(response.metaData.items[pe].name)
 
 
                     })
@@ -859,15 +949,9 @@
                             }
                         dataToPlot.push(datapoint)
                     })
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push(periodname[0]);
-                        finalperiodname.push(periodname[periodname.length - 1]);
-
-                        return finalperiodname
-                    }
-                    drawmultipleSpines('testing_yield', cTitle, periodname, fperiodname, mechanismName, dataToPlot, yAxis)
+                    var fperiodName = periodRange(periodName)
+                    
+                    drawmultipleSpines('testing_yield', cTitle, periodName, fperiodName, mechanismName, dataToPlot, yAxis)
 
                 });
 
@@ -890,7 +974,7 @@
                     var pe = response.metaData.dimensions.pe;
                     var yAxis = 'Linkage'
                     var stacking = ''
-                    var periodname = []
+                    var periodName = []
                     var dataRows = []
 
                     let dataToPlot = []
@@ -904,16 +988,16 @@
                     
                     // if (finalpe == `LAST_6_MONTHS`){
                     // response.metaData.dimensions.pe.map(pe => {  
-                    //     periodname.push(response.metaData.items[todayMonth].name)
+                    //     periodName.push(response.metaData.items[todayMonth].name)
                     // })}else{
                     //     response.metaData.dimensions.pe.map(pe => {  
                     //     periodsArray.push(pe)
                     // })
                     //    var lastPeriod = periodsArray.slice(-1).pop()
-                    //    periodname.push(response.metaData.items[lastPeriod].name)
+                    //    periodName.push(response.metaData.items[lastPeriod].name)
                     // }
                     response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
+                        periodName.push(response.metaData.items[pe].name)
 
 
                     })
@@ -947,15 +1031,9 @@
                             }
                         dataToPlot.push(datapoint)
                     })
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push(periodname[0]);
-                        finalperiodname.push(periodname[periodname.length - 1]);
-
-                        return finalperiodname
-                    }
-                    drawSpines('on_art', cTitle, periodname, fperiodname, mechanismName, dataToPlot, stacking, yAxis)
+                    var fperiodName = periodRange(periodName)
+                    
+                    drawSpines('on_art', cTitle, periodName, fperiodName, mechanismName, dataToPlot, stacking, yAxis)
 
                 });
 
@@ -978,7 +1056,7 @@
                     var dx = response.metaData.dimensions.dx;
                     var pe = response.metaData.dimensions.pe;
                     var stacking = ''
-                    var periodname = []
+                    var periodName = []
                     var dataRows = []
 
                     let dataToPlot = []
@@ -990,19 +1068,19 @@
                     
                     if (finalpe == `LAST_6_MONTHS`){
                     response.metaData.dimensions.pe.map(pe => {  
-                        periodname.push(response.metaData.items[todayMonth].name)
+                        periodName.push(response.metaData.items[todayMonth].name)
                     })}else{
                         response.metaData.dimensions.pe.map(pe => {  
                         periodsArray.push(pe)
                     })
                        var lastPeriod = periodsArray.slice(-1).pop()
-                       periodname.push(response.metaData.items[lastPeriod].name)
+                       periodName.push(response.metaData.items[lastPeriod].name)
                     }
 
                     dataValues = Array.from(response.rows, r => r[2])
                     const { rows } = response
                     response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
+                        periodName.push(response.metaData.items[pe].name)
 
 
                     })
@@ -1050,15 +1128,9 @@
                 //   }
                 //   })
                     
-                var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push(periodname[0]);
-                        finalperiodname.push(periodname[periodname.length - 1]);
-
-                        return finalperiodname
-                    }
-                    drawbargraphs('ovc_enrollment', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
+                var fperiodName = periodRange(periodName)
+                    
+                    drawbargraphs('ovc_enrollment', periodName, fperiodName, mechanismName, cTitle, dataToPlot, stacking)
 
                 });
 
@@ -1081,7 +1153,7 @@
                     var dx = response.metaData.dimensions.dx;
                     var pe = response.metaData.dimensions.pe;
                     var stacking = ''
-                    var periodname = []
+                    var periodName = []
                     var dataRows = []
 
                     let dataToPlot = []
@@ -1089,7 +1161,7 @@
                     dataValues = Array.from(response.rows, r => r[3])
                     const { rows } = response
                     response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
+                        periodName.push(response.metaData.items[pe].name)
 
 
                     })
@@ -1113,15 +1185,9 @@
                         
                         dataToPlot.push(datapoint)
                     })
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push(periodname[0]);
-                        finalperiodname.push(periodname[periodname.length - 1]);
-
-                        return finalperiodname
-                    }
-                    drawbargraphs('qa_check', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
+                    var fperiodName = periodRange(periodName)
+                    
+                    drawbargraphs('qa_check', periodName, fperiodName, mechanismName, cTitle, dataToPlot, stacking)
 
                 });
 
@@ -1144,7 +1210,7 @@
                     var dx = response.metaData.dimensions.dx;
                     var pe = response.metaData.dimensions.pe;
                     var stacking = 'normal'
-                    var periodname = []
+                    var periodName = []
                     var dataRows = []
 
                     let dataToPlot = []
@@ -1152,7 +1218,7 @@
                     dataValues = Array.from(response.rows, r => r[3])
                     const { rows } = response
                     response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
+                        periodName.push(response.metaData.items[pe].name)
 
 
                     })
@@ -1176,15 +1242,9 @@
                        
                         dataToPlot.push(datapoint)
                     })
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push(periodname[0]);
-                        finalperiodname.push(periodname[periodname.length - 1]);
-
-                        return finalperiodname
-                    }
-                    drawbargraphs('contact_hiv_status', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
+                    var fperiodName = periodRange(periodName)
+                    
+                    drawbargraphs('contact_hiv_status', periodName, fperiodName, mechanismName, cTitle, dataToPlot, stacking)
 
                 });
 
@@ -1207,7 +1267,7 @@
                     var dx = response.metaData.dimensions.dx;
                     var pe = response.metaData.dimensions.pe;
                     var stacking = 'normal'
-                    var periodname = []
+                    var periodName = []
                     var dataRows = []
 
                     let dataToPlot = []
@@ -1215,7 +1275,7 @@
                     dataValues = Array.from(response.rows, r => r[3])
                     const { rows } = response
                     response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
+                        periodName.push(response.metaData.items[pe].name)
 
 
                     })
@@ -1244,15 +1304,9 @@
                     })
                    
 
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push(periodname[0]);
-                        finalperiodname.push(periodname[periodname.length - 1]);
-
-                        return finalperiodname
-                    }
-                    drawbargraphs('tx_curr_reviewed_subpop', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
+                    var fperiodName = periodRange(periodName)
+                    
+                    drawbargraphs('tx_curr_reviewed_subpop', periodName, fperiodName, mechanismName, cTitle, dataToPlot, stacking)
 
                 });
 
@@ -1274,7 +1328,7 @@
                     var dx = response.metaData.dimensions.dx;
                     var pe = response.metaData.dimensions.pe;
                     var stacking = 'normal'
-                    var periodname = []
+                    var periodName = []
                     var dataRows = []
 
                     let dataToPlot = []
@@ -1282,7 +1336,7 @@
                     dataValues = Array.from(response.rows, r => r[3])
                     const { rows } = response
                     response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
+                        periodName.push(response.metaData.items[pe].name)
 
 
                     })
@@ -1311,15 +1365,9 @@
                             }
                         dataToPlot.push(datapoint)
                     })
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push(periodname[0]);
-                        finalperiodname.push(periodname[periodname.length - 1]);
-
-                        return finalperiodname
-                    }
-                    drawSpines('testing_coverage', cTitle, periodname, fperiodname, mechanismName, dataToPlot, stacking)
+                    var fperiodName = periodRange(periodName)
+                    
+                    drawSpines('testing_coverage', cTitle, periodName, fperiodName, mechanismName, dataToPlot, stacking)
 
                 });
         }
@@ -1340,7 +1388,7 @@
                     var dx = response.metaData.dimensions.dx;
                     var pe = response.metaData.dimensions.pe;
                     var stacking = 'normal'
-                    var periodname = []
+                    var periodName = []
                     var dataRows = []
 
                     let dataToPlot = []
@@ -1348,7 +1396,7 @@
                     dataValues = Array.from(response.rows, r => r[3])
                     const { rows } = response
                     response.metaData.dimensions.pe.map(pe => {
-                        periodname.push(response.metaData.items[pe].name)
+                        periodName.push(response.metaData.items[pe].name)
 
 
                     })
@@ -1377,17 +1425,11 @@
                             }
                         dataToPlot.push(datapoint)
                     })
-                    console.log(dataToPlot)
-                    var fperiodname = periodRange()
-                    function periodRange() {
-                        let finalperiodname = []
-                        finalperiodname.push(periodname[0]);
-                        finalperiodname.push(periodname[periodname.length - 1]);
-
-                        return finalperiodname
-                    }
                     // console.log(dataToPlot)
-                    drawbargraphs('tested_results', periodname, fperiodname, mechanismName, cTitle, dataToPlot, stacking)
+                    var fperiodName = periodRange(periodName)
+                    
+                    // console.log(dataToPlot)
+                    drawbargraphs('tested_results', periodName, fperiodName, mechanismName, cTitle, dataToPlot, stacking)
 
                 });
 

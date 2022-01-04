@@ -104,11 +104,11 @@ let justFetch = async (endpoint, postoptions) => {
     let req_hd = {};
     let headers = {};
     let final_endpoint = endpoint;
-    if (!location.hostname.includes("localhost")) {
-        let encurl = window.encodeURIComponent(window.btoa(endpoint));
-        // console.log('encurl = '+encurl);
-        final_endpoint = "http://localhost:5600/request/" + encurl;
-    }
+    // if (!location.hostname.includes("localhost")) {
+    //     let encurl = window.encodeURIComponent(window.btoa(endpoint));
+    //     // console.log('encurl = '+encurl);
+    //     final_endpoint = "http://localhost:5600/request/" + encurl;
+    // }
     req_hd.headers = headers;
     req_hd.method = req_method;
     req_hd.Accept = "application/json";
@@ -142,9 +142,8 @@ function dateRange(startDate, endDate) {
     var dates      = [];
 
     for(var i = startYear; i <= endYear; i++) {
-        var endMonth = i != endYear ? 11 : parseInt(end[1]) - 1;
+        var endMonth = i != endYear ? 12 : parseInt(end) - 1;
         var startMon = i === startYear ? parseInt(start[1])-1 : 0;
-        console.log(startMon,endMonth)
         for(var j = startMon; j <= endMonth; j = j > 12 ? j % 12 || 11 : j+1) {
             var month = j+1;
             var displayMonth = month < 10 ? '0'+month : month;

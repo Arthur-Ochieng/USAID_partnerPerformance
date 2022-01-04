@@ -100,6 +100,7 @@ const filter_template = `
         <option value = "Gz7D5TtCtfA">USAID Tumikia Mtoto</option>
         <option value = "is09NROcUeR">USAID4TheChild</option>
         <option value = "lt6GFMucPzG">USAID Fahari Ya Jamii</option>
+        <option value = "mVoikQ8W4oc">USAID Stawisha Pwani</option>
 
         
 

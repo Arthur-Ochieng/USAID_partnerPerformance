@@ -57,7 +57,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title"> Active Brenficiaries</h4>
+                                <h4 class="card-title"> Active Beneficiaries</h4>
                                 <div class="graph" id="active">
                                     <p class="card-text"></p>
                                 </div>
@@ -267,9 +267,9 @@
             let page_title = { title: 'Dreams Bi-Weekly Dashboard' }
             let page_filters = {
                 is_county: true,
-                is_subcounty: true,
-                is_ward: true,
-                is_facility: true,
+                is_subcounty: false,
+                is_ward: false,
+                is_facility: false,
                 is_period: false,
                 is_mechanism: true,
                 is_period_range: false,
@@ -1255,7 +1255,7 @@
                 .then(response => {
                     justFetch(url1,{})
                         .then(target=>{
-                    var cTitle = 'CSEA'
+                    var cTitle = 'Entrepreneurship Training'
                     var theorgunit = response.metaData.dimensions.ou[0];
                     var curorg = response.metaData.items[theorgunit].name;
                     var mechanism_length = response.metaData.dimensions.lRp2LBbTuM5

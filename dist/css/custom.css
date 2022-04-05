@@ -378,3 +378,26 @@ input, select, textarea {
   position: fixed;
 }
 /* covid */
+
+.collapsible{
+  color: #fff;
+  padding: 14px 8px;
+  line-height: 20px;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.collapsible:hover {
+  background: #0c79ae;
+}
+.collap{
+  margin-left: 15%;
+}
+.table-title{
+  font-weight: 50px;
+  color: #ff0000 !important;
+  line-height: 30px;
+}
+.col-table{
+  text-align: center;
+}

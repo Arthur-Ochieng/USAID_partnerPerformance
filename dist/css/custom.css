@@ -394,9 +394,9 @@ input, select, textarea {
   margin-left: 15%;
 }
 .table-title{
-  font-weight: 50px;
   color: #ff0000 !important;
-  line-height: 30px;
+  line-height: 50px;
+  font-size: 1.7em;
 }
 .col-table{
   text-align: center;
@@ -409,4 +409,22 @@ td, th {
 }
 .title-head{
   color: #fff;
+}
+.q1{
+  background-color: #DEEAF6;
+}
+.q2{
+  background-color: #FEF2CB;
+}
+.targets{
+  background-color: #D8D8D8;
+}
+th {
+  font-weight:40px;
+  font-size: 20px;
+}
+td {
+  font-weight: 20px;
+  font-size: 15px;
+  color: black;
 }

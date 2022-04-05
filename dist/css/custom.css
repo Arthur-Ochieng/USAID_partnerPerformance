@@ -401,3 +401,12 @@ input, select, textarea {
 .col-table{
   text-align: center;
 }
+td, th {
+  border: 1px solid #111 !important;
+}
+.sub-title{
+  background-color: #444 !important;
+}
+.title-head{
+  color: #fff;
+}

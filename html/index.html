@@ -414,7 +414,7 @@
 					curdate.setMonth(curdate.getMonth() - 1);
 
 				per_y = curdate.getFullYear();
-				per_m = parseFloat(curdate.getMonth())+1;
+				per_m = parseFloat(curdate.getMonth());
 				
 				if(parseFloat(per_m) < 10){ per_m = "0"+per_m}
 				
@@ -674,16 +674,16 @@
                             ]))
                         })
                         if (datapoint.name.toLowerCase().split(" ").join("_").includes("testing_cascade_proportion_contacted")) {                            
-                                datapoint.type = 'scatter'
+                                datapoint.type = 'spline'
                             }
                         else if (datapoint.name.toLowerCase().split(" ").join("_").includes("testing_cascade_proportion_consented")) {                            
-                                datapoint.type = 'scatter'
+                                datapoint.type = 'spline'
                             }
                         else if (datapoint.name.toLowerCase().split(" ").join("_").includes("testing_cascade_proportion_tested_with_results")) {                            
-                                datapoint.type = 'scatter'
+                                datapoint.type = 'spline'
                             }
                         else if (datapoint.name.toLowerCase().split(" ").join("_").includes("testing_cascade_proportion_reached")) {                            
-                                datapoint.type = 'scatter'
+                                datapoint.type = 'spline'
                             }
                         else {                            
                                 datapoint.type = 'column'

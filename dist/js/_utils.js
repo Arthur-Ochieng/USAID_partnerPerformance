@@ -170,8 +170,6 @@ function dateRangeBiWeek(startDate, endDate) {
     for(var i = startYear; i <= endYear; i++) {
         var endMonth = i != endYear ? 25 : parseInt(end[1]) - 1;
         var startMon = i === startYear ? parseInt(start[1])-1 : 1;
-        console.log(endMonth)
-        console.log(startMon)
         for (var K = start; K <= end; K++) {
             var week = K;
             

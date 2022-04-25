@@ -84,12 +84,10 @@ const filter_template = `
         <select class="form-control m-r-5 mb-1" id="mechanism-dropdown" name="mechanism">
         <option selected disabled>Select Mechanism</option>
         <option selected="true" value="">All Partners</option>
-        <option value="MZQY1ZPAYCY">Afya Jijini project</option>
-        <option value = "iI8P1gEpTxf">Afya Kamilisha</option>
-        <option value = "XakDkEteZ8n">Afya Nyota ya Bonde</option>
-        <option value = "vUO19dBpTi6">Afya Ziwani</option>
         <option value = "WqRU554b9Ax">Afya Pwani</option>
         <option value = "SuIPMBE1tdx">AMPATH Plus</option>
+        <option value = "bsD5HwKJjFS">USAID Ampath Uzima</option>
+        <option value = "D7AS38Pze0F">USAID Ampath Dumisha</option>
         <option value = "iRFEcXxX5yb">Lea Toto Program</option>
         <option value = "XazGLsdcppg">USAID Tujitegemee</option>
         <option value = "jEtKvSdlHpK">USAID Imarisha Jamii</option>
@@ -101,6 +99,7 @@ const filter_template = `
         <option value = "is09NROcUeR">USAID4TheChild</option>
         <option value = "lt6GFMucPzG">USAID Fahari Ya Jamii</option>
         <option value = "mVoikQ8W4oc">USAID Stawisha Pwani</option>
+
 
         
 

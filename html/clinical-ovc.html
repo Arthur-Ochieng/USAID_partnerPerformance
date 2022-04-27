@@ -375,11 +375,15 @@
             let prd = getPreviousPMonth()
             if (prop && prop.pe) {
                 prd = prop.pe
+                console.log('a here')
+
             }
             if (prop && prop.pe && prop.pe_to) {
                 prd = dateRange(prop.pe, prop.pe_to)
+                console.log('a hereeee')
+
             }
-            console.log('prd = = = ' + prd);
+            console.log('prd1 = = = ' + prd);
 
             let ouFilterType = window.sessionStorage.getItem("ouFilterType") || "national"
             finalpe = prd.replace(/,/g, ';');
@@ -407,18 +411,23 @@
                 var curdate = new Date();
 
 				var today = curdate.getDate();
-
-				if(today<20)
-					curdate.setMonth(curdate.getMonth() - 2);
-				else
-					curdate.setMonth(curdate.getMonth() - 1);
+                console.log(today)
+                
+				if(today<20){
+				var per_m =	curdate.getMonth()-1;
+                }
+				else{
+				 var per_m = curdate.getMonth()
+                }
 
 				per_y = curdate.getFullYear();
-				per_m = parseFloat(curdate.getMonth());
+				//per_m = parseFloat(curdate.getMonth());
+                console.log(per_m)
 				
 				if(parseFloat(per_m) < 10){ per_m = "0"+per_m}
 				
 				var per = per_y+""+per_m;
+                
 				
                 return per
                 //return(getPerio(per, false))

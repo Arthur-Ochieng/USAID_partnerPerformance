@@ -109,7 +109,7 @@ let justFetch = async (endpoint, postoptions) => {
     if (!location.hostname.includes("localhost")) {
        
         let encurl = window.encodeURIComponent(window.btoa(endpoint));
-        console.log('encurl = '+encurl);
+        // console.log('encurl = '+encurl);
         final_endpoint = "http://localhost:5600/request/" + encurl;
     }
     req_hd.headers = headers;

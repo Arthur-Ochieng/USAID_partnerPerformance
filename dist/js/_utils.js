@@ -7,6 +7,8 @@ function formatNumber(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+
+
 /* 
     plotGraph(
         x_array,    //array of x values e.g. months
@@ -105,9 +107,10 @@ let justFetch = async (endpoint, postoptions) => {
     let headers = {};
     let final_endpoint = endpoint;
     if (!location.hostname.includes("localhost")) {
+        console.log('ehetr')
         let encurl = window.encodeURIComponent(window.btoa(endpoint));
         console.log('encurl = '+encurl);
-        final_endpoint = "http://localhost:3000/request/" + encurl;
+        final_endpoint = "http://localhost:5600/request/" + encurl;
     }
     req_hd.headers = headers;
     req_hd.method = req_method;
@@ -625,6 +628,8 @@ function drawTestingCascade(cName,cTitle,periodname,fperiodname,mechanismName,da
     }]
  }); 
 }
+
+
 
 
 $(document).ready(function () {

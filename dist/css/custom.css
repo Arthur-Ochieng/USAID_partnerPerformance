@@ -407,6 +407,9 @@ td, th {
 .sub-title{
   background-color: #444 !important;
 }
+.non-active-row{
+  background-color: #938b8b !important;
+}
 .title-head{
   color: #fff;
 }

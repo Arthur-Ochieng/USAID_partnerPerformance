@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#category-dropdown").change(function () {
+          let values = $("#category-dropdown option:selected");
+          //console.log(values.text);
+          //element = document.querySelector('.show');
+          //element.style.visibility = 'hidden';
+          //element = document.querySelector('#hts');
+          //element.style.visibility = 'visible';
+          //alert(values.index());
+          let reference = values.index();
+          //alert(reference);
+          //let value = dropdown.value;
+          switch (reference) {
+            case 1:
+                $("#tx_new, #tx_curr, #net, #tx_mmd, #prep,#vmmc ").hide();
+                $("#hts").show();
+              break;
+            case 2:
+                $("#hts, #tx_curr, #net, #tx_mmd, #prep,#vmmc ").hide();
+                $("#tx_new").show();
+              break;
+            case 3:
+                $("#hts, #tx_new, #net, #tx_mmd, #prep,#vmmc ").hide();
+                $("#tx_curr").show();
+              break;
+            case 4:
+                $("#hts, #tx_curr, #tx_new, #tx_mmd, #prep,#vmmc ").hide();
+                $("#net").show();
+              break;
+            case 5:
+                $("#hts, #tx_curr, #net, #tx_new, #prep,#vmmc ").hide();
+                $("#tx_mmd").show();
+              break;
+            case 6:
+                $("#hts, #tx_curr, #net, #tx_mmd, #tx_new,#vmmc ").hide();
+                $("#prep").show();
+              break;
+            case 7:
+                $("#hts, #tx_curr, #net, #tx_mmd, #prep,#tx_new ").hide();
+                $("#vmmc").show();
+              break;
+            default:
+                $("#hts, #tx_curr, #net, #tx_mmd, #prep,#vmmc ").hide();
+                $("#tx_new").show();
+          }
+        });
+      });
+    </script>
+    <style>
+      #category-dropdown {
+        height: 50px;
+        padding: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Select your desired category</h3>
+    <select
+      class="form-control m-r-5 mb-1"
+      id="category-dropdown"
+      name="category"
+      placeholder="Select category"
+      title="Select category"
+    >
+      <option selected="true" value="">Category</option>
+      <option value="">HTS</option>
+      <option value="">TX_NEW</option>
+      <option value="">TX_CURR</option>
+      <option value="">NET</option>
+      <option value="">TX_MMD</option>
+      <option value="">PREP</option>
+      <option value="">VMMC</option>
+    </select>
+    <div class="show">
+      <div class="row" id="hts">
+        <p class="hide">HTS</p>
+      </div>
+      <div class="row" id="tx_new">
+        <p class="hide">TX_NEW</p>
+      </div>
+      <div class="row" id="tx_curr">
+        <p class="hide">TX_CURR</p>
+      </div>
+      <div class="row" id="net">
+        <p class="hide">NET</p>
+      </div>
+      <div class="row" id="tx_mmd">
+        <p class="hide">TX_MMD</p>
+      </div>
+      <div class="row" id="prep">
+        <p class="hide">PREP</p>
+      </div>
+      <div class="row" id="vmmc">
+        <p class="hide">VMMC</p>
+      </div>
+    </div>
+  </body>
+</html>
+

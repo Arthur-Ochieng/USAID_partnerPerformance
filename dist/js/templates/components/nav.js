@@ -10,6 +10,7 @@ const nav_template = `
         <br/>
     </li> 
     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Perfomance Summary</span></a></li>
+    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="indicators.html" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Indicators</span></a></li>
     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="https://partnerperformance.org/hfr" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">HFR</span></a></li>
 
     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="clinical-ovc.html" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Clinical OVC Dashboard</span></a></li>

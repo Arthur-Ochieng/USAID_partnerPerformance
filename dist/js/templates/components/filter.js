@@ -56,6 +56,7 @@ const filter_template = `
     </div>
 {{/is_county}}
 
+
 {{#is_subcounty}}
     <div class="col-md-1 col-sm-1 col-xs-4">
         <select class="form-control m-r-5 mb-1" id="subcounty-dropdown" name="subcounty" disabled placeholder="Select subcounty" title="Select subcounty">
@@ -79,6 +80,7 @@ const filter_template = `
         </select> 
     </div> 
 {{/is_facility}}
+
 {{#is_mechanism}}
     <div class="col-md-2 col-sm-2 col-xs-2">
         <select class="form-control m-r-5 mb-1" id="mechanism-dropdown" name="mechanism">
@@ -99,14 +101,10 @@ const filter_template = `
         <option value = "is09NROcUeR">USAID4TheChild</option>
         <option value = "lt6GFMucPzG">USAID Fahari Ya Jamii</option>
         <option value = "mVoikQ8W4oc">USAID Stawisha Pwani</option>
-
-
-        
-
-
         </select> 
     </div> 
 {{/is_mechanism}}
+
 {{#is_period}}
     <div class="col-md-6">
         <div class="row">
@@ -257,6 +255,7 @@ $(document).ready(function () {
             window.sessionStorage.setItem("ouFilterType", "county")
         }
         changeHashOnFilter({ou:v_al})
+        
         if(v_al != 'HfVjCurKxh2' && v_al != ''){
             $("#subcounty-dropdown").removeAttr('disabled')
             fetchSubcounties(v_al);
@@ -294,6 +293,8 @@ $(document).ready(function () {
         let v_al = $(this).val()
         changeHashOnFilter({me:v_al})
     })
+
+    
 
     
     

@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- Favicon icon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../assets/images/prd.png"
+    />
+    <title>Indicators</title>
+    <!-- Custom CSS -->
+    <link href="../assets/libs/select2/select2.min.css" rel="stylesheet" />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highcharts/8.1.1/css/highcharts.min.css"
+    />
+    <link href="../dist/css/style.min.css" rel="stylesheet" />
+    <link href="../dist/css/custom.css" rel="stylesheet" />
+    <link href="../dist/css/main.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css"
+    />
+  </head>
+    <body onload="renderAll(); window.fetchData();">
+      <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+      </div>
+
+      <div id="main-wrapper">
+        <header class="topbar" data-navbarbg="skin5" id="header_target"></header>
+        <aside class="left-sidebar" data-sidebarbg="skin5">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav" id="nav_target"></nav>
+            </div>
+        </aside>
+
+        <div class="page-wrapper">
+          <div class="page-breadcrumb">
+              <div class="row">
+                  <div class="col-12 d-flex no-block align-items-center" id="filter_target"></div>
+              </div>
+          </div>
+
+          <div class="container-fluid" id="fetchDoc">
+            <div class="row">
+                <div class="col-md-12 p-0" id="status_target"></div>
+                <div class="col-md-12 p-0" id="loading_target"></div>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-6">
+              <select class="form-control m-r-5 mb-1" id="category-dropdown" name="category" placeholder="Select category" title="Select category">
+                <option value ="">Category</option>
+                <option value="">HTS</option>
+                <option value="">TX_NEW</option>
+                <option value="">TX_CURR</option>
+                <option value="">NET</option>
+                <option value="">TX_MMD</option>  
+                <option value="">PREP</option>
+                <option value="">VMMC</option>                                                                
+              </select> 
+            </div><br>
+            
+            <div id="HTS">
+              <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-body">
+                          <h4 class="card-title">HTS Testing & Yield</h4>
+                          <div class="graph" id="HTS_TESTING">
+                              <p class="card-text"></p>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Linkage (HTS POS & TX NEW)</h4>
+                      <div class="graph" id="LINKAGE_HTS_TX">
+                        <p class="card-text"></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>>
+
+          <div id="TX_TARGET">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-body">
+                      <h4 class="card-title">Testing Target</h4>
+                      <div class="graph" id="TESTING_TARGET"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Positives Target</h4>
+                    <div class="graph" id="POSITIVES_TARGET"></div>
+                  </div>
+                </div>
+              </div>  
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">TX New Target</h4>
+                    <div class="graph" id="TX_NEW_TARGET"></div>
+                  </div>
+                </div>
+              </div>
+            </div>  
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Tx New</h4>
+                            <div class="graph" id="TX_NEW"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div id="TX_CURR1">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-body">
+                      <h4 class="card-title">TX CURR Target</h4>
+                      <div class="graph" id="TX_CURR_TARGET"></div>
+                  </div>  
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="card">
+                  <div class="card-body">
+                      <h4 class="card-title">TX CURR</h4>
+                      <div class="graph" id="TX_CURR"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">TX_Curr Crude Retention</h4>
+                            <div class="graph" id="TX_CURR_CRUDE"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+            
+
+            <div class="row" id="NET">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Net New</h4>
+                            <div class="graph" id="NET_NEW"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="TX_MMD1">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">TX MMD</h4>
+                            <div class="graph" id="TX_MMD"></div>
+                        </div>                              
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="PREP">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">PrEP New Target</h4>
+                            <div class="graph" id="PREP_NEW_TARGET"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">PrEP NEW</h4>
+                            <div class="graph" id="PREP_NEW"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="VMMC">
+              <div class="col-md-4">
+                  <div class="card">
+                      <div class="card-body">
+                          <h4 class="card-title">VMMC Target</h4>
+                          <div class="graph" id="VMMC_TARGET"></div>
+                      </div>
+                  </div>
+              </div>                                                      
+              <div class="col-md-8">
+                  <div class="card">
+                      <div class="card-body">
+                          <h4 class="card-title">VMMC CIRC</h4>
+                          <div class="graph" id="VMCC_CIRC"></div>
+                      </div>
+                  </div>
+              </div>
+            </div>                              
+          </div>
+        </div>
+      </div>
+    <div id="footer_target" class="p-0 m-0 w-100"></div>
+
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/select2/select2.min.js"></script>
+    <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../dist/js/sidebarmenu.js"></script>
+    <script src="../dist/js/custom.js"></script>
+
+    <!-- *********** <WeekPicker ************** -->
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.26.0/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+    <script src="../dist/js/weekpicker.js"></script>
+    <!-- *********** WeekPicker/> ************** -->
+
+    <!-- *********** <Highcharts ************** -->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/8.1.1/es-modules/highcharts.src.min.js"></script>-->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <!-- *********** Highcharts/> ************** -->
+
+
+    <!-- Fetching the data from the API -->
+    <script>
+       fetch('https://partnermanagementsystem.uonbi.ac.ke/api/29/analytics.json?dimension=dx:cZLvFP8qm5H;ee6p52I4oZo&dimension=lRp2LBbTuM5:&dimension=pe:LAST_12_MONTHS&filter=ou:HfVjCurKxh2&displayProperty=NAME&outputIdScheme=UID')
+      .then(response => response.json())
+      .then(data => console.log(data));
+    </script>
+    <!-- End of the fetch -->
+
+    <!-- DataTables -->
+    <script>
+      $(document).ready(function () {
+        $("#table_id").DataTable({
+            "paging": false,
+            "searching": false,
+            "info": false,
+        });
+      });
+    </script>
+    <!-- End of DataTables -->
+
+    <!-- Categories Query -->
+    <script>
+        $(document).ready(function(){
+            $("#category-dropdown").change(function(){
+                let values = $("#category-dropdown option:selected");
+                let reference = values.index();
+
+                //alert(reference);
+
+                switch (reference) {
+                  //case 0:
+                      //$("#TX_TARGET, #TX_CURR1, #NET, #TX_MMD1, #PREP, #VMMC ").hide();
+                  case 1:
+                      $("#TX_TARGET, #TX_CURR1, #NET, #TX_MMD1, #PREP, #VMMC ").hide();
+                      $("#HTS").show();
+                    break;
+                  case 2:
+                      $("#HTS, #TX_CURR1, #NET, #TX_MMD1, #PREP, #VMMC").hide();
+                      $("#TX_TARGET").show();
+                    break;
+                  case 3:
+                      $("#HTS, #TX_TARGET, #NET, #TX_MMD1, #PREP, #VMMC ").hide();
+                      $("#TX_CURR1").show();
+                    break;
+                  case 4:
+                      $("#HTS, #TX_CURR1, #TX_TARGET, #TX_MMD1, #PREP, #VMMC").hide();
+                      $("#NET").show();
+                    break;
+                  case 5:
+                      $("#HTS, #TX_CURR1, #NET, #TX_TARGET, #PREP, #VMMC").hide();
+                      $("#TX_MMD1").show();
+                    break;
+                  case 6:
+                      $("#HTS, #TX_CURR1, #NET, #TX_MMD1, #TX_TARGET, #VMMC").hide();
+                      $("#PREP").show();
+                    break;
+                  case 7:
+                      $("#HTS, #TX_CURR1, #NET, #TX_MMD1, #PREP, #TX_TARGET").hide();
+                      $("#VMMC").show();
+                    break;
+                  default:
+                      //$("#main-wrapper").show();
+                      $("#VMMC, #HTS, #TX_TARGET, #TX_CURR1, #NET, #TX_MMD1, #PREP").show();
+                }
+            });
+        });
+    </script>
+
+    <!-- Hidding the datatable -->
+    <script type="text/javascript">
+        function showElement() {
+            element = document.querySelector('.dataTable');
+            element.style.visibility = 'visible';
+        }
+ 
+        function hideElement() {
+            element = document.querySelector('.dataTable');
+            element.style.visibility = 'hidden';
+        }
+    </script>
+    
+
+    <!-- Generating the pdf -->
+    <script>
+      function myFunction() {
+        let fetchPDF = document.getElementById("fetchDoc");
+        //let exportPDF = document.getElementById("exportPDF");
+        //html2pdf(fetchPDF);
+        var opt = {
+          margin: 1,
+          filename: "partner.pdf",
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { unit: "in", format: "letter", orientation: "landscape" },
+          pagebreak: { after: [".row"], before: [".row"] },
+        };
+
+        html2pdf(fetchPDF, opt);
+      }
+    </script>
+
+    <!-- TEMPLATING -->
+    <script src="../dist/js/templates/mustache.js"></script>
+
+    <!-- templates -->
+    <!-- <script id="header_template" type="x-tmpl-mustache">
+                //html here
+            </script> -->
+    <script src="../dist/js/templates/components/footer.js"></script>
+    <script src="../dist/js/templates/components/header.js"></script>
+    <script src="../dist/js/templates/components/nav.js"></script>
+    <script src="../dist/js/templates/components/filter.js"></script>
+    <script src="../dist/js/templates/components/loading.js"></script>
+    <script src="../dist/js/templates/components/status.js"></script>
+    <!-- templates -->
+
+    <!-- renders -->
+    <script src="../dist/js/templates/renders.js"></script>
+    <!-- renders -->
+
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"
+      integrity="sha512-w3u9q/DeneCSwUDjhiMNibTRh/1i/gScBVp2imNVAMCt6cUHIw6xzhzcPFIaL3Q1EbI2l+nu17q2aLJJLo4ZYg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- render Fn -->
+    <script>
+      function renderAll() {
+        let page_title = { title: "Indicators" };
+        let page_filters = {
+          is_county: true,
+          is_subcounty: true,
+          is_ward: true,
+          is_facility: true,
+          is_period: true,
+          is_mechanism: true,
+          is_period_range: true,
+        };
+        let is_loading = { is_loading: false };
+        let footer_yr = { yr: new Date().getFullYear() };
+        let page_status = {
+          title: "",
+          message: "",
+          type: "info",
+          hidden: true,
+        }; //type: info, success, danger
+
+        renderNav();
+        renderHeader(page_title);
+        renderFooter(footer_yr);
+        renderLoader(is_loading);
+        renderFilter(page_filters);
+        renderStatus(page_status);
+      }
+    </script>
+    <!-- render Fn -->
+    <!-- TEMPLATING -->
+
+    <script type="text/javascript" src="../dist/js/_utils.js"></script>
+
+    <!-- ++++++++++++++++++++++++ PAGE DATA LOGIC ++++++++++++++++++++++++ -->
+    <script>
+      var finalpe;
+      window.fetchData = (prop) => {
+        // let org_unit = window.sessionStorage.getItem('ess_ou') || "HfVjCurKxh2"
+        let org_unit = "HfVjCurKxh2";
+        // var mechanism = ""
+        if (prop && prop.ou) {
+          org_unit = prop.ou;
+        }
+        let prd = getPreviousPMonth();
+        if (prop && prop.pe) {
+          prd = prop.pe;
+          console.log("a here");
+        }
+        if (prop && prop.pe && prop.pe_to) {
+          prd = dateRange(prop.pe, prop.pe_to);
+          console.log("a hereeee");
+        }
+        console.log("prd1 = = = " + prd);
+
+        let ouFilterType =
+          window.sessionStorage.getItem("ouFilterType") || "national";
+        finalpe = prd.replace(/,/g, ";");
+        var cummulativeperiod;
+        if (finalpe == `LAST_YEAR`) {
+          var yr = `LAST_YEAR`;
+        } else {
+          var yr = finalpe.substring(0, 4);
+        }
+
+        if (prop && prop.me) {
+          mechanism = prop.me;
+        } else {
+          mechanism = "";
+        }
+        // if (finalpe == `202110`){
+        //     cummulativeperiod = `202001;202002;202003;202004;202005;202006;202007;202008;202009;202010;202011;202012;202101;202102;202103;202104;202105;202106;202107;202108;202109;202110;202111;202112;202201;202202;202203;202204;202205;202206;202207;202208;202209;202210;202211;202212`
+        // }else{
+        //     cummulativeperiod = finalpe
+        // }
+
+        function getPreviousPMonth() {
+          var curdate = new Date();
+
+          var today = curdate.getDate();
+          console.log(today);
+
+          if (today < 20) {
+            var per_m = curdate.getMonth() - 1;
+          } else {
+            var per_m = curdate.getMonth();
+          }
+
+          per_y = curdate.getFullYear();
+          //per_m = parseFloat(curdate.getMonth());
+          console.log(per_m);
+
+          if (parseFloat(per_m) < 10) {
+            per_m = "0" + per_m;
+          }
+
+          var per = per_y + "" + per_m;
+
+          return per;
+          //return(getPerio(per, false))
+        }
+
+        const ace = new Date();
+
+        const x_array = [
+          ["Results", 30],
+          ["Gaps", 70],
+        ];
+        line_x_array_title = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+        line_x_array = [
+          {
+            name: "Tokyo",
+            data: [
+              49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4,
+              194.1, 95.6, 54.4,
+            ],
+          },
+          {
+            name: "New York",
+            data: [
+              83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5,
+              106.6, 92.3,
+            ],
+          },
+        ];
+        column_x_array = [
+          {
+            name: "Tokyo",
+            data: [
+              49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4,
+              194.1, 95.6, 54.4,
+            ],
+          },
+        ];
+
+        // plotGraph2(
+        //     x_array_title,
+        //     x_array,
+        //     y_axis_title,
+        //     cName,
+        //     cType,  bar,column, line
+        //     CTitle,
+        //     cSubTitle,
+        //     colours,
+        //     enableLegend)
+
+        plotGraph2(
+          line_x_array_title,
+          line_x_array,
+          "Rainfall (mm)",
+          "TX_CURR_CRUDE",
+          "line",
+          "Hello Line chart",
+          ace
+        );
+
+        plotGraph2(
+          line_x_array_title,
+          column_x_array,
+          "Rainfall (mm)",
+          "NET_NEW",
+          "column",
+          "Hello Line chart",
+          ace
+        );
+
+        plotGraph2(
+          line_x_array_title,
+          column_x_array,
+          "Rainfall (mm)",
+          "PREP_NEW",
+          "column",
+          "Hello Line chart",
+          ace
+        );
+
+        plotGraph2(
+          line_x_array_title,
+          column_x_array,
+          "Rainfall (mm)",
+          "VMCC_CIRC",
+          "column",
+          "Hello Line chart",
+          ace
+        );
+
+        //  Barchart with dual axes line graph
+        // plotDual = (
+        //     cName,
+        //     p_x_array_title,
+        //     p_x_array,
+        //     cType_p,  column, bar, line
+        //     s_x_array_title,
+        //     s_x_array,
+        //     s_cType,
+        //     y_axis_title,
+        //     CTitle,
+        //     cSubTitle,
+        //     colours,
+        //     enableLegend
+        //         )
+
+        p_x_array = [
+          49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1,
+          95.6, 54.4,
+        ];
+        s_x_array = [
+          7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6,
+        ];
+
+        plotDual(
+          "TX_NEW",
+          "Rainfall",
+          p_x_array,
+          "column",
+          "Temperature",
+          s_x_array,
+          "line",
+          "Hello world",
+          ace
+        );
+        plotDual(
+          "TX_CURR",
+          "Rainfall",
+          p_x_array,
+          "column",
+          "Temperature",
+          s_x_array,
+          "line",
+          "Hello world",
+          ace
+        );
+
+        //plotDual2('HTS_TESTING', "Rainfall", p_x_array, 'column', "Temperature", s_x_array, "line", "Hello world", ace)
+
+        // Stacked Barcharts
+
+        // plotStacked(
+
+        stacked_x_array = [
+          {
+            name: "John",
+            data: [5, 3, 4, 7, 2],
+          },
+          {
+            name: "Jane",
+            data: [2, 2, 3, 2, 1],
+          },
+          {
+            name: "Joe",
+            data: [3, 4, 4, 2, 5],
+          },
+        ];
+
+        stacked_array = [
+          {
+            name: "Positive",
+            data: [5, 3, 4, 7, 2],
+          },
+          {
+            name: "Negative",
+            data: [2, 2, 3, 2, 5],
+          },
+        ];
+
+        stacked_x_array_title = [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+        ];
+        stacked_s_array_data = [5, 66, 40, 70, 80];
+
+        plotStacked(
+          "TX_MMD",
+          "STACKED",
+          stacked_x_array,
+          stacked_x_array_title
+        );
+        // plotStacked('LINKAGE_HTS_TX',"Hello")
+        // plotStacked('TX_MMD', "Hello")
+        plotStacked2(
+          "HTS_TESTING",
+          "TESTING",
+          stacked_array,
+          stacked_x_array_title
+        );
+        plotStacked2(
+          "LINKAGE_HTS_TX",
+          "TESTING",
+          stacked_array,
+          stacked_x_array_title
+        );
+
+        //  Donuts
+
+        plotDonut(x_array, "TESTING_TARGET", "Hello Donut", ace);
+        plotDonut(x_array, "POSITIVES_TARGET", "Hello Donut", "31 May 2020");
+        plotDonut(x_array, "TX_NEW_TARGET", "Hello Donut", "31 May 2020");
+        plotDonut(x_array, "TX_CURR_TARGET", "Hello Donut", "31 May 2020");
+        plotDonut(x_array, "TESTING_TARGET", "Hello Donut", "31 May 2020");
+        plotDonut(x_array, "PREP_NEW_TARGET", "Hello Donut", "31 May 2020");
+        plotDonut(x_array, "VMMC_TARGET", "Hello Donut", "31 May 2020");
+
+        justFetch("performance_summary.json", {}).then((response1) => {
+          console.log(response1.metadata.items.name);
+        });
+      };
+
+      function periodRange(periodName) {
+        let finalperiodName = [];
+        finalperiodName.push(periodName[0]);
+        finalperiodName.push(periodName[periodName.length - 1]);
+
+        return finalperiodName;
+      }
+      function demo() {
+        console.log("Successs");
+        return true;
+      }
+    </script>
+
+    <!-- ------------------------ PAGE DATA LOGIC ------------------------ -->
+  </body>
+</html>
+
+
+                    
+                    <!-- <div class="row, dataTable">
+                      <div class="col-md-12">
+                        <div class="card">
+                          <div class="card-body">
+                            <h4 class="card-title">HTS Testing & Yield Table</h4>
+                            <div>
+                              <table id="table_id" class="display">
+                                <thead>
+                                  <tr>
+                                      <th>#</th>
+                                      <th>Partner</th>                      
+                                      <th>Positive</th>              
+                                      <th>Negative</th>                         
+                                      <th>Yield</th>                         
+                                      <th>% Achievements (HTS_TST vs Monthly Target)</th>                          
+                                      <th>Contribution</th>                          
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                      <td>1</td>
+                                      <td>USAID Boresha Jamii</td>
+                                      <td>507</td>
+                                      <td>28000</td>
+                                      <td>1.9%</td>
+                                      <td>82%</td>
+                                      <td>26%</td>
+                                  </tr>
+                                  <tr>
+                                      <td>2</td>
+                                      <td>USAID AMPATH Uzima</td>
+                                      <td>778</td>
+                                      <td>14,389</td>
+                                      <td>3.5%</td>
+                                      <td>78%</td>
+                                      <td>34%</td>
+                                  </tr>
+                                  <tr>
+                                      <td>3</td>
+                                      <td>Stawisha Pwani</td>
+                                      <td>333</td>
+                                      <td>23,456</td>
+                                      <td>2.5%</td>
+                                      <td>94%</td>
+                                      <td>57%</td>
+                                  </tr>
+                                  <tr>
+                                      <td>4</td>
+                                      <td>USAID Fahari ya Jamii</td>
+                                      <td>432</td>
+                                      <td>36,789</td>
+                                      <td>1.7%</td>
+                                      <td>89%</td>
+                                      <td>43%</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> -->
+
+
+                                        <!-- <button type="button" onclick="myFunction()" id="downloadPDF">
+                    Download PDF
+                    </button>
+                    <button type="button" onclick="showElement()" id="downloadPDF">
+                        Show table
+                    </button>
+                    <button type="button" onclick="hideElement()" id="downloadPDF">
+                        Hide table
+                    </button> -->

@@ -1,1 +1,283 @@
-{"headers":[{"name":"dx","column":"Data","valueType":"TEXT","type":"java.lang.String","hidden":false,"meta":true},{"name":"pe","column":"Period","valueType":"TEXT","type":"java.lang.String","hidden":false,"meta":true},{"name":"value","column":"Value","valueType":"NUMBER","type":"java.lang.Double","hidden":false,"meta":false}],"metaData":{"items":{"reNDEmkK2Mq.gEMvNvc0hMk":{"name":"PERFORMANCE SUMMARY TARGET TB_ART USAID"},"TByJo5nHKtZ.vfYirA3SzWq":{"name":"PERFORMANCE SUMMARY RESULT PMTCT_STAT OU"},"VJDwoa58SBc.vfYirA3SzWq":{"name":"PERFORMANCE SUMMARY TARGET PMTCT_STAT OU"},"gYFPVpai0iO.vfYirA3SzWq":{"name":"PERFORMANCE SUMMARY TARGET PMTCT_ART OU"},"hpWANFnMqFi":{"name":"PS_TX_CURR USAID PERCENTAGE ACHIEVED"},"m99lZ4ECtqb.gEMvNvc0hMk":{"name":"PERFORMANCE SUMMARY RESULT PMTCT_STAT_POS USAID"},"qMRBtAX5d48.gEMvNvc0hMk":{"name":"PERFORMANCE SUMMARY TARGET TX_NEW USAID"},"cmMCBDhNvYW":{"name":"PS_HTS_POS OU PERCENTAGE ACHIEVED"},"dx":{"name":"Data"},"D98g1LXwUA8.gEMvNvc0hMk":{"name":"PERFORMANCE SUMMARY TARGET PMTCT_STAT_POS USAID"},"LAST_4_QUARTERS":{"name":"Last 4 quarters"},"GNDKguIxTOz.vfYirA3SzWq":{"name":"PERFORMANCE SUMMARY RESULT TB_STAT OU"},"ymPffQ6e9vM":{"name":"PS_TX_CURR OU PERCENTAGE ACHIEVED"},"Hv1GYO3LEhd.vfYirA3SzWq":{"name":"PERFORMANCE SUMMARY TARGET HTS_POS OU"},"Ixw698nRMqS.vfYirA3SzWq":{"name":"PERFORMANCE SUMMARY RESULT TX_NEW  OU"},"dX4Q3RPPTHw":{"name":"PS_PMTCT_STAT_POS OU PERCENTAGE ACHIEVED"},"ams5aL2ggzT.vfYirA3SzWq":{"name":"PERFORMANCE SUMMARY RESULT HTS_POS OU"},"HfVjCurKxh2":{"name":"Kenya"},"ymaZoZwUzk1.vfYirA3SzWq":{"name":"PERFORMANCE SUMMARY TARGET TB_STAT OU"},"GuwAYbMcdZq.vfYirA3SzWq":{"name":"PERFORMANCE SUMMARY RESULT TB_ART OU"},"uYsTCYv4x8e":{"name":"PS_TB_STAT_POS USAID PERFORMANCE ACHIEVED"},"yZUcJ8hws1s":{"name":"PS_TB_STAT_POS OU PERCENTAGE ACHIEVED"},"GNDKguIxTOz.gEMvNvc0hMk":{"name":"PERFORMANCE SUMMARY RESULT TB_STAT USAID"},"2021Q2":{"name":"Apr to Jun 2021"},"2021Q3":{"name":"Jul to Sep 2021"},"wkAvecy6Ot6.vfYirA3SzWq":{"name":"PERFORMANCE SUMMARY RESULT PMTCT_ART OU"},"qMRBtAX5d48.vfYirA3SzWq":{"name":"PERFORMANCE SUMMARY TARGET TX_NEW OU"},"VJDwoa58SBc.gEMvNvc0hMk":{"name":"PERFORMANCE SUMMARY TARGET PMTCT_STAT USAID"},"hrdP9JEX4nc":{"name":"PS_PMTCT_STAT_POS USAID PERCENTAGE ACHIEVED"},"gYFPVpai0iO.gEMvNvc0hMk":{"name":"PERFORMANCE SUMMARY TARGET PMTCT_ART USAID"},"ams5aL2ggzT.gEMvNvc0hMk":{"name":"PERFORMANCE SUMMARY RESULT HTS_POS USAID"},"Bs3gPxKyViP":{"name":"PS_PMTCT_STAT USAID PERCENTAGE ACHIEVED"},"VTYh6EAAlbB":{"name":"PS_TX_NEW OU PERCENTAGE ACHIEVED"},"kDabi289XDq.vfYirA3SzWq":{"name":"PERFORMANCE SUMMARY RESULT TX_CURR \t\t OU"},"f2omioxEuV2.gEMvNvc0hMk":{"name":"PERFORMANCE SUMMARY TARGET TB_STAT_POS USAID"},"rxqodNFVPY3":{"name":"PS_PMTCT_ART OU PERCENTAGE ACHIEVED"},"ZZS8Ta4RzBS.gEMvNvc0hMk":{"name":"PERFORMANCE SUMMARY RESULT TB_STAT_POS USAID"},"ymaZoZwUzk1.gEMvNvc0hMk":{"name":"PERFORMANCE SUMMARY TARGET TB_STAT USAID"},"2021Q4":{"name":"Oct to Dec 2021"},"ZfEH4pH2PTE.gEMvNvc0hMk":{"name":"PERFORMANCE SUMMARY TARGET TX_CURR USAID"},"Dc3hOGg2r5f":{"name":"PS_TB_STAT USAID PERFORMANCE ACHIEVED"},"DkKA6JazvZx":{"name":"PS_PMTCT_STAT OU PERCENTAGE ACHIEVED"},"wkAvecy6Ot6.gEMvNvc0hMk":{"name":"PERFORMANCE SUMMARY RESULT PMTCT_ART USAID"},"kDabi289XDq.gEMvNvc0hMk":{"name":"PERFORMANCE SUMMARY RESULT TX_CURR \t\t USAID"},"reNDEmkK2Mq.vfYirA3SzWq":{"name":"PERFORMANCE SUMMARY TARGET TB_ART OU"},"vSEsnqQ6Qhf":{"name":"PS_TB_ART OU PERCENTAGE ACHIEVED"},"mxLNqyZYeQq":{"name":"PS_TB_ART USAID PERCENTAGE ACHIEVED"},"TByJo5nHKtZ.gEMvNvc0hMk":{"name":"PERFORMANCE SUMMARY RESULT PMTCT_STAT USAID"},"ou":{"name":"Organisation unit"},"ZZS8Ta4RzBS.vfYirA3SzWq":{"name":"PERFORMANCE SUMMARY RESULT TB_STAT_POS OU"},"sPd0JmN9x7R":{"name":"PS_PMTCT_ART USAID PERCENTAGE ACHIEVED"},"x8AUQhbN2tg":{"name":"PS_TB_STAT OU PERFORMANCE ACHIEVED"},"Hv1GYO3LEhd.gEMvNvc0hMk":{"name":"PERFORMANCE SUMMARY TARGET HTS_POS USAID"},"2022Q1":{"name":"Jan to Mar 2022"},"GuwAYbMcdZq.gEMvNvc0hMk":{"name":"PERFORMANCE SUMMARY RESULT TB_ART USAID"},"Ixw698nRMqS.gEMvNvc0hMk":{"name":"PERFORMANCE SUMMARY RESULT TX_NEW  USAID"},"zJMdoIqVMRG":{"name":"PS_TX_NEW USAID PERCENTAGE ACHIEVED"},"pe":{"name":"Period"},"qw4ajKxYnlE":{"name":"PS_HTS_POS USAID PERCENTAGE ACHIEVED"},"D98g1LXwUA8.vfYirA3SzWq":{"name":"PERFORMANCE SUMMARY TARGET PMTCT_STAT_POS OU"},"ZfEH4pH2PTE.vfYirA3SzWq":{"name":"PERFORMANCE SUMMARY TARGET TX_CURR OU"},"m99lZ4ECtqb.vfYirA3SzWq":{"name":"PERFORMANCE SUMMARY RESULT PMTCT_STAT_POS OU"},"f2omioxEuV2.vfYirA3SzWq":{"name":"PERFORMANCE SUMMARY TARGET TB_STAT_POS OU"}},"dimensions":{"dx":["Hv1GYO3LEhd.vfYirA3SzWq","Hv1GYO3LEhd.gEMvNvc0hMk","ams5aL2ggzT.vfYirA3SzWq","cmMCBDhNvYW","ams5aL2ggzT.gEMvNvc0hMk","qw4ajKxYnlE","gYFPVpai0iO.vfYirA3SzWq","gYFPVpai0iO.gEMvNvc0hMk","wkAvecy6Ot6.vfYirA3SzWq","rxqodNFVPY3","wkAvecy6Ot6.gEMvNvc0hMk","sPd0JmN9x7R","VJDwoa58SBc.vfYirA3SzWq","VJDwoa58SBc.gEMvNvc0hMk","TByJo5nHKtZ.vfYirA3SzWq","DkKA6JazvZx","TByJo5nHKtZ.gEMvNvc0hMk","Bs3gPxKyViP","D98g1LXwUA8.vfYirA3SzWq","D98g1LXwUA8.gEMvNvc0hMk","m99lZ4ECtqb.vfYirA3SzWq","dX4Q3RPPTHw","m99lZ4ECtqb.gEMvNvc0hMk","hrdP9JEX4nc","reNDEmkK2Mq.vfYirA3SzWq","reNDEmkK2Mq.gEMvNvc0hMk","GuwAYbMcdZq.vfYirA3SzWq","vSEsnqQ6Qhf","GuwAYbMcdZq.gEMvNvc0hMk","mxLNqyZYeQq","ymaZoZwUzk1.vfYirA3SzWq","ymaZoZwUzk1.gEMvNvc0hMk","GNDKguIxTOz.vfYirA3SzWq","x8AUQhbN2tg","GNDKguIxTOz.gEMvNvc0hMk","Dc3hOGg2r5f","f2omioxEuV2.vfYirA3SzWq","f2omioxEuV2.gEMvNvc0hMk","ZZS8Ta4RzBS.vfYirA3SzWq","yZUcJ8hws1s","ZZS8Ta4RzBS.gEMvNvc0hMk","uYsTCYv4x8e","ZfEH4pH2PTE.vfYirA3SzWq","ZfEH4pH2PTE.gEMvNvc0hMk","kDabi289XDq.vfYirA3SzWq","ymPffQ6e9vM","kDabi289XDq.gEMvNvc0hMk","hpWANFnMqFi","qMRBtAX5d48.vfYirA3SzWq","qMRBtAX5d48.gEMvNvc0hMk","Ixw698nRMqS.vfYirA3SzWq","VTYh6EAAlbB","Ixw698nRMqS.gEMvNvc0hMk","zJMdoIqVMRG"],"pe":["2021Q2","2021Q3","2021Q4","2022Q1"],"ou":["HfVjCurKxh2"],"co":[]}},"width":3,"height":50,"rows":[["cmMCBDhNvYW","2021Q4","47.1"],["qw4ajKxYnlE","2021Q4","42.9"],["rxqodNFVPY3","2021Q4","44.2"],["sPd0JmN9x7R","2021Q4","39.8"],["DkKA6JazvZx","2021Q4","73.1"],["Bs3gPxKyViP","2021Q4","136.5"],["dX4Q3RPPTHw","2021Q4","43.9"],["hrdP9JEX4nc","2021Q4","39.8"],["x8AUQhbN2tg","2021Q4","50.5"],["Dc3hOGg2r5f","2021Q4","50.2"],["yZUcJ8hws1s","2021Q4","54.6"],["uYsTCYv4x8e","2021Q4","216.0"],["ymPffQ6e9vM","2021Q4","93.6"],["hpWANFnMqFi","2021Q4","91.3"],["VTYh6EAAlbB","2021Q4","45.2"],["zJMdoIqVMRG","2021Q4","41.9"],["D98g1LXwUA8.vfYirA3SzWq","2021Q4","53214.0"],["D98g1LXwUA8.gEMvNvc0hMk","2021Q4","20957.0"],["m99lZ4ECtqb.vfYirA3SzWq","2021Q4","23364.0"],["m99lZ4ECtqb.gEMvNvc0hMk","2021Q4","8337.0"],["reNDEmkK2Mq.vfYirA3SzWq","2021Q4","16406.0"],["TByJo5nHKtZ.vfYirA3SzWq","2021Q4","490749.0"],["f2omioxEuV2.vfYirA3SzWq","2021Q4","16565.0"],["qMRBtAX5d48.vfYirA3SzWq","2021Q4","106167.0"],["Hv1GYO3LEhd.gEMvNvc0hMk","2021Q4","49019.0"],["GNDKguIxTOz.gEMvNvc0hMk","2021Q4","15357.0"],["ams5aL2ggzT.vfYirA3SzWq","2021Q4","52178.0"],["VJDwoa58SBc.vfYirA3SzWq","2021Q4","1024484.0"],["ZZS8Ta4RzBS.gEMvNvc0hMk","2021Q4","3489.0"],["ZfEH4pH2PTE.gEMvNvc0hMk","2021Q4","470373.0"],["ZfEH4pH2PTE.vfYirA3SzWq","2021Q4","1353175.0"],["VJDwoa58SBc.gEMvNvc0hMk","2021Q4","548413.0"],["wkAvecy6Ot6.gEMvNvc0hMk","2021Q4","8219.0"],["kDabi289XDq.gEMvNvc0hMk","2021Q4","429317.0"],["wkAvecy6Ot6.vfYirA3SzWq","2021Q4","23228.0"],["ZZS8Ta4RzBS.vfYirA3SzWq","2021Q4","9040.0"],["kDabi289XDq.vfYirA3SzWq","2021Q4","1267133.0"],["ams5aL2ggzT.gEMvNvc0hMk","2021Q4","21043.0"],["GNDKguIxTOz.vfYirA3SzWq","2021Q4","33191.0"],["qMRBtAX5d48.gEMvNvc0hMk","2021Q4","46943.0"],["Hv1GYO3LEhd.vfYirA3SzWq","2021Q4","110816.0"],["TByJo5nHKtZ.gEMvNvc0hMk","2021Q4","257874.0"],["ymaZoZwUzk1.gEMvNvc0hMk","2021Q4","30617.0"],["gYFPVpai0iO.vfYirA3SzWq","2021Q4","52557.0"],["reNDEmkK2Mq.gEMvNvc0hMk","2021Q4","7060.0"],["f2omioxEuV2.gEMvNvc0hMk","2021Q4","7109.0"],["ymaZoZwUzk1.vfYirA3SzWq","2021Q4","65666.0"],["Ixw698nRMqS.vfYirA3SzWq","2021Q4","47963.0"],["Ixw698nRMqS.gEMvNvc0hMk","2021Q4","19647.0"],["gYFPVpai0iO.gEMvNvc0hMk","2021Q4","20630.0"]],"headerWidth":3}
+{
+  "headers": [
+    {
+      "name": "dx",
+      "column": "Data",
+      "valueType": "TEXT",
+      "type": "java.lang.String",
+      "hidden": false,
+      "meta": true
+    },
+    {
+      "name": "pe",
+      "column": "Period",
+      "valueType": "TEXT",
+      "type": "java.lang.String",
+      "hidden": false,
+      "meta": true
+    },
+    {
+      "name": "value",
+      "column": "Value",
+      "valueType": "NUMBER",
+      "type": "java.lang.Double",
+      "hidden": false,
+      "meta": false
+    }
+  ],
+  "metaData": {
+    "items": {
+      "reNDEmkK2Mq.gEMvNvc0hMk": {
+        "name": "PERFORMANCE SUMMARY TARGET TB_ART USAID"
+      },
+      "TByJo5nHKtZ.vfYirA3SzWq": {
+        "name": "PERFORMANCE SUMMARY RESULT PMTCT_STAT OU"
+      },
+      "VJDwoa58SBc.vfYirA3SzWq": {
+        "name": "PERFORMANCE SUMMARY TARGET PMTCT_STAT OU"
+      },
+      "gYFPVpai0iO.vfYirA3SzWq": {
+        "name": "PERFORMANCE SUMMARY TARGET PMTCT_ART OU"
+      },
+      "hpWANFnMqFi": { "name": "PS_TX_CURR USAID PERCENTAGE ACHIEVED" },
+      "m99lZ4ECtqb.gEMvNvc0hMk": {
+        "name": "PERFORMANCE SUMMARY RESULT PMTCT_STAT_POS USAID"
+      },
+      "qMRBtAX5d48.gEMvNvc0hMk": {
+        "name": "PERFORMANCE SUMMARY TARGET TX_NEW USAID"
+      },
+      "cmMCBDhNvYW": { "name": "PS_HTS_POS OU PERCENTAGE ACHIEVED" },
+      "dx": { "name": "Data" },
+      "D98g1LXwUA8.gEMvNvc0hMk": {
+        "name": "PERFORMANCE SUMMARY TARGET PMTCT_STAT_POS USAID"
+      },
+      "LAST_4_QUARTERS": { "name": "Last 4 quarters" },
+      "GNDKguIxTOz.vfYirA3SzWq": {
+        "name": "PERFORMANCE SUMMARY RESULT TB_STAT OU"
+      },
+      "ymPffQ6e9vM": { "name": "PS_TX_CURR OU PERCENTAGE ACHIEVED" },
+      "Hv1GYO3LEhd.vfYirA3SzWq": {
+        "name": "PERFORMANCE SUMMARY TARGET HTS_POS OU"
+      },
+      "Ixw698nRMqS.vfYirA3SzWq": {
+        "name": "PERFORMANCE SUMMARY RESULT TX_NEW  OU"
+      },
+      "dX4Q3RPPTHw": { "name": "PS_PMTCT_STAT_POS OU PERCENTAGE ACHIEVED" },
+      "ams5aL2ggzT.vfYirA3SzWq": {
+        "name": "PERFORMANCE SUMMARY RESULT HTS_POS OU"
+      },
+      "HfVjCurKxh2": { "name": "Kenya" },
+      "ymaZoZwUzk1.vfYirA3SzWq": {
+        "name": "PERFORMANCE SUMMARY TARGET TB_STAT OU"
+      },
+      "GuwAYbMcdZq.vfYirA3SzWq": {
+        "name": "PERFORMANCE SUMMARY RESULT TB_ART OU"
+      },
+      "uYsTCYv4x8e": { "name": "PS_TB_STAT_POS USAID PERFORMANCE ACHIEVED" },
+      "yZUcJ8hws1s": { "name": "PS_TB_STAT_POS OU PERCENTAGE ACHIEVED" },
+      "GNDKguIxTOz.gEMvNvc0hMk": {
+        "name": "PERFORMANCE SUMMARY RESULT TB_STAT USAID"
+      },
+      "2021Q2": { "name": "Apr to Jun 2021" },
+      "2021Q3": { "name": "Jul to Sep 2021" },
+      "wkAvecy6Ot6.vfYirA3SzWq": {
+        "name": "PERFORMANCE SUMMARY RESULT PMTCT_ART OU"
+      },
+      "qMRBtAX5d48.vfYirA3SzWq": {
+        "name": "PERFORMANCE SUMMARY TARGET TX_NEW OU"
+      },
+      "VJDwoa58SBc.gEMvNvc0hMk": {
+        "name": "PERFORMANCE SUMMARY TARGET PMTCT_STAT USAID"
+      },
+      "hrdP9JEX4nc": { "name": "PS_PMTCT_STAT_POS USAID PERCENTAGE ACHIEVED" },
+      "gYFPVpai0iO.gEMvNvc0hMk": {
+        "name": "PERFORMANCE SUMMARY TARGET PMTCT_ART USAID"
+      },
+      "ams5aL2ggzT.gEMvNvc0hMk": {
+        "name": "PERFORMANCE SUMMARY RESULT HTS_POS USAID"
+      },
+      "Bs3gPxKyViP": { "name": "PS_PMTCT_STAT USAID PERCENTAGE ACHIEVED" },
+      "VTYh6EAAlbB": { "name": "PS_TX_NEW OU PERCENTAGE ACHIEVED" },
+      "kDabi289XDq.vfYirA3SzWq": {
+        "name": "PERFORMANCE SUMMARY RESULT TX_CURR \t\t OU"
+      },
+      "f2omioxEuV2.gEMvNvc0hMk": {
+        "name": "PERFORMANCE SUMMARY TARGET TB_STAT_POS USAID"
+      },
+      "rxqodNFVPY3": { "name": "PS_PMTCT_ART OU PERCENTAGE ACHIEVED" },
+      "ZZS8Ta4RzBS.gEMvNvc0hMk": {
+        "name": "PERFORMANCE SUMMARY RESULT TB_STAT_POS USAID"
+      },
+      "ymaZoZwUzk1.gEMvNvc0hMk": {
+        "name": "PERFORMANCE SUMMARY TARGET TB_STAT USAID"
+      },
+      "2021Q4": { "name": "Oct to Dec 2021" },
+      "ZfEH4pH2PTE.gEMvNvc0hMk": {
+        "name": "PERFORMANCE SUMMARY TARGET TX_CURR USAID"
+      },
+      "Dc3hOGg2r5f": { "name": "PS_TB_STAT USAID PERFORMANCE ACHIEVED" },
+      "DkKA6JazvZx": { "name": "PS_PMTCT_STAT OU PERCENTAGE ACHIEVED" },
+      "wkAvecy6Ot6.gEMvNvc0hMk": {
+        "name": "PERFORMANCE SUMMARY RESULT PMTCT_ART USAID"
+      },
+      "kDabi289XDq.gEMvNvc0hMk": {
+        "name": "PERFORMANCE SUMMARY RESULT TX_CURR \t\t USAID"
+      },
+      "reNDEmkK2Mq.vfYirA3SzWq": {
+        "name": "PERFORMANCE SUMMARY TARGET TB_ART OU"
+      },
+      "vSEsnqQ6Qhf": { "name": "PS_TB_ART OU PERCENTAGE ACHIEVED" },
+      "mxLNqyZYeQq": { "name": "PS_TB_ART USAID PERCENTAGE ACHIEVED" },
+      "TByJo5nHKtZ.gEMvNvc0hMk": {
+        "name": "PERFORMANCE SUMMARY RESULT PMTCT_STAT USAID"
+      },
+      "ou": { "name": "Organisation unit" },
+      "ZZS8Ta4RzBS.vfYirA3SzWq": {
+        "name": "PERFORMANCE SUMMARY RESULT TB_STAT_POS OU"
+      },
+      "sPd0JmN9x7R": { "name": "PS_PMTCT_ART USAID PERCENTAGE ACHIEVED" },
+      "x8AUQhbN2tg": { "name": "PS_TB_STAT OU PERFORMANCE ACHIEVED" },
+      "Hv1GYO3LEhd.gEMvNvc0hMk": {
+        "name": "PERFORMANCE SUMMARY TARGET HTS_POS USAID"
+      },
+      "2022Q1": { "name": "Jan to Mar 2022" },
+      "GuwAYbMcdZq.gEMvNvc0hMk": {
+        "name": "PERFORMANCE SUMMARY RESULT TB_ART USAID"
+      },
+      "Ixw698nRMqS.gEMvNvc0hMk": {
+        "name": "PERFORMANCE SUMMARY RESULT TX_NEW  USAID"
+      },
+      "zJMdoIqVMRG": { "name": "PS_TX_NEW USAID PERCENTAGE ACHIEVED" },
+      "pe": { "name": "Period" },
+      "qw4ajKxYnlE": { "name": "PS_HTS_POS USAID PERCENTAGE ACHIEVED" },
+      "D98g1LXwUA8.vfYirA3SzWq": {
+        "name": "PERFORMANCE SUMMARY TARGET PMTCT_STAT_POS OU"
+      },
+      "ZfEH4pH2PTE.vfYirA3SzWq": {
+        "name": "PERFORMANCE SUMMARY TARGET TX_CURR OU"
+      },
+      "m99lZ4ECtqb.vfYirA3SzWq": {
+        "name": "PERFORMANCE SUMMARY RESULT PMTCT_STAT_POS OU"
+      },
+      "f2omioxEuV2.vfYirA3SzWq": {
+        "name": "PERFORMANCE SUMMARY TARGET TB_STAT_POS OU"
+      }
+    },
+    "dimensions": {
+      "dx": [
+        "Hv1GYO3LEhd.vfYirA3SzWq",
+        "Hv1GYO3LEhd.gEMvNvc0hMk",
+        "ams5aL2ggzT.vfYirA3SzWq",
+        "cmMCBDhNvYW",
+        "ams5aL2ggzT.gEMvNvc0hMk",
+        "qw4ajKxYnlE",
+        "gYFPVpai0iO.vfYirA3SzWq",
+        "gYFPVpai0iO.gEMvNvc0hMk",
+        "wkAvecy6Ot6.vfYirA3SzWq",
+        "rxqodNFVPY3",
+        "wkAvecy6Ot6.gEMvNvc0hMk",
+        "sPd0JmN9x7R",
+        "VJDwoa58SBc.vfYirA3SzWq",
+        "VJDwoa58SBc.gEMvNvc0hMk",
+        "TByJo5nHKtZ.vfYirA3SzWq",
+        "DkKA6JazvZx",
+        "TByJo5nHKtZ.gEMvNvc0hMk",
+        "Bs3gPxKyViP",
+        "D98g1LXwUA8.vfYirA3SzWq",
+        "D98g1LXwUA8.gEMvNvc0hMk",
+        "m99lZ4ECtqb.vfYirA3SzWq",
+        "dX4Q3RPPTHw",
+        "m99lZ4ECtqb.gEMvNvc0hMk",
+        "hrdP9JEX4nc",
+        "reNDEmkK2Mq.vfYirA3SzWq",
+        "reNDEmkK2Mq.gEMvNvc0hMk",
+        "GuwAYbMcdZq.vfYirA3SzWq",
+        "vSEsnqQ6Qhf",
+        "GuwAYbMcdZq.gEMvNvc0hMk",
+        "mxLNqyZYeQq",
+        "ymaZoZwUzk1.vfYirA3SzWq",
+        "ymaZoZwUzk1.gEMvNvc0hMk",
+        "GNDKguIxTOz.vfYirA3SzWq",
+        "x8AUQhbN2tg",
+        "GNDKguIxTOz.gEMvNvc0hMk",
+        "Dc3hOGg2r5f",
+        "f2omioxEuV2.vfYirA3SzWq",
+        "f2omioxEuV2.gEMvNvc0hMk",
+        "ZZS8Ta4RzBS.vfYirA3SzWq",
+        "yZUcJ8hws1s",
+        "ZZS8Ta4RzBS.gEMvNvc0hMk",
+        "uYsTCYv4x8e",
+        "ZfEH4pH2PTE.vfYirA3SzWq",
+        "ZfEH4pH2PTE.gEMvNvc0hMk",
+        "kDabi289XDq.vfYirA3SzWq",
+        "ymPffQ6e9vM",
+        "kDabi289XDq.gEMvNvc0hMk",
+        "hpWANFnMqFi",
+        "qMRBtAX5d48.vfYirA3SzWq",
+        "qMRBtAX5d48.gEMvNvc0hMk",
+        "Ixw698nRMqS.vfYirA3SzWq",
+        "VTYh6EAAlbB",
+        "Ixw698nRMqS.gEMvNvc0hMk",
+        "zJMdoIqVMRG"
+      ],
+      "pe": ["2021Q2", "2021Q3", "2021Q4", "2022Q1"],
+      "ou": ["HfVjCurKxh2"],
+      "co": []
+    }
+  },
+  "width": 3,
+  "height": 50,
+  "rows": [
+    ["cmMCBDhNvYW", "2021Q4", "47.1"],
+    ["qw4ajKxYnlE", "2021Q4", "42.9"],
+    ["rxqodNFVPY3", "2021Q4", "44.2"],
+    ["sPd0JmN9x7R", "2021Q4", "39.8"],
+    ["DkKA6JazvZx", "2021Q4", "73.1"],
+    ["Bs3gPxKyViP", "2021Q4", "136.5"],
+    ["dX4Q3RPPTHw", "2021Q4", "43.9"],
+    ["hrdP9JEX4nc", "2021Q4", "39.8"],
+    ["x8AUQhbN2tg", "2021Q4", "50.5"],
+    ["Dc3hOGg2r5f", "2021Q4", "50.2"],
+    ["yZUcJ8hws1s", "2021Q4", "54.6"],
+    ["uYsTCYv4x8e", "2021Q4", "216.0"],
+    ["ymPffQ6e9vM", "2021Q4", "93.6"],
+    ["hpWANFnMqFi", "2021Q4", "91.3"],
+    ["VTYh6EAAlbB", "2021Q4", "45.2"],
+    ["zJMdoIqVMRG", "2021Q4", "41.9"],
+    ["D98g1LXwUA8.vfYirA3SzWq", "2021Q4", "53214.0"],
+    ["D98g1LXwUA8.gEMvNvc0hMk", "2021Q4", "20957.0"],
+    ["m99lZ4ECtqb.vfYirA3SzWq", "2021Q4", "23364.0"],
+    ["m99lZ4ECtqb.gEMvNvc0hMk", "2021Q4", "8337.0"],
+    ["reNDEmkK2Mq.vfYirA3SzWq", "2021Q4", "16406.0"],
+    ["TByJo5nHKtZ.vfYirA3SzWq", "2021Q4", "490749.0"],
+    ["f2omioxEuV2.vfYirA3SzWq", "2021Q4", "16565.0"],
+    ["qMRBtAX5d48.vfYirA3SzWq", "2021Q4", "106167.0"],
+    ["Hv1GYO3LEhd.gEMvNvc0hMk", "2021Q4", "49019.0"],
+    ["GNDKguIxTOz.gEMvNvc0hMk", "2021Q4", "15357.0"],
+    ["ams5aL2ggzT.vfYirA3SzWq", "2021Q4", "52178.0"],
+    ["VJDwoa58SBc.vfYirA3SzWq", "2021Q4", "1024484.0"],
+    ["ZZS8Ta4RzBS.gEMvNvc0hMk", "2021Q4", "3489.0"],
+    ["ZfEH4pH2PTE.gEMvNvc0hMk", "2021Q4", "470373.0"],
+    ["ZfEH4pH2PTE.vfYirA3SzWq", "2021Q4", "1353175.0"],
+    ["VJDwoa58SBc.gEMvNvc0hMk", "2021Q4", "548413.0"],
+    ["wkAvecy6Ot6.gEMvNvc0hMk", "2021Q4", "8219.0"],
+    ["kDabi289XDq.gEMvNvc0hMk", "2021Q4", "429317.0"],
+    ["wkAvecy6Ot6.vfYirA3SzWq", "2021Q4", "23228.0"],
+    ["ZZS8Ta4RzBS.vfYirA3SzWq", "2021Q4", "9040.0"],
+    ["kDabi289XDq.vfYirA3SzWq", "2021Q4", "1267133.0"],
+    ["ams5aL2ggzT.gEMvNvc0hMk", "2021Q4", "21043.0"],
+    ["GNDKguIxTOz.vfYirA3SzWq", "2021Q4", "33191.0"],
+    ["qMRBtAX5d48.gEMvNvc0hMk", "2021Q4", "46943.0"],
+    ["Hv1GYO3LEhd.vfYirA3SzWq", "2021Q4", "110816.0"],
+    ["TByJo5nHKtZ.gEMvNvc0hMk", "2021Q4", "257874.0"],
+    ["ymaZoZwUzk1.gEMvNvc0hMk", "2021Q4", "30617.0"],
+    ["gYFPVpai0iO.vfYirA3SzWq", "2021Q4", "52557.0"],
+    ["reNDEmkK2Mq.gEMvNvc0hMk", "2021Q4", "7060.0"],
+    ["f2omioxEuV2.gEMvNvc0hMk", "2021Q4", "7109.0"],
+    ["ymaZoZwUzk1.vfYirA3SzWq", "2021Q4", "65666.0"],
+    ["Ixw698nRMqS.vfYirA3SzWq", "2021Q4", "47963.0"],
+    ["Ixw698nRMqS.gEMvNvc0hMk", "2021Q4", "19647.0"],
+    ["gYFPVpai0iO.gEMvNvc0hMk", "2021Q4", "20630.0"]
+  ],
+  "headerWidth": 3
+}
